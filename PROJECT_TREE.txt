@@ -1,0 +1,43 @@
+plos_research_organized/
+├── README.md
+├── PROJECT_TREE.txt
+├── config/
+│   └── indicator_weights.json
+├── data/
+│   ├── manifests/
+│   ├── processed/
+│   └── raw/
+│       ├── boarding_schools/
+│       ├── environmental/
+│       ├── historical_policy/
+│       ├── missing_persons/
+│       ├── mortality/
+│       └── population/
+├── logs/
+├── reports/
+├── src/
+│   ├── __init__.py
+│   ├── pipeline.py
+│   ├── analysis/
+│   │   ├── __init__.py
+│   │   └── analysis.py
+│   ├── features/
+│   │   ├── __init__.py
+│   │   ├── build_index.py
+│   │   └── merge_indicators.py
+│   ├── ingest/
+│   │   ├── __init__.py
+│   │   ├── ingest_boarding_schools.py
+│   │   ├── ingest_census.py
+│   │   ├── ingest_environmental.py
+│   │   ├── ingest_mortality.py
+│   │   ├── ingest_namus.py
+│   │   └── loader.py
+│   ├── reporting/
+│   │   ├── __init__.py
+│   │   └── provenance.py
+│   └── utils/
+│       ├── __init__.py
+│       ├── common.py
+│       └── data_dictionary.py
+└── visualizations/

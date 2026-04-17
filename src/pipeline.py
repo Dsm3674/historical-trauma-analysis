@@ -40,9 +40,9 @@ class ResearchPipeline:
         self.raw_dir = self.data_dir / "raw"
         self.processed_dir = self.data_dir / "processed"
         self.manifest_dir = self.data_dir / "manifests"
-        self.report_dir = project_root / "reports"
-        self.vis_dir = project_root / "visualizations"
-        self.log_dir = project_root / "logs"
+        self.report_dir = self.project_root / "reports"
+        self.vis_dir = self.project_root / "visualizations"
+        self.log_dir = self.project_root / "logs"
         self.guardrails = guardrails or AnalysisGuardrails()
         self.logger = get_logger(self.log_dir)
         self.loader = RealDataLoader(self.raw_dir)
@@ -77,6 +77,9 @@ class ResearchPipeline:
         features = build_state_boarding_school_features(raw)
         indicators = to_indicator_table(features)
 
+        if features.empty or indicators.empty:
+            raise ValueError("Boarding-school feature construction produced empty outputs.")
+
         features.to_csv(self.processed_dir / "boarding_school_features.csv", index=False)
         indicators.to_csv(self.processed_dir / "boarding_school_indicators.csv", index=False)
 
@@ -85,12 +88,17 @@ class ResearchPipeline:
 
     def build_indices(self) -> None:
         boarding_path = self.processed_dir / "boarding_school_indicators.csv"
+        if not boarding_path.exists():
+            raise FileNotFoundError("boarding_school_indicators.csv was not created during ingest().")
 
         combined = merge_indicator_tables(
             self.raw_dir / "historical_policy" / "historical_policy.csv",
             self.raw_dir / "environmental" / "environmental_hazards.csv",
             boarding_path,
         )
+
+        if combined.empty:
+            raise ValueError("Combined indicator table is empty.")
 
         combined.to_csv(self.processed_dir / "combined_indicator_table.csv", index=False)
         process_dataset(combined, "combined_indicator_table", self.processed_dir)
@@ -102,6 +110,9 @@ class ResearchPipeline:
         weights = json.loads(weights_path.read_text())
 
         index_df = compute_index(combined, weights, index_name="Historical_Trauma_Index")
+        if index_df.empty:
+            raise ValueError("Historical trauma index output is empty.")
+
         index_df.to_csv(self.processed_dir / "historical_trauma_index.csv", index=False)
         process_dataset(index_df, "historical_trauma_index", self.processed_dir)
 
@@ -116,6 +127,10 @@ class ResearchPipeline:
             self.processed_dir / "mortality.csv",
             self.processed_dir / "missing_persons.csv",
         )
+
+        if master.empty:
+            raise ValueError("Master analysis table is empty.")
+
         master.to_csv(self.processed_dir / "master_analysis_table.csv", index=False)
         process_dataset(master, "master_analysis_table", self.processed_dir)
 

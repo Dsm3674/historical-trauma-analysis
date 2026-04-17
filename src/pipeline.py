@@ -11,6 +11,7 @@ from src.analysis.analysis import (
     build_master_analysis_table,
     descriptive_summary,
     exploratory_association_table,
+    validate_main_analysis_scope,
     write_limitations_report,
 )
 from src.features.build_index import compute_index, sensitivity_analysis
@@ -130,6 +131,8 @@ class ResearchPipeline:
 
         if master.empty:
             raise ValueError("Master analysis table is empty.")
+
+        validate_main_analysis_scope(master)
 
         master.to_csv(self.processed_dir / "master_analysis_table.csv", index=False)
         process_dataset(master, "master_analysis_table", self.processed_dir)

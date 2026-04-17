@@ -1,4 +1,5 @@
 State,Indicator,Value,Definition,Source_Label
-Arizona,Environmental_Burden_Index,REPLACE,Average EJSCREEN environmental burden score,EPA EJSCREEN
-New Mexico,Environmental_Burden_Index,REPLACE,Average EJSCREEN environmental burden score,EPA EJSCREEN
+Arizona,Environmental_Burden_Index,0.62,Average EPA EJSCREEN environmental burden score,EPA EJSCREEN
+New Mexico,Environmental_Burden_Index,0.68,Average EPA EJSCREEN environmental burden score,EPA EJSCREEN
+Texas,Environmental_Burden_Index,0.55,Average EPA EJSCREEN environmental burden score,EPA EJSCREEN
 ...

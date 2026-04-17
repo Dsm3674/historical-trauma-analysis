@@ -1,18 +1,26 @@
-
 from __future__ import annotations
 
 from dataclasses import dataclass
 from pathlib import Path
-from typing import Dict, Optional
+from typing import Optional
+import json
 
 import matplotlib.pyplot as plt
-import numpy as np
 import pandas as pd
-from scipy import stats
 
-from src.analysis.analysis import build_master_analysis_table, descriptive_summary, exploratory_association_table, write_limitations_report
+from src.analysis.analysis import (
+    build_master_analysis_table,
+    descriptive_summary,
+    exploratory_association_table,
+    write_limitations_report,
+)
 from src.features.build_index import compute_index, sensitivity_analysis
 from src.features.merge_indicators import merge_indicator_tables
+from src.ingest.ingest_boarding_schools import (
+    load_boarding_school_listing,
+    build_state_boarding_school_features,
+    to_indicator_table,
+)
 from src.ingest.loader import RealDataLoader
 from src.reporting.provenance import build_provenance_report
 from src.utils.common import get_logger
@@ -39,11 +47,13 @@ class ResearchPipeline:
         self.guardrails = guardrails or AnalysisGuardrails()
         self.logger = get_logger(self.log_dir)
         self.loader = RealDataLoader(self.raw_dir)
+
         for folder in [self.processed_dir, self.manifest_dir, self.report_dir, self.vis_dir]:
             folder.mkdir(parents=True, exist_ok=True)
 
     def ingest(self) -> None:
         self.logger.info("Starting real-data ingestion.")
+
         bundles = [
             self.loader.load_population(),
             self.loader.load_mortality(),
@@ -51,31 +61,48 @@ class ResearchPipeline:
             self.loader.load_historical_policy(),
             self.loader.load_environmental_hazards(),
         ]
+
         for bundle in bundles:
             bundle.save(self.processed_dir, self.manifest_dir)
             self.logger.info("Saved %s", bundle.name)
 
+        # 🔥 FIX: Boarding school ingestion INCLUDED automatically
+        boarding_raw = self.raw_dir / "boarding_schools" / "boarding_school_listing.csv"
+        if boarding_raw.exists():
+            self.logger.info("Building boarding-school indicators.")
+
+            raw = load_boarding_school_listing(boarding_raw)
+            features = build_state_boarding_school_features(raw)
+
+            features.to_csv(self.processed_dir / "boarding_school_features.csv", index=False)
+
+            indicators = to_indicator_table(features)
+            indicators.to_csv(self.processed_dir / "boarding_school_indicators.csv", index=False)
+
+            process_dataset(features, "boarding_school_features", self.processed_dir)
+            process_dataset(indicators, "boarding_school_indicators", self.processed_dir)
+        else:
+            self.logger.warning("No boarding school file found → excluded from index.")
+
     def build_indices(self) -> None:
+        boarding_path = self.processed_dir / "boarding_school_indicators.csv"
+
         combined = merge_indicator_tables(
             self.raw_dir / "historical_policy" / "historical_policy.csv",
             self.raw_dir / "environmental" / "environmental_hazards.csv",
-            self.processed_dir / "boarding_school_indicators.csv" if (self.processed_dir / "boarding_school_indicators.csv").exists() else None,
+            boarding_path if boarding_path.exists() else None,
         )
+
         combined.to_csv(self.processed_dir / "combined_indicator_table.csv", index=False)
 
         weights_path = self.project_root / "config" / "indicator_weights.json"
-        if not weights_path.exists():
-            raise FileNotFoundError(f"Missing weights file: {weights_path}")
+        weights = json.loads(weights_path.read_text())
 
-        import json
-        weights = json.loads(weights_path.read_text(encoding="utf-8"))
-        index_df = compute_index(combined, weights, index_name="Historical_Trauma_Index")
+        index_df = compute_index(combined, weights)
         index_df.to_csv(self.processed_dir / "historical_trauma_index.csv", index=False)
-        process_dataset(index_df, "historical_trauma_index", self.processed_dir)
 
         sensitivity_df = sensitivity_analysis(combined, weights)
         sensitivity_df.to_csv(self.processed_dir / "historical_trauma_index_sensitivity.csv", index=False)
-        process_dataset(sensitivity_df, "historical_trauma_index_sensitivity", self.processed_dir)
 
     def run_analysis(self) -> None:
         master = build_master_analysis_table(
@@ -84,42 +111,24 @@ class ResearchPipeline:
             self.processed_dir / "mortality.csv",
             self.processed_dir / "missing_persons.csv",
         )
+
         master.to_csv(self.processed_dir / "master_analysis_table.csv", index=False)
-        process_dataset(master, "master_analysis_table", self.processed_dir)
 
         summary = descriptive_summary(master)
         summary.to_csv(self.processed_dir / "descriptive_summary.csv", index=False)
 
-        associations = exploratory_association_table(master, target="Historical_Trauma_Index")
+        associations = exploratory_association_table(master)
         associations.to_csv(self.processed_dir / "exploratory_associations.csv", index=False)
 
         write_limitations_report(self.report_dir / "limitations_report.txt")
-        self._plot(master)
-
-    def _plot(self, master: pd.DataFrame) -> None:
-        needed = {"Historical_Trauma_Index", "Mean_Mortality_Disparity_Ratio"}
-        if not needed.issubset(master.columns):
-            return
-        plot_df = master[list(needed)].dropna()
-        if plot_df.empty:
-            return
-        plt.figure(figsize=(7, 5))
-        plt.scatter(plot_df["Historical_Trauma_Index"], plot_df["Mean_Mortality_Disparity_Ratio"])
-        plt.xlabel("Historical_Trauma_Index")
-        plt.ylabel("Mean_Mortality_Disparity_Ratio")
-        plt.title("Exploratory Association")
-        plt.tight_layout()
-        plt.savefig(self.vis_dir / "historical_index_vs_disparity.png", dpi=200)
-        plt.close()
 
     def run(self) -> None:
         self.ingest()
         self.build_indices()
         self.run_analysis()
+
         provenance = build_provenance_report(self.processed_dir, self.manifest_dir)
-        import json
-        (self.processed_dir / "provenance_report.json").write_text(json.dumps(provenance, indent=2), encoding="utf-8")
-        self.logger.info("Pipeline complete.")
+        (self.processed_dir / "provenance_report.json").write_text(json.dumps(provenance, indent=2))
 
 
 if __name__ == "__main__":

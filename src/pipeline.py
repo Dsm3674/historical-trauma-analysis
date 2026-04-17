@@ -66,19 +66,22 @@ class ResearchPipeline:
             self.logger.info("Saved %s", bundle.name)
 
         boarding_raw = self.raw_dir / "boarding_schools" / "boarding_school_listing.csv"
-        if boarding_raw.exists():
-            self.logger.info("Building boarding-school indicators from raw listing.")
-            raw = load_boarding_school_listing(boarding_raw)
-            features = build_state_boarding_school_features(raw)
-            indicators = to_indicator_table(features)
+        if not boarding_raw.exists():
+            raise FileNotFoundError(
+                "Missing boarding-school raw file: "
+                f"{boarding_raw}. Add the source file or remove boarding-school claims from the manuscript."
+            )
 
-            features.to_csv(self.processed_dir / "boarding_school_features.csv", index=False)
-            indicators.to_csv(self.processed_dir / "boarding_school_indicators.csv", index=False)
+        self.logger.info("Building boarding-school indicators from raw listing.")
+        raw = load_boarding_school_listing(boarding_raw)
+        features = build_state_boarding_school_features(raw)
+        indicators = to_indicator_table(features)
 
-            process_dataset(features, "boarding_school_features", self.processed_dir)
-            process_dataset(indicators, "boarding_school_indicators", self.processed_dir)
-        else:
-            self.logger.warning("No boarding-school raw file found. Boarding-school indicators will be excluded.")
+        features.to_csv(self.processed_dir / "boarding_school_features.csv", index=False)
+        indicators.to_csv(self.processed_dir / "boarding_school_indicators.csv", index=False)
+
+        process_dataset(features, "boarding_school_features", self.processed_dir)
+        process_dataset(indicators, "boarding_school_indicators", self.processed_dir)
 
     def build_indices(self) -> None:
         boarding_path = self.processed_dir / "boarding_school_indicators.csv"
@@ -86,7 +89,7 @@ class ResearchPipeline:
         combined = merge_indicator_tables(
             self.raw_dir / "historical_policy" / "historical_policy.csv",
             self.raw_dir / "environmental" / "environmental_hazards.csv",
-            boarding_path if boarding_path.exists() else None,
+            boarding_path,
         )
 
         combined.to_csv(self.processed_dir / "combined_indicator_table.csv", index=False)

@@ -41,6 +41,7 @@ def build_state_boarding_school_features(
     if open_year_col in work.columns and close_year_col in work.columns:
         durations = work.copy()
         durations["School_Duration_Years"] = durations[close_year_col] - durations[open_year_col]
+
         duration_summary = (
             durations.groupby(state_col)["School_Duration_Years"]
             .agg(["mean", "max"])
@@ -76,7 +77,12 @@ def to_indicator_table(df: pd.DataFrame) -> pd.DataFrame:
     }
 
     value_cols = [c for c in df.columns if c != "State"]
-    long_df = df.melt(id_vars=["State"], value_vars=value_cols, var_name="Indicator", value_name="Value")
+    long_df = df.melt(
+        id_vars=["State"],
+        value_vars=value_cols,
+        var_name="Indicator",
+        value_name="Value",
+    )
     long_df["Definition"] = long_df["Indicator"].map(definition_map).fillna(long_df["Indicator"])
     long_df["Source_Label"] = "Federal Indian Boarding School listing"
     return long_df

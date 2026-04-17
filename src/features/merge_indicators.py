@@ -1,5 +1,5 @@
-import pandas as pd
 from pathlib import Path
+import pandas as pd
 
 REQUIRED = ["State", "Indicator", "Value", "Definition", "Source_Label"]
 
@@ -15,7 +15,7 @@ def load_file(path):
         if col not in df.columns:
             raise ValueError(f"Missing {col} in {path}")
 
-    return df
+    return df[REQUIRED].copy()
 
 
 def merge_indicator_tables(policy, env, boarding=None):
@@ -24,7 +24,9 @@ def merge_indicator_tables(policy, env, boarding=None):
         load_file(env),
     ]
 
-    if boarding and Path(boarding).exists():
+    if boarding is not None and Path(boarding).exists():
         dfs.append(load_file(boarding))
 
-    return pd.concat(dfs, ignore_index=True)
+    merged = pd.concat(dfs, ignore_index=True)
+    merged = merged.dropna(subset=["State", "Indicator", "Value"])
+    return merged

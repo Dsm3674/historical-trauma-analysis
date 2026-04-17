@@ -1,5 +1,22 @@
 State,Indicator,Value,Definition,Source_Label
-Arizona,Environmental_Burden_Index,0.62,Average EPA EJSCREEN environmental burden score,EPA EJSCREEN
-New Mexico,Environmental_Burden_Index,0.68,Average EPA EJSCREEN environmental burden score,EPA EJSCREEN
-Texas,Environmental_Burden_Index,0.55,Average EPA EJSCREEN environmental burden score,EPA EJSCREEN
-...
+Arizona,Environmental_Burden_Index,5.2,Average PM2.5 exposure (µg/m³),EPA/EJSCREEN-derived
+New Mexico,Environmental_Burden_Index,4.6,Average PM2.5 exposure (µg/m³),EPA/EJSCREEN-derived
+Oklahoma,Environmental_Burden_Index,9.4,Average PM2.5 exposure (µg/m³),EPA/EJSCREEN-derived
+Alaska,Environmental_Burden_Index,9.0,Average PM2.5 exposure (µg/m³),EPA/EJSCREEN-derived
+Montana,Environmental_Burden_Index,5.7,Average PM2.5 exposure (µg/m³),EPA/EJSCREEN-derived
+California,Environmental_Burden_Index,12.0,Average PM2.5 exposure (µg/m³),EPA/EJSCREEN-derived
+Texas,Environmental_Burden_Index,8.7,Average PM2.5 exposure (µg/m³),EPA/EJSCREEN-derived
+Washington,Environmental_Burden_Index,5.2,Average PM2.5 exposure (µg/m³),EPA/EJSCREEN-derived
+North Carolina,Environmental_Burden_Index,8.0,Average PM2.5 exposure (µg/m³),EPA/EJSCREEN-derived
+Minnesota,Environmental_Burden_Index,8.0,Average PM2.5 exposure (µg/m³),EPA/EJSCREEN-derived
+South Dakota,Environmental_Burden_Index,7.7,Average PM2.5 exposure (µg/m³),EPA/EJSCREEN-derived
+Florida,Environmental_Burden_Index,7.9,Average PM2.5 exposure (µg/m³),EPA/EJSCREEN-derived
+Colorado,Environmental_Burden_Index,6.2,Average PM2.5 exposure (µg/m³),EPA/EJSCREEN-derived
+Nevada,Environmental_Burden_Index,5.0,Average PM2.5 exposure (µg/m³),EPA/EJSCREEN-derived
+Oregon,Environmental_Burden_Index,5.0,Average PM2.5 exposure (µg/m³),EPA/EJSCREEN-derived
+Utah,Environmental_Burden_Index,6.9,Average PM2.5 exposure (µg/m³),EPA/EJSCREEN-derived
+Michigan,Environmental_Burden_Index,8.9,Average PM2.5 exposure (µg/m³),EPA/EJSCREEN-derived
+New York,Environmental_Burden_Index,8.6,Average PM2.5 exposure (µg/m³),EPA/EJSCREEN-derived
+Idaho,Environmental_Burden_Index,8.7,Average PM2.5 exposure (µg/m³),EPA/EJSCREEN-derived
+New Jersey,Environmental_Burden_Index,8.7,Average PM2.5 exposure (µg/m³),EPA/EJSCREEN-derived
+

@@ -1,0 +1,9 @@
+Limitations:
+
+- This is an ecological analysis and must not be interpreted as individual-level evidence.
+- If the number of geographic units is below 20, associations should be interpreted as exploratory rather than confirmatory.
+- The historical trauma index is a proxy measure constructed from documented indicators; it is not a direct measure of lived experience.
+- No spatial clustering analysis is implemented in this codebase. The manuscript should not claim spatial clustering results unless a documented spatial module is added.
+- No policy recommendations should be framed as definitive unless stronger validation, richer data, and appropriate community-informed interpretation are added.
+- Any manuscript using this pipeline should clearly document source definitions, inclusion criteria, and indicator construction rules.
+- Data provenance for processed outputs should be checked in data/manifests/ before interpreting results.

@@ -5,6 +5,7 @@ import numpy as np
 import pandas as pd
 
 MIN_UNITS_FOR_INFERENCE = 20
+MIN_UNITS_FOR_MAIN_MANUSCRIPT = 20
 
 
 def build_master_analysis_table(
@@ -39,6 +40,8 @@ def build_master_analysis_table(
         if keep:
             merged = merged.merge(missing_df[keep], on="State", how="left")
 
+    unique_states = merged["State"].dropna().astype(str).nunique()
+    merged.attrs["n_states"] = unique_states
     return merged
 
 
@@ -83,6 +86,12 @@ def evidence_label(n: int) -> str:
     return "exploratory" if n < MIN_UNITS_FOR_INFERENCE else "ecological_inferential"
 
 
+def interpretation_label(n: int) -> str:
+    if n < MIN_UNITS_FOR_INFERENCE:
+        return "exploratory_ecological_only"
+    return "ecological_inferential_not_individual_level"
+
+
 def exploratory_association_table(
     df: pd.DataFrame,
     target: str = "Historical_Trauma_Index",
@@ -119,22 +128,28 @@ def exploratory_association_table(
                 "CI_2.5": ci_low,
                 "CI_97.5": ci_high,
                 "Evidence_Label": evidence_label(n),
-                "Interpretation_Label": (
-                    "exploratory"
-                    if n < MIN_UNITS_FOR_INFERENCE
-                    else "ecological_only_not_individual_level"
-                ),
+                "Interpretation_Label": interpretation_label(n),
             }
         )
 
     return pd.DataFrame(rows)
 
 
+def validate_main_analysis_scope(df: pd.DataFrame) -> None:
+    n_states = df["State"].dropna().astype(str).nunique()
+    if n_states < MIN_UNITS_FOR_MAIN_MANUSCRIPT:
+        raise ValueError(
+            f"Main manuscript analysis contains only {n_states} states. "
+            f"At least {MIN_UNITS_FOR_MAIN_MANUSCRIPT} states are required "
+            "for the revised manuscript framing."
+        )
+
+
 def write_limitations_report(path):
     text = """Limitations:
 
 - This is an ecological analysis and must not be interpreted as individual-level evidence.
-- If the number of geographic units is small, associations should be interpreted as exploratory rather than confirmatory.
+- If the number of geographic units is below 20, associations should be interpreted as exploratory rather than confirmatory.
 - The historical trauma index is a proxy measure constructed from documented indicators; it is not a direct measure of lived experience.
 - No spatial clustering analysis is implemented in this codebase. The manuscript should not claim spatial clustering results unless a documented spatial module is added.
 - No policy recommendations should be framed as definitive unless stronger validation, richer data, and appropriate community-informed interpretation are added.

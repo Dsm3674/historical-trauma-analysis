@@ -1,0 +1,21 @@
+State,Indicator,Value,Definition,Source_Label
+Arizona,Uranium_Exposure_Proxy,9,Env proxy,Curated
+New Mexico,Uranium_Exposure_Proxy,8,Env proxy,Curated
+Oklahoma,Uranium_Exposure_Proxy,4,Env proxy,Curated
+Alaska,Uranium_Exposure_Proxy,5,Env proxy,Curated
+Montana,Uranium_Exposure_Proxy,6,Env proxy,Curated
+California,Uranium_Exposure_Proxy,3,Env proxy,Curated
+Texas,Uranium_Exposure_Proxy,3,Env proxy,Curated
+Washington,Uranium_Exposure_Proxy,4,Env proxy,Curated
+North Carolina,Uranium_Exposure_Proxy,2,Env proxy,Curated
+Minnesota,Uranium_Exposure_Proxy,3,Env proxy,Curated
+South Dakota,Uranium_Exposure_Proxy,7,Env proxy,Curated
+Florida,Uranium_Exposure_Proxy,1,Env proxy,Curated
+Colorado,Uranium_Exposure_Proxy,5,Env proxy,Curated
+Nevada,Uranium_Exposure_Proxy,5,Env proxy,Curated
+Oregon,Uranium_Exposure_Proxy,3,Env proxy,Curated
+Utah,Uranium_Exposure_Proxy,6,Env proxy,Curated
+Michigan,Uranium_Exposure_Proxy,2,Env proxy,Curated
+New York,Uranium_Exposure_Proxy,1,Env proxy,Curated
+Idaho,Uranium_Exposure_Proxy,4,Env proxy,Curated
+New Jersey,Uranium_Exposure_Proxy,1,Env proxy,Curated

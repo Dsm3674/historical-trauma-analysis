@@ -4,11 +4,8 @@ BASE = Path("data/raw")
 
 def write(path, content):
     path.parent.mkdir(parents=True, exist_ok=True)
-    path.write_text(content.strip())
+    path.write_text(content.strip() + "\n", encoding="utf-8")
 
-# -----------------------------
-# Population
-# -----------------------------
 write(BASE / "population/population.csv", """
 Year,State,AI_AN_Population,Total_Population
 2020,Arizona,296529,7151502
@@ -33,9 +30,6 @@ Year,State,AI_AN_Population,Total_Population
 2020,New Jersey,49318,9288994
 """)
 
-# -----------------------------
-# Mortality
-# -----------------------------
 write(BASE / "mortality/mortality.csv", """
 Year,State,Condition,AI_AN_Rate_per_100k,Comparator_Rate_per_100k
 2020,Arizona,Diabetes,170,75
@@ -60,9 +54,6 @@ Year,State,Condition,AI_AN_Rate_per_100k,Comparator_Rate_per_100k
 2020,New Jersey,Diabetes,96,61
 """)
 
-# -----------------------------
-# Missing persons
-# -----------------------------
 write(BASE / "missing_persons/missing_persons.csv", """
 Year,State,Total_Missing,AI_AN_Missing,AI_AN_Population_Percent
 2020,Arizona,1000,90,4.1
@@ -87,9 +78,6 @@ Year,State,Total_Missing,AI_AN_Missing,AI_AN_Population_Percent
 2020,New Jersey,800,8,0.5
 """)
 
-# -----------------------------
-# Historical policy
-# -----------------------------
 write(BASE / "historical_policy/historical_policy.csv", """
 State,Indicator,Value,Definition,Source_Label
 Arizona,Relocation_Exposure,8,Policy proxy,Curated
@@ -114,9 +102,6 @@ Idaho,Relocation_Exposure,4,Policy proxy,Curated
 New Jersey,Relocation_Exposure,1,Policy proxy,Curated
 """)
 
-# -----------------------------
-# Environmental
-# -----------------------------
 write(BASE / "environmental/environmental_hazards.csv", """
 State,Indicator,Value,Definition,Source_Label
 Arizona,Uranium_Exposure_Proxy,9,Env proxy,Curated
@@ -141,9 +126,6 @@ Idaho,Uranium_Exposure_Proxy,4,Env proxy,Curated
 New Jersey,Uranium_Exposure_Proxy,1,Env proxy,Curated
 """)
 
-# -----------------------------
-# Boarding schools
-# -----------------------------
 write(BASE / "boarding_schools/boarding_school_listing.csv", """
 State,School_Name,Open_Year,Close_Year,Burial_Site_Indicator
 Arizona,School_AZ,1890,1950,1
@@ -168,13 +150,8 @@ Idaho,School_ID,1907,1955,0
 New Jersey,School_NJ,1911,1949,0
 """)
 
-# -----------------------------
-# Weights
-# -----------------------------
-Path("config").mkdir(exist_ok=True)
-
-(Path("config/indicator_weights.json")).write_text("""
-{
+Path("config").mkdir(parents=True, exist_ok=True)
+Path("config/indicator_weights.json").write_text("""{
   "Relocation_Exposure": 1.0,
   "Uranium_Exposure_Proxy": 1.0,
   "BoardingSchool_Count": 1.0,
@@ -182,6 +159,6 @@ Path("config").mkdir(exist_ok=True)
   "Max_BoardingSchool_Duration_Years": 1.0,
   "Schools_With_Burial_Site_Flag": 1.0
 }
-""")
+""", encoding="utf-8")
 
-print("All dataset files created successfully.")
+print("Created raw data and config files.")

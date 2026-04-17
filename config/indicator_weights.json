@@ -1,5 +1,8 @@
 {
   "BoardingSchool_Count": 1.0,
+  "Mean_BoardingSchool_Duration_Years": 1.0,
+  "Max_BoardingSchool_Duration_Years": 1.0,
+  "Schools_With_Burial_Site_Flag": 1.0,
   "Example_Historical_Policy_Indicator": 1.0,
   "Example_Environmental_Indicator": 1.0
 }

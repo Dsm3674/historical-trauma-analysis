@@ -1,8 +1,8 @@
 {
-  "Relocation_Exposure": 1.0,
-  "Uranium_Exposure_Proxy": 1.0,
+  "Federal_BoardingSchool_Presence": 1.5,
+  "Environmental_Burden_Index": 1.3,
   "BoardingSchool_Count": 1.0,
   "Mean_BoardingSchool_Duration_Years": 1.0,
   "Max_BoardingSchool_Duration_Years": 1.0,
-  "Schools_With_Burial_Site_Flag": 1.0
+  "Schools_With_Burial_Site_Flag": 1.2
 }

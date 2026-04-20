@@ -13,7 +13,7 @@
     "dataset_name": "population",
     "source_org": "User-supplied source",
     "source_url": "",
-    "accessed_on": "2026-04-20T20:12:07.243386+00:00",
+    "accessed_on": "2026-04-20T20:41:24.953342+00:00",
     "file_path": "/workspaces/historical-trauma-analysis/data/raw/population/population.csv",
     "citation": "",
     "notes": "AI/AN population share is required for compositional-confounding diagnostics.",
@@ -21,5 +21,5 @@
     "temporal_coverage": "",
     "restrictions": ""
   },
-  "saved_at_utc": "2026-04-20T20:12:07.254326+00:00"
+  "saved_at_utc": "2026-04-20T20:41:24.966044+00:00"
 }

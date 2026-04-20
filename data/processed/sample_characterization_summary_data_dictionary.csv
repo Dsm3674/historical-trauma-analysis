@@ -1,6 +1,6 @@
 dataset,column,dtype,non_null_count,missing_count,missing_pct,example_value,description
-sample_characterization_summary,Group,object,2,0,0.0,included,
-sample_characterization_summary,State_Count,int64,2,0,0.0,20,
-sample_characterization_summary,Mean_AI_AN_Population_Percent,float64,1,1,50.0,4.0604106948380245,
-sample_characterization_summary,Min_AI_AN_Population_Percent,float64,1,1,50.0,0.470304208984721,
-sample_characterization_summary,Max_AI_AN_Population_Percent,float64,1,1,50.0,15.537823616597422,
+sample_characterization_summary,Group,str,2,0,0.0,included,
+sample_characterization_summary,State_Count,int64,2,0,0.0,13,
+sample_characterization_summary,Mean_AI_AN_Population_Percent,float64,2,0,0.0,5.099109618238951,
+sample_characterization_summary,Min_AI_AN_Population_Percent,float64,2,0,0.0,1.146434064547197,
+sample_characterization_summary,Max_AI_AN_Population_Percent,float64,2,0,0.0,15.537823616597422,

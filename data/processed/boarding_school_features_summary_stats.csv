@@ -1,5 +1,5 @@
 column,count,mean,std,min,25%,50%,75%,max
-BoardingSchool_Count,20.0,1.0,0.0,1.0,1.0,1.0,1.0,1.0
-Mean_BoardingSchool_Duration_Years,20.0,56.0,10.978447785979295,38.0,49.5,54.0,62.25,75.0
-Max_BoardingSchool_Duration_Years,20.0,56.0,10.978447785979295,38.0,49.5,54.0,62.25,75.0
-Schools_With_Burial_Site_Flag,20.0,0.3,0.4701623459816272,0.0,0.0,0.0,1.0,1.0
+BoardingSchool_Count,13.0,1.0,0.0,1.0,1.0,1.0,1.0,1.0
+Mean_BoardingSchool_Duration_Years,13.0,83.92307692307692,31.19685224094876,20.0,72.0,95.0,98.0,142.0
+Max_BoardingSchool_Duration_Years,13.0,83.92307692307692,31.19685224094876,20.0,72.0,95.0,98.0,142.0
+Schools_With_Burial_Site_Flag,13.0,0.8461538461538461,0.37553380809940534,0.0,1.0,1.0,1.0,1.0

@@ -1,6 +1,6 @@
 {
   "name": "mortality",
-  "rows": 20,
+  "rows": 13,
   "columns": [
     "Year",
     "State",
@@ -12,15 +12,15 @@
   "schema_version": "1.0",
   "source_meta": {
     "dataset_name": "mortality",
-    "source_org": "User-supplied source",
-    "source_url": "",
-    "accessed_on": "2026-04-20T10:01:29.273971+00:00",
-    "file_path": "/Users/divytan/Documents/New project/dsm3674-historical-trauma-analysis/data/raw/mortality/mortality.csv",
+    "source_org": "CDC WONDER National Vital Statistics System",
+    "source_url": "https://wonder.cdc.gov/ucd-icd10.html",
+    "accessed_on": "2026-04-20T20:12:07.247229+00:00",
+    "file_path": "/workspaces/historical-trauma-analysis/data/raw/mortality/mortality.csv",
     "citation": "",
-    "notes": "Processed output preserves the condition list so manuscript aggregation can be spelled out.",
+    "notes": "Age-adjusted diabetes mortality rates (ICD-10 E10-E14), 2020. AI/AN vs White comparator. States with suppressed AI/AN counts excluded.",
     "geographic_unit": "state",
     "temporal_coverage": "",
     "restrictions": ""
   },
-  "saved_at_utc": "2026-04-20T10:01:29.283123+00:00"
+  "saved_at_utc": "2026-04-20T20:12:07.266718+00:00"
 }

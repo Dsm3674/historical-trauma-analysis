@@ -1,6 +1,6 @@
 dataset,column,dtype,non_null_count,missing_count,missing_pct,example_value,description
-boarding_school_indicators,State,object,80,0,0.0,Alaska,
-boarding_school_indicators,Indicator,object,80,0,0.0,BoardingSchool_Count,
-boarding_school_indicators,Value,float64,80,0,0.0,1.0,
-boarding_school_indicators,Definition,object,80,0,0.0,Number of unique boarding schools recorded in the source listing for the state.,
-boarding_school_indicators,Source_Label,object,80,0,0.0,Federal Indian Boarding School listing,
+boarding_school_indicators,State,str,52,0,0.0,Alaska,
+boarding_school_indicators,Indicator,str,52,0,0.0,BoardingSchool_Count,
+boarding_school_indicators,Value,float64,52,0,0.0,1.0,
+boarding_school_indicators,Definition,str,52,0,0.0,Number of unique boarding schools recorded in the source listing for the state.,
+boarding_school_indicators,Source_Label,str,52,0,0.0,Federal Indian Boarding School listing,

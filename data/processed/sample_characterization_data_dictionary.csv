@@ -1,5 +1,5 @@
 dataset,column,dtype,non_null_count,missing_count,missing_pct,example_value,description
-sample_characterization,State,object,20,0,0.0,Alaska,
+sample_characterization,State,str,20,0,0.0,Alaska,
 sample_characterization,In_Trauma_Index,bool,20,0,0.0,True,
 sample_characterization,In_Population,bool,20,0,0.0,True,
 sample_characterization,In_Mortality,bool,20,0,0.0,True,

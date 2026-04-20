@@ -1,8 +1,8 @@
 dataset,column,dtype,non_null_count,missing_count,missing_pct,example_value,description
-historical_trauma_index_normalized_matrix,State,object,20,0,0.0,Alaska,
+historical_trauma_index_normalized_matrix,State,str,20,0,0.0,Alaska,
 historical_trauma_index_normalized_matrix,BoardingSchool_Count,float64,20,0,0.0,0.0,
 historical_trauma_index_normalized_matrix,Environmental_Burden_Index,float64,20,0,0.0,0.8116853649238319,
 historical_trauma_index_normalized_matrix,Federal_BoardingSchool_Presence,float64,20,0,0.0,0.0,
-historical_trauma_index_normalized_matrix,Max_BoardingSchool_Duration_Years,float64,20,0,0.0,0.3738154508127982,
-historical_trauma_index_normalized_matrix,Mean_BoardingSchool_Duration_Years,float64,20,0,0.0,0.3738154508127982,
-historical_trauma_index_normalized_matrix,Schools_With_Burial_Site_Flag,float64,20,0,0.0,-0.6546536707079772,
+historical_trauma_index_normalized_matrix,Max_BoardingSchool_Duration_Years,float64,13,7,35.0,0.36956379396614564,
+historical_trauma_index_normalized_matrix,Mean_BoardingSchool_Duration_Years,float64,13,7,35.0,0.36956379396614564,
+historical_trauma_index_normalized_matrix,Schools_With_Burial_Site_Flag,float64,13,7,35.0,0.42640143271122094,

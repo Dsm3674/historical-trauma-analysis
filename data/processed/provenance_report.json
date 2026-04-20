@@ -1,8 +1,8 @@
 {
   "datasets": [
     {
-      "file": "/Users/divytan/Documents/New project/dsm3674-historical-trauma-analysis/data/processed/boarding_school_features.csv",
-      "rows": 20,
+      "file": "/workspaces/historical-trauma-analysis/data/processed/boarding_school_features.csv",
+      "rows": 13,
       "columns": [
         "State",
         "BoardingSchool_Count",
@@ -10,11 +10,11 @@
         "Max_BoardingSchool_Duration_Years",
         "Schools_With_Burial_Site_Flag"
       ],
-      "sha256": "c9becb268d46edbd196e4f4cd7453f777d6168006b13c8913a86bb177463f724",
+      "sha256": "2f9e2d4a3f8725d2bb12264e84ac837cf7a7e7c842ccb5f4b6516e47746b9b84",
       "source_meta": {}
     },
     {
-      "file": "/Users/divytan/Documents/New project/dsm3674-historical-trauma-analysis/data/processed/boarding_school_features_data_dictionary.csv",
+      "file": "/workspaces/historical-trauma-analysis/data/processed/boarding_school_features_data_dictionary.csv",
       "rows": 5,
       "columns": [
         "dataset",
@@ -26,11 +26,11 @@
         "example_value",
         "description"
       ],
-      "sha256": "384494387b1a97355f4cd3cdf811701da62a2ebb1b25e66c9410f1a4d9c6dfe1",
+      "sha256": "02e50871282d9448e93063f9188fcb004e3aba9f3492fcc18d63735b56b8f35b",
       "source_meta": {}
     },
     {
-      "file": "/Users/divytan/Documents/New project/dsm3674-historical-trauma-analysis/data/processed/boarding_school_features_missing_report.csv",
+      "file": "/workspaces/historical-trauma-analysis/data/processed/boarding_school_features_missing_report.csv",
       "rows": 5,
       "columns": [
         "column",
@@ -41,7 +41,7 @@
       "source_meta": {}
     },
     {
-      "file": "/Users/divytan/Documents/New project/dsm3674-historical-trauma-analysis/data/processed/boarding_school_features_summary_stats.csv",
+      "file": "/workspaces/historical-trauma-analysis/data/processed/boarding_school_features_summary_stats.csv",
       "rows": 4,
       "columns": [
         "column",
@@ -54,12 +54,12 @@
         "75%",
         "max"
       ],
-      "sha256": "5a1d258c0c617818571a98cfefe27bea417c4fffe72b4453f397b43c813b843c",
+      "sha256": "48c2c68cfdd64fa1be7436fe81540f3f98acda95a2c3eae5165af03ba001edbd",
       "source_meta": {}
     },
     {
-      "file": "/Users/divytan/Documents/New project/dsm3674-historical-trauma-analysis/data/processed/boarding_school_indicators.csv",
-      "rows": 80,
+      "file": "/workspaces/historical-trauma-analysis/data/processed/boarding_school_indicators.csv",
+      "rows": 52,
       "columns": [
         "State",
         "Indicator",
@@ -67,11 +67,11 @@
         "Definition",
         "Source_Label"
       ],
-      "sha256": "3e9ab8da79d76bbfde271914882a3948b0738b6f158dae081900f0ebcf1796a7",
+      "sha256": "f2ca2f2aec0f42feb1f5921d1ceadd5da82a6c605e66d7b731c6333518094964",
       "source_meta": {}
     },
     {
-      "file": "/Users/divytan/Documents/New project/dsm3674-historical-trauma-analysis/data/processed/boarding_school_indicators_data_dictionary.csv",
+      "file": "/workspaces/historical-trauma-analysis/data/processed/boarding_school_indicators_data_dictionary.csv",
       "rows": 5,
       "columns": [
         "dataset",
@@ -83,11 +83,11 @@
         "example_value",
         "description"
       ],
-      "sha256": "8f392c0fcaef6079b488fb4ade8e7c2e4d168c7b01b4d8cf6bc07e800e84db69",
+      "sha256": "e1c3a8309f7e0e0b83b28368957965d532aebd58f104a5df7e57aaccec67bd1c",
       "source_meta": {}
     },
     {
-      "file": "/Users/divytan/Documents/New project/dsm3674-historical-trauma-analysis/data/processed/boarding_school_indicators_missing_report.csv",
+      "file": "/workspaces/historical-trauma-analysis/data/processed/boarding_school_indicators_missing_report.csv",
       "rows": 5,
       "columns": [
         "column",
@@ -98,7 +98,7 @@
       "source_meta": {}
     },
     {
-      "file": "/Users/divytan/Documents/New project/dsm3674-historical-trauma-analysis/data/processed/boarding_school_indicators_summary_stats.csv",
+      "file": "/workspaces/historical-trauma-analysis/data/processed/boarding_school_indicators_summary_stats.csv",
       "rows": 1,
       "columns": [
         "column",
@@ -111,12 +111,12 @@
         "75%",
         "max"
       ],
-      "sha256": "5190811da422bd7eb6b1f26c8a29a93da6d7b01e1c2e1d245a17770ddb04fbf1",
+      "sha256": "b87c53d8d54f33d305dcb85fff9595a84252958043901c0462b64c29977307a6",
       "source_meta": {}
     },
     {
-      "file": "/Users/divytan/Documents/New project/dsm3674-historical-trauma-analysis/data/processed/combined_indicator_table.csv",
-      "rows": 120,
+      "file": "/workspaces/historical-trauma-analysis/data/processed/combined_indicator_table.csv",
+      "rows": 92,
       "columns": [
         "State",
         "Indicator",
@@ -124,11 +124,11 @@
         "Definition",
         "Source_Label"
       ],
-      "sha256": "8c8aed2929176dd68c1e126004fb1c790c72f8b4809d9b81fba93d62beff0e69",
+      "sha256": "039bb9e48a719d747cf4341b382a4ac7945487a5a579ea71ebb930bfcca73aec",
       "source_meta": {}
     },
     {
-      "file": "/Users/divytan/Documents/New project/dsm3674-historical-trauma-analysis/data/processed/combined_indicator_table_data_dictionary.csv",
+      "file": "/workspaces/historical-trauma-analysis/data/processed/combined_indicator_table_data_dictionary.csv",
       "rows": 5,
       "columns": [
         "dataset",
@@ -140,11 +140,11 @@
         "example_value",
         "description"
       ],
-      "sha256": "376c7146c29397f401dc61215b70f2a1188956f0c6ed7260f3fe73d756747ab6",
+      "sha256": "1c40cd2d73d0de8bc2426227d0ab7035a140886016917763d89867dae1864c0d",
       "source_meta": {}
     },
     {
-      "file": "/Users/divytan/Documents/New project/dsm3674-historical-trauma-analysis/data/processed/combined_indicator_table_missing_report.csv",
+      "file": "/workspaces/historical-trauma-analysis/data/processed/combined_indicator_table_missing_report.csv",
       "rows": 5,
       "columns": [
         "column",
@@ -155,7 +155,7 @@
       "source_meta": {}
     },
     {
-      "file": "/Users/divytan/Documents/New project/dsm3674-historical-trauma-analysis/data/processed/combined_indicator_table_summary_stats.csv",
+      "file": "/workspaces/historical-trauma-analysis/data/processed/combined_indicator_table_summary_stats.csv",
       "rows": 1,
       "columns": [
         "column",
@@ -168,12 +168,12 @@
         "75%",
         "max"
       ],
-      "sha256": "052514554887473ebea4a97a258503846b1ebbca60ed96dea72313cd135aba74",
+      "sha256": "025c7605d24be5eb70a82f5e585439fa033a0aa978408061a47bd377767876be",
       "source_meta": {}
     },
     {
-      "file": "/Users/divytan/Documents/New project/dsm3674-historical-trauma-analysis/data/processed/descriptive_summary.csv",
-      "rows": 12,
+      "file": "/workspaces/historical-trauma-analysis/data/processed/descriptive_summary.csv",
+      "rows": 9,
       "columns": [
         "Variable",
         "count",
@@ -185,11 +185,11 @@
         "75%",
         "max"
       ],
-      "sha256": "2e54ef4551eff785872589c66334e83a21e7b01939be16761e31ce67fbed3487",
+      "sha256": "3b64798268acd24aaebdd92ff5f034f44f276ed7e617768cde8b7d77d762965b",
       "source_meta": {}
     },
     {
-      "file": "/Users/divytan/Documents/New project/dsm3674-historical-trauma-analysis/data/processed/environmental_hazards.csv",
+      "file": "/workspaces/historical-trauma-analysis/data/processed/environmental_hazards.csv",
       "rows": 20,
       "columns": [
         "State",
@@ -203,8 +203,8 @@
         "dataset_name": "environmental_hazards",
         "source_org": "User-supplied source",
         "source_url": "",
-        "accessed_on": "2026-04-20T10:01:29.277787+00:00",
-        "file_path": "/Users/divytan/Documents/New project/dsm3674-historical-trauma-analysis/data/raw/environmental/environmental_hazards.csv",
+        "accessed_on": "2026-04-20T20:12:07.253024+00:00",
+        "file_path": "/workspaces/historical-trauma-analysis/data/raw/environmental/environmental_hazards.csv",
         "citation": "",
         "notes": "Environmental indicator construction is surfaced in methods outputs for manuscript specificity.",
         "geographic_unit": "state",
@@ -213,7 +213,7 @@
       }
     },
     {
-      "file": "/Users/divytan/Documents/New project/dsm3674-historical-trauma-analysis/data/processed/environmental_hazards_data_dictionary.csv",
+      "file": "/workspaces/historical-trauma-analysis/data/processed/environmental_hazards_data_dictionary.csv",
       "rows": 5,
       "columns": [
         "dataset",
@@ -225,11 +225,11 @@
         "example_value",
         "description"
       ],
-      "sha256": "2c8c11a446d05846908aa5a371a83e262567a6518ba03734c8b29deb329df775",
+      "sha256": "965761c601833589fd9fc74396a9b0bbbdb462a3a31127e777c7369530fa475f",
       "source_meta": {}
     },
     {
-      "file": "/Users/divytan/Documents/New project/dsm3674-historical-trauma-analysis/data/processed/environmental_hazards_missing_report.csv",
+      "file": "/workspaces/historical-trauma-analysis/data/processed/environmental_hazards_missing_report.csv",
       "rows": 5,
       "columns": [
         "column",
@@ -240,7 +240,7 @@
       "source_meta": {}
     },
     {
-      "file": "/Users/divytan/Documents/New project/dsm3674-historical-trauma-analysis/data/processed/environmental_hazards_summary_stats.csv",
+      "file": "/workspaces/historical-trauma-analysis/data/processed/environmental_hazards_summary_stats.csv",
       "rows": 1,
       "columns": [
         "column",
@@ -257,8 +257,8 @@
       "source_meta": {}
     },
     {
-      "file": "/Users/divytan/Documents/New project/dsm3674-historical-trauma-analysis/data/processed/exploratory_associations.csv",
-      "rows": 4,
+      "file": "/workspaces/historical-trauma-analysis/data/processed/exploratory_associations.csv",
+      "rows": 3,
       "columns": [
         "Outcome",
         "N",
@@ -280,11 +280,11 @@
         "Most_Influential_State",
         "Max_Absolute_Rho_Shift"
       ],
-      "sha256": "d6e7774277a8b55874ff40d88fc9e6be1f24855166406c06b922b2db733d2f30",
+      "sha256": "29b0a3b01d40e36c4f92e5364ca9fb7b5d076d592e0c99a6262791ef2f5e7c78",
       "source_meta": {}
     },
     {
-      "file": "/Users/divytan/Documents/New project/dsm3674-historical-trauma-analysis/data/processed/exploratory_associations_data_dictionary.csv",
+      "file": "/workspaces/historical-trauma-analysis/data/processed/exploratory_associations_data_dictionary.csv",
       "rows": 19,
       "columns": [
         "dataset",
@@ -296,22 +296,22 @@
         "example_value",
         "description"
       ],
-      "sha256": "265f7ab8227900d49db14cfabffe1be7ef80e62a5a87c1ede3831fbf6dd6bd15",
+      "sha256": "f3630d80f3b13f27ccf8479844a8b583f0b4e705f169ace0d96f54ba15aa8405",
       "source_meta": {}
     },
     {
-      "file": "/Users/divytan/Documents/New project/dsm3674-historical-trauma-analysis/data/processed/exploratory_associations_missing_report.csv",
+      "file": "/workspaces/historical-trauma-analysis/data/processed/exploratory_associations_missing_report.csv",
       "rows": 19,
       "columns": [
         "column",
         "missing_count",
         "missing_pct"
       ],
-      "sha256": "be7bedeac58ae4690d8728127f393496a8d3253ab042beb862024008aff5eefa",
+      "sha256": "d04d68b4506262bff7e6d687d29188b8443ce118dc587255c17ae50f52fdc2f9",
       "source_meta": {}
     },
     {
-      "file": "/Users/divytan/Documents/New project/dsm3674-historical-trauma-analysis/data/processed/exploratory_associations_summary_stats.csv",
+      "file": "/workspaces/historical-trauma-analysis/data/processed/exploratory_associations_summary_stats.csv",
       "rows": 11,
       "columns": [
         "column",
@@ -324,11 +324,11 @@
         "75%",
         "max"
       ],
-      "sha256": "58e4b446140ad92d9fb45cdb4023fdb2d4e44acfdf02cc83edce93d8886a1614",
+      "sha256": "372a8a3b2b1529b21872c82ac4f50307d1c31b8616dddc69171162519aae6139",
       "source_meta": {}
     },
     {
-      "file": "/Users/divytan/Documents/New project/dsm3674-historical-trauma-analysis/data/processed/historical_policy.csv",
+      "file": "/workspaces/historical-trauma-analysis/data/processed/historical_policy.csv",
       "rows": 20,
       "columns": [
         "State",
@@ -342,8 +342,8 @@
         "dataset_name": "historical_policy",
         "source_org": "User-supplied source",
         "source_url": "",
-        "accessed_on": "2026-04-20T10:01:29.277125+00:00",
-        "file_path": "/Users/divytan/Documents/New project/dsm3674-historical-trauma-analysis/data/raw/historical_policy/historical_policy.csv",
+        "accessed_on": "2026-04-20T20:12:07.251670+00:00",
+        "file_path": "/workspaces/historical-trauma-analysis/data/raw/historical_policy/historical_policy.csv",
         "citation": "",
         "notes": "Definitions and source labels are preserved for methods reporting.",
         "geographic_unit": "state",
@@ -352,7 +352,7 @@
       }
     },
     {
-      "file": "/Users/divytan/Documents/New project/dsm3674-historical-trauma-analysis/data/processed/historical_policy_data_dictionary.csv",
+      "file": "/workspaces/historical-trauma-analysis/data/processed/historical_policy_data_dictionary.csv",
       "rows": 5,
       "columns": [
         "dataset",
@@ -364,11 +364,11 @@
         "example_value",
         "description"
       ],
-      "sha256": "4b8a1054f0fa1f7c2fcdd9333f55677dc5451fe3007776be54872203794792a3",
+      "sha256": "f3b6721794aee2332918675b38f41ad9f470e09e57b1a2745e3a3923451a0f34",
       "source_meta": {}
     },
     {
-      "file": "/Users/divytan/Documents/New project/dsm3674-historical-trauma-analysis/data/processed/historical_policy_missing_report.csv",
+      "file": "/workspaces/historical-trauma-analysis/data/processed/historical_policy_missing_report.csv",
       "rows": 5,
       "columns": [
         "column",
@@ -379,7 +379,7 @@
       "source_meta": {}
     },
     {
-      "file": "/Users/divytan/Documents/New project/dsm3674-historical-trauma-analysis/data/processed/historical_policy_summary_stats.csv",
+      "file": "/workspaces/historical-trauma-analysis/data/processed/historical_policy_summary_stats.csv",
       "rows": 1,
       "columns": [
         "column",
@@ -396,7 +396,7 @@
       "source_meta": {}
     },
     {
-      "file": "/Users/divytan/Documents/New project/dsm3674-historical-trauma-analysis/data/processed/historical_trauma_index.csv",
+      "file": "/workspaces/historical-trauma-analysis/data/processed/historical_trauma_index.csv",
       "rows": 20,
       "columns": [
         "State",
@@ -405,11 +405,11 @@
         "Normalization_Method",
         "Constant_Indicators_Dropped"
       ],
-      "sha256": "f55232061da4b6c311b99cdcf1a258d2a710bcfa7970f024028616ff95c8df7c",
+      "sha256": "8e33bafd7af0d28bfc155fc3db5572f1ef86df508ba271daf0646e8aba48723f",
       "source_meta": {}
     },
     {
-      "file": "/Users/divytan/Documents/New project/dsm3674-historical-trauma-analysis/data/processed/historical_trauma_index_data_dictionary.csv",
+      "file": "/workspaces/historical-trauma-analysis/data/processed/historical_trauma_index_data_dictionary.csv",
       "rows": 5,
       "columns": [
         "dataset",
@@ -421,11 +421,11 @@
         "example_value",
         "description"
       ],
-      "sha256": "c40783880c48b0a5b02d509552529d17656009749235b23dcfa0efab796040a0",
+      "sha256": "1808605fb849c40af7ffd6a5cfc1beeb5b3a5b39a1b58789e634a0c522089156",
       "source_meta": {}
     },
     {
-      "file": "/Users/divytan/Documents/New project/dsm3674-historical-trauma-analysis/data/processed/historical_trauma_index_indicator_diagnostics.csv",
+      "file": "/workspaces/historical-trauma-analysis/data/processed/historical_trauma_index_indicator_diagnostics.csv",
       "rows": 6,
       "columns": [
         "Indicator",
@@ -442,11 +442,11 @@
         "Included_In_Primary_Index",
         "Exclusion_Reason"
       ],
-      "sha256": "4c3a8832f8aac066f63ad8cc40150a7f7ad46dcd7bbb4a7538edb1a14d034b1e",
+      "sha256": "717f2d8ebaefccad5f0309ad4471a9592ed99e46a7f54b2a24bba63151aec5a1",
       "source_meta": {}
     },
     {
-      "file": "/Users/divytan/Documents/New project/dsm3674-historical-trauma-analysis/data/processed/historical_trauma_index_indicator_diagnostics_data_dictionary.csv",
+      "file": "/workspaces/historical-trauma-analysis/data/processed/historical_trauma_index_indicator_diagnostics_data_dictionary.csv",
       "rows": 13,
       "columns": [
         "dataset",
@@ -458,11 +458,11 @@
         "example_value",
         "description"
       ],
-      "sha256": "798ed8a1a1075cb0581c0bb14d6947d169e8862ac615432d68a11f2bb0ad6bdb",
+      "sha256": "58039260205978354ea5b613f28ef97845f84eec4f55f9aeeec009c5f8f492c8",
       "source_meta": {}
     },
     {
-      "file": "/Users/divytan/Documents/New project/dsm3674-historical-trauma-analysis/data/processed/historical_trauma_index_indicator_diagnostics_missing_report.csv",
+      "file": "/workspaces/historical-trauma-analysis/data/processed/historical_trauma_index_indicator_diagnostics_missing_report.csv",
       "rows": 13,
       "columns": [
         "column",
@@ -473,7 +473,7 @@
       "source_meta": {}
     },
     {
-      "file": "/Users/divytan/Documents/New project/dsm3674-historical-trauma-analysis/data/processed/historical_trauma_index_indicator_diagnostics_summary_stats.csv",
+      "file": "/workspaces/historical-trauma-analysis/data/processed/historical_trauma_index_indicator_diagnostics_summary_stats.csv",
       "rows": 8,
       "columns": [
         "column",
@@ -486,11 +486,11 @@
         "75%",
         "max"
       ],
-      "sha256": "ed24bd8b242829e55531cb97d470c72f4edfb0fdc756c02a051dfc5e809fb70f",
+      "sha256": "8e238976294939afe2bdbdff545c4c0dc6aa2110940f85a56f82536dca628b32",
       "source_meta": {}
     },
     {
-      "file": "/Users/divytan/Documents/New project/dsm3674-historical-trauma-analysis/data/processed/historical_trauma_index_missing_report.csv",
+      "file": "/workspaces/historical-trauma-analysis/data/processed/historical_trauma_index_missing_report.csv",
       "rows": 5,
       "columns": [
         "column",
@@ -501,7 +501,7 @@
       "source_meta": {}
     },
     {
-      "file": "/Users/divytan/Documents/New project/dsm3674-historical-trauma-analysis/data/processed/historical_trauma_index_normalized_matrix.csv",
+      "file": "/workspaces/historical-trauma-analysis/data/processed/historical_trauma_index_normalized_matrix.csv",
       "rows": 20,
       "columns": [
         "State",
@@ -512,11 +512,11 @@
         "Mean_BoardingSchool_Duration_Years",
         "Schools_With_Burial_Site_Flag"
       ],
-      "sha256": "c6f5a94023039a8880e4238bc8dc08fa6dbbcb783cb9773c0f5b5c8665ebd710",
+      "sha256": "090fe2a0fbd0ad3419593d6c2798c91cc99242115942c294724621a615b89617",
       "source_meta": {}
     },
     {
-      "file": "/Users/divytan/Documents/New project/dsm3674-historical-trauma-analysis/data/processed/historical_trauma_index_normalized_matrix_data_dictionary.csv",
+      "file": "/workspaces/historical-trauma-analysis/data/processed/historical_trauma_index_normalized_matrix_data_dictionary.csv",
       "rows": 7,
       "columns": [
         "dataset",
@@ -528,22 +528,22 @@
         "example_value",
         "description"
       ],
-      "sha256": "79f6ede05ff45ce5e52b75edb5083a2f505639d60dcad44910bfbdc208c1b6bf",
+      "sha256": "7303db572cf971c128f39ee08c5fc59aefeefbefdf6a127c92fc7e25938f8a96",
       "source_meta": {}
     },
     {
-      "file": "/Users/divytan/Documents/New project/dsm3674-historical-trauma-analysis/data/processed/historical_trauma_index_normalized_matrix_missing_report.csv",
+      "file": "/workspaces/historical-trauma-analysis/data/processed/historical_trauma_index_normalized_matrix_missing_report.csv",
       "rows": 7,
       "columns": [
         "column",
         "missing_count",
         "missing_pct"
       ],
-      "sha256": "37eadd86f2c0384ee5adf99547a291aa10baab9c57dbbf468d48240d5a42bb6e",
+      "sha256": "078388146a6c03b23b2db263849e0a4892f883b51acf9cc564ed70e4b578a45b",
       "source_meta": {}
     },
     {
-      "file": "/Users/divytan/Documents/New project/dsm3674-historical-trauma-analysis/data/processed/historical_trauma_index_normalized_matrix_summary_stats.csv",
+      "file": "/workspaces/historical-trauma-analysis/data/processed/historical_trauma_index_normalized_matrix_summary_stats.csv",
       "rows": 6,
       "columns": [
         "column",
@@ -556,11 +556,11 @@
         "75%",
         "max"
       ],
-      "sha256": "8e298572a089a74f8c4e9093e442680c91c6390ace992fb8e70220d4625dafe8",
+      "sha256": "14f99afc2076652ff8e13d2d7da68e0117f179ad0f1ead94f4d8b192712625c7",
       "source_meta": {}
     },
     {
-      "file": "/Users/divytan/Documents/New project/dsm3674-historical-trauma-analysis/data/processed/historical_trauma_index_sensitivity.csv",
+      "file": "/workspaces/historical-trauma-analysis/data/processed/historical_trauma_index_sensitivity.csv",
       "rows": 160,
       "columns": [
         "State",
@@ -575,11 +575,11 @@
         "Score_Delta_vs_Primary",
         "Rank_Shift_vs_Primary"
       ],
-      "sha256": "1c58875821c0058604767729ad76163b4679c31866af68a4dae27bd08faf2c26",
+      "sha256": "d6bbfbd8224422f3578a4faa45b9bbedcb08e597134cc17f11ee5404c63f297f",
       "source_meta": {}
     },
     {
-      "file": "/Users/divytan/Documents/New project/dsm3674-historical-trauma-analysis/data/processed/historical_trauma_index_sensitivity_data_dictionary.csv",
+      "file": "/workspaces/historical-trauma-analysis/data/processed/historical_trauma_index_sensitivity_data_dictionary.csv",
       "rows": 11,
       "columns": [
         "dataset",
@@ -591,22 +591,22 @@
         "example_value",
         "description"
       ],
-      "sha256": "1aac772d5e4bd5cc3b6021c66c151531f582ccd44d450f685369139abc3edf7d",
+      "sha256": "f106f96f46d8e5dc34d1a94af0b61bbb9c0cd370aeaab86cc2ff9d794fe7e409",
       "source_meta": {}
     },
     {
-      "file": "/Users/divytan/Documents/New project/dsm3674-historical-trauma-analysis/data/processed/historical_trauma_index_sensitivity_missing_report.csv",
+      "file": "/workspaces/historical-trauma-analysis/data/processed/historical_trauma_index_sensitivity_missing_report.csv",
       "rows": 11,
       "columns": [
         "column",
         "missing_count",
         "missing_pct"
       ],
-      "sha256": "7273f796765282ec7906f8881575ac9e0c3c5ec658fe5d7b72ac6f110f3b0058",
+      "sha256": "37adf2554974e901480f67025116a0871c2a1c6a562b7801e3d588093f9e7fec",
       "source_meta": {}
     },
     {
-      "file": "/Users/divytan/Documents/New project/dsm3674-historical-trauma-analysis/data/processed/historical_trauma_index_sensitivity_summary.csv",
+      "file": "/workspaces/historical-trauma-analysis/data/processed/historical_trauma_index_sensitivity_summary.csv",
       "rows": 8,
       "columns": [
         "Scheme",
@@ -617,11 +617,11 @@
         "Max_Absolute_Rank_Shift",
         "Mean_Absolute_Score_Delta"
       ],
-      "sha256": "4c34c3120cf766c88f4649fe18caf92264baad58e55d5cd8e0886b1b675fc49a",
+      "sha256": "de138dd44cea5893aa314ca960905a9cf57fcbd2fa00cd7ad03b2dd8751e24fe",
       "source_meta": {}
     },
     {
-      "file": "/Users/divytan/Documents/New project/dsm3674-historical-trauma-analysis/data/processed/historical_trauma_index_sensitivity_summary_data_dictionary.csv",
+      "file": "/workspaces/historical-trauma-analysis/data/processed/historical_trauma_index_sensitivity_summary_data_dictionary.csv",
       "rows": 7,
       "columns": [
         "dataset",
@@ -633,11 +633,11 @@
         "example_value",
         "description"
       ],
-      "sha256": "ce8199b892e9b9b28cb9c2ca927e2ecafb787708f4af2d096b9fa0800bb87f5c",
+      "sha256": "242683004bbc152c8ea5d21d3ae1fa160ccd4610feb086827f1582257d37946c",
       "source_meta": {}
     },
     {
-      "file": "/Users/divytan/Documents/New project/dsm3674-historical-trauma-analysis/data/processed/historical_trauma_index_sensitivity_summary_missing_report.csv",
+      "file": "/workspaces/historical-trauma-analysis/data/processed/historical_trauma_index_sensitivity_summary_missing_report.csv",
       "rows": 7,
       "columns": [
         "column",
@@ -648,7 +648,7 @@
       "source_meta": {}
     },
     {
-      "file": "/Users/divytan/Documents/New project/dsm3674-historical-trauma-analysis/data/processed/historical_trauma_index_sensitivity_summary_stats.csv",
+      "file": "/workspaces/historical-trauma-analysis/data/processed/historical_trauma_index_sensitivity_summary_stats.csv",
       "rows": 6,
       "columns": [
         "column",
@@ -661,11 +661,11 @@
         "75%",
         "max"
       ],
-      "sha256": "f7c93ce351091ac51145b7eb783d56b0740a83076c45a2e76bcb29735812cc07",
+      "sha256": "6e38ab8700b06e3daad6237eb96c55c7505b88cdbae5abb891e5f75dc186ede8",
       "source_meta": {}
     },
     {
-      "file": "/Users/divytan/Documents/New project/dsm3674-historical-trauma-analysis/data/processed/historical_trauma_index_sensitivity_summary_summary_stats.csv",
+      "file": "/workspaces/historical-trauma-analysis/data/processed/historical_trauma_index_sensitivity_summary_summary_stats.csv",
       "rows": 3,
       "columns": [
         "column",
@@ -678,11 +678,11 @@
         "75%",
         "max"
       ],
-      "sha256": "1d47f31ff495598ffa95773ee21c34467e5d0222cbd436b3f0c231ac1d2c0c78",
+      "sha256": "0930b580b070a230911b28e3666a6210d61aee975c7281479a3acd9d97b55bf5",
       "source_meta": {}
     },
     {
-      "file": "/Users/divytan/Documents/New project/dsm3674-historical-trauma-analysis/data/processed/historical_trauma_index_summary_stats.csv",
+      "file": "/workspaces/historical-trauma-analysis/data/processed/historical_trauma_index_summary_stats.csv",
       "rows": 3,
       "columns": [
         "column",
@@ -695,11 +695,11 @@
         "75%",
         "max"
       ],
-      "sha256": "2c5085847377958d4c810593502c10d5c884490dabc363e3268ee7ffdae2abdc",
+      "sha256": "938c6f63abb1817f58d672a3413abcff655d4a049d582b12cfceee3a4cfa1775",
       "source_meta": {}
     },
     {
-      "file": "/Users/divytan/Documents/New project/dsm3674-historical-trauma-analysis/data/processed/master_analysis_table.csv",
+      "file": "/workspaces/historical-trauma-analysis/data/processed/master_analysis_table.csv",
       "rows": 20,
       "columns": [
         "State",
@@ -713,18 +713,15 @@
         "Mean_Mortality_Disparity_Ratio",
         "Mortality_Cause_Count",
         "Mortality_Cause_List",
-        "Total_Missing",
         "AI_AN_Missing",
-        "AI_AN_Percent_Missing",
-        "Overrepresentation_Ratio",
         "Included_In_Complete_Case"
       ],
-      "sha256": "573852549cb5042a9a03455c3f5ae55be8c46ed6ef9f1caa0a056670b775bc5a",
+      "sha256": "0b90908e262fc6b02b114acdd3cd1afbd5543fcde66bfb7711f2481a61727a96",
       "source_meta": {}
     },
     {
-      "file": "/Users/divytan/Documents/New project/dsm3674-historical-trauma-analysis/data/processed/master_analysis_table_data_dictionary.csv",
-      "rows": 16,
+      "file": "/workspaces/historical-trauma-analysis/data/processed/master_analysis_table_data_dictionary.csv",
+      "rows": 13,
       "columns": [
         "dataset",
         "column",
@@ -735,23 +732,23 @@
         "example_value",
         "description"
       ],
-      "sha256": "380abbf3ec529625afc57ab7e38a754648a7769c8f3cec100b0cc272e62a0371",
+      "sha256": "3221a6afa2e080291ff9cab4a2685f885552b3b942335fa8c86b2b00c700357e",
       "source_meta": {}
     },
     {
-      "file": "/Users/divytan/Documents/New project/dsm3674-historical-trauma-analysis/data/processed/master_analysis_table_missing_report.csv",
-      "rows": 16,
+      "file": "/workspaces/historical-trauma-analysis/data/processed/master_analysis_table_missing_report.csv",
+      "rows": 13,
       "columns": [
         "column",
         "missing_count",
         "missing_pct"
       ],
-      "sha256": "ce35031eec4aa9df0788ae7c19f68c0c2d80283de24e05799965a9d6c8acb7c8",
+      "sha256": "60039eaa9f9ee7f2286804e6f461e7b545a0fe30f7a0cc16ffb4559de62d50df",
       "source_meta": {}
     },
     {
-      "file": "/Users/divytan/Documents/New project/dsm3674-historical-trauma-analysis/data/processed/master_analysis_table_summary_stats.csv",
-      "rows": 12,
+      "file": "/workspaces/historical-trauma-analysis/data/processed/master_analysis_table_summary_stats.csv",
+      "rows": 9,
       "columns": [
         "column",
         "count",
@@ -763,38 +760,35 @@
         "75%",
         "max"
       ],
-      "sha256": "364470de70d499bf4ba38f843539947830f11cd1bb56bb3e05e6f6f69109581f",
+      "sha256": "f76e66a4da04e67f6b2ebe59b32218b994540aa7167c170be2f4d19382791c16",
       "source_meta": {}
     },
     {
-      "file": "/Users/divytan/Documents/New project/dsm3674-historical-trauma-analysis/data/processed/missing_persons.csv",
-      "rows": 20,
+      "file": "/workspaces/historical-trauma-analysis/data/processed/missing_persons.csv",
+      "rows": 13,
       "columns": [
         "Year",
         "State",
-        "Total_Missing",
         "AI_AN_Missing",
-        "AI_AN_Population_Percent",
-        "AI_AN_Percent_Missing",
-        "Overrepresentation_Ratio"
+        "AI_AN_Population_Percent"
       ],
-      "sha256": "c7b21b48c91ad9dc3c2e20bc0714f044db45cd12a7518abf3a64bcd0f7abb5f4",
+      "sha256": "cec36e46e58bbcb59821948d696e32688d9a9050aa556b68c739980d42826568",
       "source_meta": {
         "dataset_name": "missing_persons",
-        "source_org": "User-supplied source",
-        "source_url": "",
-        "accessed_on": "2026-04-20T10:01:29.276232+00:00",
-        "file_path": "/Users/divytan/Documents/New project/dsm3674-historical-trauma-analysis/data/raw/missing_persons/missing_persons.csv",
+        "source_org": "National Institute of Justice / NamUs",
+        "source_url": "https://www.namus.gov",
+        "accessed_on": "2026-04-20T20:12:07.250235+00:00",
+        "file_path": "/workspaces/historical-trauma-analysis/data/raw/missing_persons/missing_persons.csv",
         "citation": "",
-        "notes": "Processed output includes both compositional and disparity-oriented missing-person metrics.",
+        "notes": "AI/AN unresolved missing persons counts from NamUs May 1, 2020 report. Total missing counts not published at state level; AI_AN_Percent_Missing and Overrepresentation_Ratio therefore not computed.",
         "geographic_unit": "state",
         "temporal_coverage": "",
         "restrictions": ""
       }
     },
     {
-      "file": "/Users/divytan/Documents/New project/dsm3674-historical-trauma-analysis/data/processed/missing_persons_data_dictionary.csv",
-      "rows": 7,
+      "file": "/workspaces/historical-trauma-analysis/data/processed/missing_persons_data_dictionary.csv",
+      "rows": 4,
       "columns": [
         "dataset",
         "column",
@@ -805,23 +799,23 @@
         "example_value",
         "description"
       ],
-      "sha256": "3b7f59898412a4cba81f0c01be5fc62dec48c0d4cb49051e8bad589f984ea484",
+      "sha256": "fa15e71818db5dac499e2803cdcc0d547c728404e71aeec659994213685ed062",
       "source_meta": {}
     },
     {
-      "file": "/Users/divytan/Documents/New project/dsm3674-historical-trauma-analysis/data/processed/missing_persons_missing_report.csv",
-      "rows": 7,
+      "file": "/workspaces/historical-trauma-analysis/data/processed/missing_persons_missing_report.csv",
+      "rows": 4,
       "columns": [
         "column",
         "missing_count",
         "missing_pct"
       ],
-      "sha256": "50e82e34339922b7107e4290d276df4323ee5ce3b68a4d6eb050e3911c7f9d09",
+      "sha256": "fc66d4180ab6afc6f7b71c7c8dda0e459a0bc51d2e2793a761df381dad318c31",
       "source_meta": {}
     },
     {
-      "file": "/Users/divytan/Documents/New project/dsm3674-historical-trauma-analysis/data/processed/missing_persons_summary_stats.csv",
-      "rows": 6,
+      "file": "/workspaces/historical-trauma-analysis/data/processed/missing_persons_summary_stats.csv",
+      "rows": 3,
       "columns": [
         "column",
         "count",
@@ -833,12 +827,12 @@
         "75%",
         "max"
       ],
-      "sha256": "2af0684e9d5f19af94bae2950dcfbbc762ed88b2ec2d7947f93f7d6a11dbe5b0",
+      "sha256": "605e51d61977050cb13182f1126aad3117b7974e9f432d7810573b4a12f0a5eb",
       "source_meta": {}
     },
     {
-      "file": "/Users/divytan/Documents/New project/dsm3674-historical-trauma-analysis/data/processed/mortality.csv",
-      "rows": 20,
+      "file": "/workspaces/historical-trauma-analysis/data/processed/mortality.csv",
+      "rows": 13,
       "columns": [
         "Year",
         "State",
@@ -847,22 +841,22 @@
         "Comparator_Rate_per_100k",
         "Disparity_Ratio"
       ],
-      "sha256": "d1e5425fe3754c21a6996ba4c36000889092c63a8ff5918603c20af92bff5e33",
+      "sha256": "14d6adc13e10ccec0178dded9d5524eca29d0766fa90e2072652006cb03960b3",
       "source_meta": {
         "dataset_name": "mortality",
-        "source_org": "User-supplied source",
-        "source_url": "",
-        "accessed_on": "2026-04-20T10:01:29.273971+00:00",
-        "file_path": "/Users/divytan/Documents/New project/dsm3674-historical-trauma-analysis/data/raw/mortality/mortality.csv",
+        "source_org": "CDC WONDER National Vital Statistics System",
+        "source_url": "https://wonder.cdc.gov/ucd-icd10.html",
+        "accessed_on": "2026-04-20T20:12:07.247229+00:00",
+        "file_path": "/workspaces/historical-trauma-analysis/data/raw/mortality/mortality.csv",
         "citation": "",
-        "notes": "Processed output preserves the condition list so manuscript aggregation can be spelled out.",
+        "notes": "Age-adjusted diabetes mortality rates (ICD-10 E10-E14), 2020. AI/AN vs White comparator. States with suppressed AI/AN counts excluded.",
         "geographic_unit": "state",
         "temporal_coverage": "",
         "restrictions": ""
       }
     },
     {
-      "file": "/Users/divytan/Documents/New project/dsm3674-historical-trauma-analysis/data/processed/mortality_data_dictionary.csv",
+      "file": "/workspaces/historical-trauma-analysis/data/processed/mortality_data_dictionary.csv",
       "rows": 6,
       "columns": [
         "dataset",
@@ -874,11 +868,11 @@
         "example_value",
         "description"
       ],
-      "sha256": "ee4633ab43f515274202dab25622a5b84841475a165bc2fb010b075def5db8e4",
+      "sha256": "fc6a730fa86adb68c10c2fd08c54b082bf77d31fa54233fc69e847af8eac12ca",
       "source_meta": {}
     },
     {
-      "file": "/Users/divytan/Documents/New project/dsm3674-historical-trauma-analysis/data/processed/mortality_missing_report.csv",
+      "file": "/workspaces/historical-trauma-analysis/data/processed/mortality_missing_report.csv",
       "rows": 6,
       "columns": [
         "column",
@@ -889,7 +883,7 @@
       "source_meta": {}
     },
     {
-      "file": "/Users/divytan/Documents/New project/dsm3674-historical-trauma-analysis/data/processed/mortality_summary_stats.csv",
+      "file": "/workspaces/historical-trauma-analysis/data/processed/mortality_summary_stats.csv",
       "rows": 4,
       "columns": [
         "column",
@@ -902,11 +896,11 @@
         "75%",
         "max"
       ],
-      "sha256": "183f9f04800abf75229edc939439164c266c7d201b711cbc984213ce672d4621",
+      "sha256": "fa5ea6bc1e4c9858bf937cdbf3a6a6f6db80e3dfe7f4902b4ab1d2cfff41c8b7",
       "source_meta": {}
     },
     {
-      "file": "/Users/divytan/Documents/New project/dsm3674-historical-trauma-analysis/data/processed/population.csv",
+      "file": "/workspaces/historical-trauma-analysis/data/processed/population.csv",
       "rows": 20,
       "columns": [
         "Year",
@@ -920,8 +914,8 @@
         "dataset_name": "population",
         "source_org": "User-supplied source",
         "source_url": "",
-        "accessed_on": "2026-04-20T10:01:29.272926+00:00",
-        "file_path": "/Users/divytan/Documents/New project/dsm3674-historical-trauma-analysis/data/raw/population/population.csv",
+        "accessed_on": "2026-04-20T20:12:07.243386+00:00",
+        "file_path": "/workspaces/historical-trauma-analysis/data/raw/population/population.csv",
         "citation": "",
         "notes": "AI/AN population share is required for compositional-confounding diagnostics.",
         "geographic_unit": "state",
@@ -930,7 +924,7 @@
       }
     },
     {
-      "file": "/Users/divytan/Documents/New project/dsm3674-historical-trauma-analysis/data/processed/population_data_dictionary.csv",
+      "file": "/workspaces/historical-trauma-analysis/data/processed/population_data_dictionary.csv",
       "rows": 5,
       "columns": [
         "dataset",
@@ -942,11 +936,11 @@
         "example_value",
         "description"
       ],
-      "sha256": "525af8e95edbbd29f8fe77043c025f8ff09a06e054fed20210e83f8d86325cdd",
+      "sha256": "8ea5802085fa02f8bcac861c04391e41bfb61333b3d5d76bb092e9bd5045f100",
       "source_meta": {}
     },
     {
-      "file": "/Users/divytan/Documents/New project/dsm3674-historical-trauma-analysis/data/processed/population_missing_report.csv",
+      "file": "/workspaces/historical-trauma-analysis/data/processed/population_missing_report.csv",
       "rows": 5,
       "columns": [
         "column",
@@ -957,7 +951,7 @@
       "source_meta": {}
     },
     {
-      "file": "/Users/divytan/Documents/New project/dsm3674-historical-trauma-analysis/data/processed/population_summary_stats.csv",
+      "file": "/workspaces/historical-trauma-analysis/data/processed/population_summary_stats.csv",
       "rows": 4,
       "columns": [
         "column",
@@ -974,7 +968,7 @@
       "source_meta": {}
     },
     {
-      "file": "/Users/divytan/Documents/New project/dsm3674-historical-trauma-analysis/data/processed/sample_characterization.csv",
+      "file": "/workspaces/historical-trauma-analysis/data/processed/sample_characterization.csv",
       "rows": 20,
       "columns": [
         "State",
@@ -985,11 +979,11 @@
         "AI_AN_Population_Percent",
         "Included_In_Main_Analysis"
       ],
-      "sha256": "fb6bba9a1e01a1d354e424f268db8387dee1b9cdbfaade2f4c95bb3ffad94ea4",
+      "sha256": "3738bf72f433cdc2e450c13e8ea39a3e359b1fffc83dccddbda6e4db261a34ff",
       "source_meta": {}
     },
     {
-      "file": "/Users/divytan/Documents/New project/dsm3674-historical-trauma-analysis/data/processed/sample_characterization_data_dictionary.csv",
+      "file": "/workspaces/historical-trauma-analysis/data/processed/sample_characterization_data_dictionary.csv",
       "rows": 7,
       "columns": [
         "dataset",
@@ -1001,11 +995,11 @@
         "example_value",
         "description"
       ],
-      "sha256": "f4bd55890fa632c9ef965224a28c02a066fe75cc3fcb5cfcb57b74ba1c50cabc",
+      "sha256": "212f836ce9783f7b20bf18bde3ec31bb76f036459bbafe298b540e15ce1f093a",
       "source_meta": {}
     },
     {
-      "file": "/Users/divytan/Documents/New project/dsm3674-historical-trauma-analysis/data/processed/sample_characterization_missing_report.csv",
+      "file": "/workspaces/historical-trauma-analysis/data/processed/sample_characterization_missing_report.csv",
       "rows": 7,
       "columns": [
         "column",
@@ -1016,7 +1010,7 @@
       "source_meta": {}
     },
     {
-      "file": "/Users/divytan/Documents/New project/dsm3674-historical-trauma-analysis/data/processed/sample_characterization_summary.csv",
+      "file": "/workspaces/historical-trauma-analysis/data/processed/sample_characterization_summary.csv",
       "rows": 2,
       "columns": [
         "Group",
@@ -1025,11 +1019,11 @@
         "Min_AI_AN_Population_Percent",
         "Max_AI_AN_Population_Percent"
       ],
-      "sha256": "ae14aa97a1388552097fc3aa78fa9b394df03cad3340fad1cf0b9eebb836c192",
+      "sha256": "1c4bc89a228f4b862fa21a99c46f65ef7a31b290c320e251e9fffa756e71dae6",
       "source_meta": {}
     },
     {
-      "file": "/Users/divytan/Documents/New project/dsm3674-historical-trauma-analysis/data/processed/sample_characterization_summary_data_dictionary.csv",
+      "file": "/workspaces/historical-trauma-analysis/data/processed/sample_characterization_summary_data_dictionary.csv",
       "rows": 5,
       "columns": [
         "dataset",
@@ -1041,22 +1035,22 @@
         "example_value",
         "description"
       ],
-      "sha256": "6781e6f0e88526ab2fa700b4887d41f9f792ec4d17e1f28eb924ec2652e58dae",
+      "sha256": "2047be94e2c8bc31e4b50cde7a2aa5da2c2653381d7d73f34617eabf04107c1e",
       "source_meta": {}
     },
     {
-      "file": "/Users/divytan/Documents/New project/dsm3674-historical-trauma-analysis/data/processed/sample_characterization_summary_missing_report.csv",
+      "file": "/workspaces/historical-trauma-analysis/data/processed/sample_characterization_summary_missing_report.csv",
       "rows": 5,
       "columns": [
         "column",
         "missing_count",
         "missing_pct"
       ],
-      "sha256": "b91f9a4e51b028f5796e3438c68eeadee324f210bce9eb7d4972d94153dceb49",
+      "sha256": "ff8893e905e61e0bd6f5a4e3b35d40ab467f53c354fd64ae5222ab898af2ce10",
       "source_meta": {}
     },
     {
-      "file": "/Users/divytan/Documents/New project/dsm3674-historical-trauma-analysis/data/processed/sample_characterization_summary_stats.csv",
+      "file": "/workspaces/historical-trauma-analysis/data/processed/sample_characterization_summary_stats.csv",
       "rows": 1,
       "columns": [
         "column",
@@ -1073,7 +1067,7 @@
       "source_meta": {}
     },
     {
-      "file": "/Users/divytan/Documents/New project/dsm3674-historical-trauma-analysis/data/processed/sample_characterization_summary_summary_stats.csv",
+      "file": "/workspaces/historical-trauma-analysis/data/processed/sample_characterization_summary_summary_stats.csv",
       "rows": 4,
       "columns": [
         "column",
@@ -1086,14 +1080,14 @@
         "75%",
         "max"
       ],
-      "sha256": "e03f5d38d6fee0d0c1418854e2e111b3ecedeedd8bc059c2051e2b56d0d88c96",
+      "sha256": "c46f08e02e1a29fd939aa72a4f5b6d037621a1870b7c2def41b0f10d34747b17",
       "source_meta": {}
     }
   ],
   "configs": [
     {
-      "file": "/Users/divytan/Documents/New project/dsm3674-historical-trauma-analysis/config/analysis_config.json",
-      "sha256": "f6431e8c93aa75b756261b7bf0fb5cff412a29afded50e392e13f9e3b523bd66",
+      "file": "/workspaces/historical-trauma-analysis/config/analysis_config.json",
+      "sha256": "5a749d580c3dcf71c8b262e0ad1bfec4d1f887cc24714f54802e2083723e41e3",
       "contents": {
         "index_name": "Historical_Trauma_Index",
         "primary_normalization": "zscore",
@@ -1106,8 +1100,7 @@
         ],
         "outcomes": [
           "Mean_Mortality_Disparity_Ratio",
-          "Overrepresentation_Ratio",
-          "AI_AN_Percent_Missing",
+          "AI_AN_Missing",
           "AI_AN_Population_Percent"
         ],
         "sensitivity": {
@@ -1121,7 +1114,7 @@
       }
     },
     {
-      "file": "/Users/divytan/Documents/New project/dsm3674-historical-trauma-analysis/config/indicator_weights.json",
+      "file": "/workspaces/historical-trauma-analysis/config/indicator_weights.json",
       "sha256": "65bc9552d6cdf8c724c8ed646e2d07778086bb03996f36f2f90bc310bbcdb049",
       "contents": {
         "Federal_BoardingSchool_Presence": 1.5,

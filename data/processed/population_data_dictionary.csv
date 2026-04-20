@@ -1,6 +1,6 @@
 dataset,column,dtype,non_null_count,missing_count,missing_pct,example_value,description
 population,Year,int64,20,0,0.0,2020,
-population,State,object,20,0,0.0,Arizona,
+population,State,str,20,0,0.0,Arizona,
 population,AI_AN_Population,int64,20,0,0.0,296529,
 population,Total_Population,int64,20,0,0.0,7151502,
 population,AI_AN_Population_Percent,float64,20,0,0.0,4.146387709882483,

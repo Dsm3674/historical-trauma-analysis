@@ -1,6 +1,6 @@
 dataset,column,dtype,non_null_count,missing_count,missing_pct,example_value,description
-boarding_school_features,State,object,20,0,0.0,Alaska,
-boarding_school_features,BoardingSchool_Count,int64,20,0,0.0,1,
-boarding_school_features,Mean_BoardingSchool_Duration_Years,float64,20,0,0.0,60.0,
-boarding_school_features,Max_BoardingSchool_Duration_Years,int64,20,0,0.0,60,
-boarding_school_features,Schools_With_Burial_Site_Flag,int64,20,0,0.0,0,
+boarding_school_features,State,str,13,0,0.0,Alaska,
+boarding_school_features,BoardingSchool_Count,int64,13,0,0.0,1,
+boarding_school_features,Mean_BoardingSchool_Duration_Years,float64,13,0,0.0,95.0,
+boarding_school_features,Max_BoardingSchool_Duration_Years,int64,13,0,0.0,95,
+boarding_school_features,Schools_With_Burial_Site_Flag,int64,13,0,0.0,1,

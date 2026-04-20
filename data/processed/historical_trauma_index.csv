@@ -1,21 +1,21 @@
 State,Historical_Trauma_Index,Indicators_Used,Normalization_Method,Constant_Indicators_Dropped
-Alaska,0.22605277137266785,4,zscore,2
-Arizona,0.22558142235438083,4,zscore,2
-California,0.27048047282292725,4,zscore,2
-Colorado,-0.5353539515462967,4,zscore,2
-Florida,-0.7732335712964521,4,zscore,2
-Idaho,-0.3183456499464001,4,zscore,2
-Michigan,-0.28769376978950867,4,zscore,2
-Minnesota,1.070058245453967,4,zscore,2
-Montana,0.5514214232884744,4,zscore,2
-Nevada,-0.7192652324876442,4,zscore,2
-New Jersey,-0.7336961508495092,4,zscore,2
-New Mexico,0.5489762827868161,4,zscore,2
-New York,-0.6659519907473329,4,zscore,2
-North Carolina,-0.1764169299536538,4,zscore,2
-Oklahoma,1.4922966570037604,4,zscore,2
-Oregon,-0.5531250321264005,4,zscore,2
-South Dakota,1.190220625579874,4,zscore,2
-Texas,-0.06913534940453459,4,zscore,2
-Utah,-0.4280723709971774,4,zscore,2
-Washington,-0.3147979015179546,4,zscore,2
+Alaska,0.5124445070192751,4,zscore,2
+Arizona,-0.010628508288079363,4,zscore,2
+California,0.8535972940254859,4,zscore,2
+Colorado,-0.67375190421782,1,zscore,2
+Florida,0.22812072347532591,1,zscore,2
+Idaho,0.6525313718015117,1,zscore,2
+Michigan,-0.05152397903977543,4,zscore,2
+Minnesota,0.01813703711174017,4,zscore,2
+Montana,-0.9390085594216865,1,zscore,2
+Nevada,-0.056108565363365406,4,zscore,2
+New Jersey,0.6525313718015117,1,zscore,2
+New Mexico,-0.13224050259554274,4,zscore,2
+New York,-0.18415783156519389,4,zscore,2
+North Carolina,-1.4920239793442351,4,zscore,2
+Oklahoma,1.2706725824976097,4,zscore,2
+Oregon,-0.10059309611854965,4,zscore,2
+South Dakota,0.22423822448911374,4,zscore,2
+Texas,0.6525313718015117,1,zscore,2
+Utah,-0.30239258693240695,1,zscore,2
+Washington,-0.9299754772285524,4,zscore,2

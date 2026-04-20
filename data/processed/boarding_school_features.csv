@@ -1,21 +1,14 @@
 State,BoardingSchool_Count,Mean_BoardingSchool_Duration_Years,Max_BoardingSchool_Duration_Years,Schools_With_Burial_Site_Flag
-Alaska,1,60.0,60,0
-Arizona,1,60.0,60,1
-California,1,50.0,50,0
-Colorado,1,52.0,52,0
-Florida,1,40.0,40,0
-Idaho,1,48.0,48,0
-Michigan,1,48.0,48,0
-Minnesota,1,70.0,70,1
-Montana,1,66.0,66,1
-Nevada,1,52.0,52,0
-New Jersey,1,38.0,38,0
-New Mexico,1,70.0,70,1
-New York,1,40.0,40,0
-North Carolina,1,54.0,54,0
-Oklahoma,1,75.0,75,1
-Oregon,1,56.0,56,0
-South Dakota,1,74.0,74,1
-Texas,1,54.0,54,0
-Utah,1,52.0,52,0
-Washington,1,61.0,61,0
+Alaska,1,95.0,95,1
+Arizona,1,99.0,99,1
+California,1,87.0,87,1
+Michigan,1,58.0,58,1
+Minnesota,1,72.0,72,1
+Nevada,1,98.0,98,1
+New Mexico,1,97.0,97,1
+New York,1,102.0,102,0
+North Carolina,1,20.0,20,0
+Oklahoma,1,142.0,142,1
+Oregon,1,95.0,95,1
+South Dakota,1,89.0,89,1
+Washington,1,37.0,37,1

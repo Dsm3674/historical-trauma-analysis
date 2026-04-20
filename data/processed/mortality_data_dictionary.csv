@@ -1,7 +1,7 @@
 dataset,column,dtype,non_null_count,missing_count,missing_pct,example_value,description
-mortality,Year,int64,20,0,0.0,2020,
-mortality,State,object,20,0,0.0,Arizona,
-mortality,Condition,object,20,0,0.0,Diabetes,
-mortality,AI_AN_Rate_per_100k,int64,20,0,0.0,170,
-mortality,Comparator_Rate_per_100k,int64,20,0,0.0,75,
-mortality,Disparity_Ratio,float64,20,0,0.0,2.2666666666666666,
+mortality,Year,int64,13,0,0.0,2020,
+mortality,State,str,13,0,0.0,Alaska,
+mortality,Condition,str,13,0,0.0,Diabetes,
+mortality,AI_AN_Rate_per_100k,float64,13,0,0.0,30.2,
+mortality,Comparator_Rate_per_100k,float64,13,0,0.0,23.0,
+mortality,Disparity_Ratio,float64,13,0,0.0,1.3130434782608695,

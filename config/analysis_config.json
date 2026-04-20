@@ -10,8 +10,7 @@
   ],
   "outcomes": [
     "Mean_Mortality_Disparity_Ratio",
-    "Overrepresentation_Ratio",
-    "AI_AN_Percent_Missing",
+    "AI_AN_Missing",
     "AI_AN_Population_Percent"
   ],
   "sensitivity": {

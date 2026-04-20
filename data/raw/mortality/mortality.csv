@@ -1,21 +1,14 @@
 Year,State,Condition,AI_AN_Rate_per_100k,Comparator_Rate_per_100k
-2020,Arizona,Diabetes,170,75
-2020,New Mexico,Diabetes,165,73
-2020,Oklahoma,Diabetes,150,70
-2020,Alaska,Diabetes,120,68
-2020,Montana,Diabetes,115,67
-2020,California,Diabetes,130,72
-2020,Texas,Diabetes,125,71
-2020,Washington,Diabetes,118,69
-2020,North Carolina,Diabetes,110,66
-2020,Minnesota,Diabetes,105,64
-2020,South Dakota,Diabetes,140,68
-2020,Florida,Diabetes,100,65
-2020,Colorado,Diabetes,98,63
-2020,Nevada,Diabetes,108,66
-2020,Oregon,Diabetes,102,64
-2020,Utah,Diabetes,95,61
-2020,Michigan,Diabetes,112,67
-2020,New York,Diabetes,97,62
-2020,Idaho,Diabetes,94,60
-2020,New Jersey,Diabetes,96,61
+2020,Alaska,Diabetes,30.2,23.0
+2020,Arizona,Diabetes,81.0,23.9
+2020,California,Diabetes,20.8,24.4
+2020,Michigan,Diabetes,37.1,23.4
+2020,Minnesota,Diabetes,95.3,18.9
+2020,Nevada,Diabetes,42.4,22.3
+2020,New Mexico,Diabetes,65.2,25.8
+2020,New York,Diabetes,14.0,18.7
+2020,North Carolina,Diabetes,29.9,22.2
+2020,Oklahoma,Diabetes,58.7,28.2
+2020,Oregon,Diabetes,44.9,23.9
+2020,South Dakota,Diabetes,156.6,22.0
+2020,Washington,Diabetes,39.1,21.5

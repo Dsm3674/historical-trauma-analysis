@@ -1,0 +1,25 @@
+{
+  "index_name": "Historical_Trauma_Index",
+  "primary_normalization": "zscore",
+  "drop_constant_indicators": true,
+  "bootstrap_iterations": 4000,
+  "permutation_iterations": 10000,
+  "seed": 42,
+  "confounders": [
+    "AI_AN_Population_Percent"
+  ],
+  "outcomes": [
+    "Mean_Mortality_Disparity_Ratio",
+    "Overrepresentation_Ratio",
+    "AI_AN_Percent_Missing",
+    "AI_AN_Population_Percent"
+  ],
+  "sensitivity": {
+    "alternate_normalizations": [
+      "minmax"
+    ],
+    "include_equal_weights": true,
+    "include_pca": true,
+    "leave_one_indicator_out": true
+  }
+}

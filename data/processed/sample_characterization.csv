@@ -1,0 +1,21 @@
+State,In_Trauma_Index,In_Population,In_Mortality,In_Missing_Persons,AI_AN_Population_Percent,Included_In_Main_Analysis
+Alaska,True,True,True,True,15.537823616597422,True
+Arizona,True,True,True,True,4.146387709882483,True
+California,True,True,True,True,1.6436297604978352,True
+Colorado,True,True,True,True,1.7920354212210718,True
+Florida,True,True,True,True,0.470304208984721,True
+Idaho,True,True,True,True,1.8349132676419957,True
+Michigan,True,True,True,True,1.386627074172715,True
+Minnesota,True,True,True,True,2.098609058381556,True
+Montana,True,True,True,True,7.363785192187969,True
+Nevada,True,True,True,True,1.9995722495614592,True
+New Jersey,True,True,True,True,0.5309293988132623,True
+New Mexico,True,True,True,True,10.36650386631166,True
+New York,True,True,True,True,1.146434064547197,True
+North Carolina,True,True,True,True,1.2530044864698966,True
+Oklahoma,True,True,True,True,13.223094783415371,True
+Oregon,True,True,True,True,2.369977173906887,True
+South Dakota,True,True,True,True,8.204771351589718,True
+Texas,True,True,True,True,1.0840230766287975,True
+Utah,True,True,True,True,1.8437982941763336,True
+Washington,True,True,True,True,2.911989841772156,True

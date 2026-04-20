@@ -1,0 +1,8 @@
+column,missing_count,missing_pct
+Scheme,0,0.0
+Scheme_Type,0,0.0
+Normalization_Method,0,0.0
+Scheme_Note,0,0.0
+Mean_Absolute_Rank_Shift,0,0.0
+Max_Absolute_Rank_Shift,0,0.0
+Mean_Absolute_Score_Delta,0,0.0

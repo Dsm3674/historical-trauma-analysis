@@ -1,0 +1,25 @@
+{
+  "name": "population",
+  "rows": 20,
+  "columns": [
+    "Year",
+    "State",
+    "AI_AN_Population",
+    "Total_Population",
+    "AI_AN_Population_Percent"
+  ],
+  "schema_version": "1.0",
+  "source_meta": {
+    "dataset_name": "population",
+    "source_org": "User-supplied source",
+    "source_url": "",
+    "accessed_on": "2026-04-20T10:01:29.272926+00:00",
+    "file_path": "/Users/divytan/Documents/New project/dsm3674-historical-trauma-analysis/data/raw/population/population.csv",
+    "citation": "",
+    "notes": "AI/AN population share is required for compositional-confounding diagnostics.",
+    "geographic_unit": "state",
+    "temporal_coverage": "",
+    "restrictions": ""
+  },
+  "saved_at_utc": "2026-04-20T10:01:29.278500+00:00"
+}

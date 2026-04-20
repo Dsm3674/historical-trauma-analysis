@@ -1,0 +1,8 @@
+dataset,column,dtype,non_null_count,missing_count,missing_pct,example_value,description
+historical_trauma_index_sensitivity_summary,Scheme,object,8,0,0.0,configured_weights_minmax,
+historical_trauma_index_sensitivity_summary,Scheme_Type,object,8,0,0.0,alternate_normalization,
+historical_trauma_index_sensitivity_summary,Normalization_Method,object,8,0,0.0,minmax,
+historical_trauma_index_sensitivity_summary,Scheme_Note,object,8,0,0.0,Configured weights under alternate normalization.,
+historical_trauma_index_sensitivity_summary,Mean_Absolute_Rank_Shift,float64,8,0,0.0,0.6,
+historical_trauma_index_sensitivity_summary,Max_Absolute_Rank_Shift,float64,8,0,0.0,2.0,
+historical_trauma_index_sensitivity_summary,Mean_Absolute_Score_Delta,float64,8,0,0.0,0.533275570821778,

@@ -1,0 +1,121 @@
+State,Indicator,Value,Definition,Source_Label
+Alaska,BoardingSchool_Count,1.0,Number of unique boarding schools recorded in the source listing for the state.,Federal Indian Boarding School listing
+Alaska,Environmental_Burden_Index,9.0,Average PM2.5 exposure (ug/m^3),EPA/EJSCREEN-derived
+Alaska,Federal_BoardingSchool_Presence,1.0,State had documented federally supported Indian boarding schools (DOI dataset),DOI Federal Indian Boarding School Initiative (2022)
+Alaska,Max_BoardingSchool_Duration_Years,60.0,Maximum observed operating duration in years across listed boarding schools in the state.,Federal Indian Boarding School listing
+Alaska,Mean_BoardingSchool_Duration_Years,60.0,Mean operating duration in years across listed boarding schools in the state.,Federal Indian Boarding School listing
+Alaska,Schools_With_Burial_Site_Flag,0.0,Count of listed boarding schools in the state with a burial-site flag in the source file.,Federal Indian Boarding School listing
+Arizona,BoardingSchool_Count,1.0,Number of unique boarding schools recorded in the source listing for the state.,Federal Indian Boarding School listing
+Arizona,Environmental_Burden_Index,5.2,Average PM2.5 exposure (ug/m^3),EPA/EJSCREEN-derived
+Arizona,Federal_BoardingSchool_Presence,1.0,State had documented federally supported Indian boarding schools (DOI dataset),DOI Federal Indian Boarding School Initiative (2022)
+Arizona,Max_BoardingSchool_Duration_Years,60.0,Maximum observed operating duration in years across listed boarding schools in the state.,Federal Indian Boarding School listing
+Arizona,Mean_BoardingSchool_Duration_Years,60.0,Mean operating duration in years across listed boarding schools in the state.,Federal Indian Boarding School listing
+Arizona,Schools_With_Burial_Site_Flag,1.0,Count of listed boarding schools in the state with a burial-site flag in the source file.,Federal Indian Boarding School listing
+California,BoardingSchool_Count,1.0,Number of unique boarding schools recorded in the source listing for the state.,Federal Indian Boarding School listing
+California,Environmental_Burden_Index,12.0,Average PM2.5 exposure (ug/m^3),EPA/EJSCREEN-derived
+California,Federal_BoardingSchool_Presence,1.0,State had documented federally supported Indian boarding schools (DOI dataset),DOI Federal Indian Boarding School Initiative (2022)
+California,Max_BoardingSchool_Duration_Years,50.0,Maximum observed operating duration in years across listed boarding schools in the state.,Federal Indian Boarding School listing
+California,Mean_BoardingSchool_Duration_Years,50.0,Mean operating duration in years across listed boarding schools in the state.,Federal Indian Boarding School listing
+California,Schools_With_Burial_Site_Flag,0.0,Count of listed boarding schools in the state with a burial-site flag in the source file.,Federal Indian Boarding School listing
+Colorado,BoardingSchool_Count,1.0,Number of unique boarding schools recorded in the source listing for the state.,Federal Indian Boarding School listing
+Colorado,Environmental_Burden_Index,6.2,Average PM2.5 exposure (ug/m^3),EPA/EJSCREEN-derived
+Colorado,Federal_BoardingSchool_Presence,1.0,State had documented federally supported Indian boarding schools (DOI dataset),DOI Federal Indian Boarding School Initiative (2022)
+Colorado,Max_BoardingSchool_Duration_Years,52.0,Maximum observed operating duration in years across listed boarding schools in the state.,Federal Indian Boarding School listing
+Colorado,Mean_BoardingSchool_Duration_Years,52.0,Mean operating duration in years across listed boarding schools in the state.,Federal Indian Boarding School listing
+Colorado,Schools_With_Burial_Site_Flag,0.0,Count of listed boarding schools in the state with a burial-site flag in the source file.,Federal Indian Boarding School listing
+Florida,BoardingSchool_Count,1.0,Number of unique boarding schools recorded in the source listing for the state.,Federal Indian Boarding School listing
+Florida,Environmental_Burden_Index,7.9,Average PM2.5 exposure (ug/m^3),EPA/EJSCREEN-derived
+Florida,Federal_BoardingSchool_Presence,1.0,State had documented federally supported Indian boarding schools (DOI dataset),DOI Federal Indian Boarding School Initiative (2022)
+Florida,Max_BoardingSchool_Duration_Years,40.0,Maximum observed operating duration in years across listed boarding schools in the state.,Federal Indian Boarding School listing
+Florida,Mean_BoardingSchool_Duration_Years,40.0,Mean operating duration in years across listed boarding schools in the state.,Federal Indian Boarding School listing
+Florida,Schools_With_Burial_Site_Flag,0.0,Count of listed boarding schools in the state with a burial-site flag in the source file.,Federal Indian Boarding School listing
+Idaho,BoardingSchool_Count,1.0,Number of unique boarding schools recorded in the source listing for the state.,Federal Indian Boarding School listing
+Idaho,Environmental_Burden_Index,8.7,Average PM2.5 exposure (ug/m^3),EPA/EJSCREEN-derived
+Idaho,Federal_BoardingSchool_Presence,1.0,State had documented federally supported Indian boarding schools (DOI dataset),DOI Federal Indian Boarding School Initiative (2022)
+Idaho,Max_BoardingSchool_Duration_Years,48.0,Maximum observed operating duration in years across listed boarding schools in the state.,Federal Indian Boarding School listing
+Idaho,Mean_BoardingSchool_Duration_Years,48.0,Mean operating duration in years across listed boarding schools in the state.,Federal Indian Boarding School listing
+Idaho,Schools_With_Burial_Site_Flag,0.0,Count of listed boarding schools in the state with a burial-site flag in the source file.,Federal Indian Boarding School listing
+Michigan,BoardingSchool_Count,1.0,Number of unique boarding schools recorded in the source listing for the state.,Federal Indian Boarding School listing
+Michigan,Environmental_Burden_Index,8.9,Average PM2.5 exposure (ug/m^3),EPA/EJSCREEN-derived
+Michigan,Federal_BoardingSchool_Presence,1.0,State had documented federally supported Indian boarding schools (DOI dataset),DOI Federal Indian Boarding School Initiative (2022)
+Michigan,Max_BoardingSchool_Duration_Years,48.0,Maximum observed operating duration in years across listed boarding schools in the state.,Federal Indian Boarding School listing
+Michigan,Mean_BoardingSchool_Duration_Years,48.0,Mean operating duration in years across listed boarding schools in the state.,Federal Indian Boarding School listing
+Michigan,Schools_With_Burial_Site_Flag,0.0,Count of listed boarding schools in the state with a burial-site flag in the source file.,Federal Indian Boarding School listing
+Minnesota,BoardingSchool_Count,1.0,Number of unique boarding schools recorded in the source listing for the state.,Federal Indian Boarding School listing
+Minnesota,Environmental_Burden_Index,8.0,Average PM2.5 exposure (ug/m^3),EPA/EJSCREEN-derived
+Minnesota,Federal_BoardingSchool_Presence,1.0,State had documented federally supported Indian boarding schools (DOI dataset),DOI Federal Indian Boarding School Initiative (2022)
+Minnesota,Max_BoardingSchool_Duration_Years,70.0,Maximum observed operating duration in years across listed boarding schools in the state.,Federal Indian Boarding School listing
+Minnesota,Mean_BoardingSchool_Duration_Years,70.0,Mean operating duration in years across listed boarding schools in the state.,Federal Indian Boarding School listing
+Minnesota,Schools_With_Burial_Site_Flag,1.0,Count of listed boarding schools in the state with a burial-site flag in the source file.,Federal Indian Boarding School listing
+Montana,BoardingSchool_Count,1.0,Number of unique boarding schools recorded in the source listing for the state.,Federal Indian Boarding School listing
+Montana,Environmental_Burden_Index,5.7,Average PM2.5 exposure (ug/m^3),EPA/EJSCREEN-derived
+Montana,Federal_BoardingSchool_Presence,1.0,State had documented federally supported Indian boarding schools (DOI dataset),DOI Federal Indian Boarding School Initiative (2022)
+Montana,Max_BoardingSchool_Duration_Years,66.0,Maximum observed operating duration in years across listed boarding schools in the state.,Federal Indian Boarding School listing
+Montana,Mean_BoardingSchool_Duration_Years,66.0,Mean operating duration in years across listed boarding schools in the state.,Federal Indian Boarding School listing
+Montana,Schools_With_Burial_Site_Flag,1.0,Count of listed boarding schools in the state with a burial-site flag in the source file.,Federal Indian Boarding School listing
+Nevada,BoardingSchool_Count,1.0,Number of unique boarding schools recorded in the source listing for the state.,Federal Indian Boarding School listing
+Nevada,Environmental_Burden_Index,5.0,Average PM2.5 exposure (ug/m^3),EPA/EJSCREEN-derived
+Nevada,Federal_BoardingSchool_Presence,1.0,State had documented federally supported Indian boarding schools (DOI dataset),DOI Federal Indian Boarding School Initiative (2022)
+Nevada,Max_BoardingSchool_Duration_Years,52.0,Maximum observed operating duration in years across listed boarding schools in the state.,Federal Indian Boarding School listing
+Nevada,Mean_BoardingSchool_Duration_Years,52.0,Mean operating duration in years across listed boarding schools in the state.,Federal Indian Boarding School listing
+Nevada,Schools_With_Burial_Site_Flag,0.0,Count of listed boarding schools in the state with a burial-site flag in the source file.,Federal Indian Boarding School listing
+New Jersey,BoardingSchool_Count,1.0,Number of unique boarding schools recorded in the source listing for the state.,Federal Indian Boarding School listing
+New Jersey,Environmental_Burden_Index,8.7,Average PM2.5 exposure (ug/m^3),EPA/EJSCREEN-derived
+New Jersey,Federal_BoardingSchool_Presence,1.0,State had documented federally supported Indian boarding schools (DOI dataset),DOI Federal Indian Boarding School Initiative (2022)
+New Jersey,Max_BoardingSchool_Duration_Years,38.0,Maximum observed operating duration in years across listed boarding schools in the state.,Federal Indian Boarding School listing
+New Jersey,Mean_BoardingSchool_Duration_Years,38.0,Mean operating duration in years across listed boarding schools in the state.,Federal Indian Boarding School listing
+New Jersey,Schools_With_Burial_Site_Flag,0.0,Count of listed boarding schools in the state with a burial-site flag in the source file.,Federal Indian Boarding School listing
+New Mexico,BoardingSchool_Count,1.0,Number of unique boarding schools recorded in the source listing for the state.,Federal Indian Boarding School listing
+New Mexico,Environmental_Burden_Index,4.6,Average PM2.5 exposure (ug/m^3),EPA/EJSCREEN-derived
+New Mexico,Federal_BoardingSchool_Presence,1.0,State had documented federally supported Indian boarding schools (DOI dataset),DOI Federal Indian Boarding School Initiative (2022)
+New Mexico,Max_BoardingSchool_Duration_Years,70.0,Maximum observed operating duration in years across listed boarding schools in the state.,Federal Indian Boarding School listing
+New Mexico,Mean_BoardingSchool_Duration_Years,70.0,Mean operating duration in years across listed boarding schools in the state.,Federal Indian Boarding School listing
+New Mexico,Schools_With_Burial_Site_Flag,1.0,Count of listed boarding schools in the state with a burial-site flag in the source file.,Federal Indian Boarding School listing
+New York,BoardingSchool_Count,1.0,Number of unique boarding schools recorded in the source listing for the state.,Federal Indian Boarding School listing
+New York,Environmental_Burden_Index,8.6,Average PM2.5 exposure (ug/m^3),EPA/EJSCREEN-derived
+New York,Federal_BoardingSchool_Presence,1.0,State had documented federally supported Indian boarding schools (DOI dataset),DOI Federal Indian Boarding School Initiative (2022)
+New York,Max_BoardingSchool_Duration_Years,40.0,Maximum observed operating duration in years across listed boarding schools in the state.,Federal Indian Boarding School listing
+New York,Mean_BoardingSchool_Duration_Years,40.0,Mean operating duration in years across listed boarding schools in the state.,Federal Indian Boarding School listing
+New York,Schools_With_Burial_Site_Flag,0.0,Count of listed boarding schools in the state with a burial-site flag in the source file.,Federal Indian Boarding School listing
+North Carolina,BoardingSchool_Count,1.0,Number of unique boarding schools recorded in the source listing for the state.,Federal Indian Boarding School listing
+North Carolina,Environmental_Burden_Index,8.0,Average PM2.5 exposure (ug/m^3),EPA/EJSCREEN-derived
+North Carolina,Federal_BoardingSchool_Presence,1.0,State had documented federally supported Indian boarding schools (DOI dataset),DOI Federal Indian Boarding School Initiative (2022)
+North Carolina,Max_BoardingSchool_Duration_Years,54.0,Maximum observed operating duration in years across listed boarding schools in the state.,Federal Indian Boarding School listing
+North Carolina,Mean_BoardingSchool_Duration_Years,54.0,Mean operating duration in years across listed boarding schools in the state.,Federal Indian Boarding School listing
+North Carolina,Schools_With_Burial_Site_Flag,0.0,Count of listed boarding schools in the state with a burial-site flag in the source file.,Federal Indian Boarding School listing
+Oklahoma,BoardingSchool_Count,1.0,Number of unique boarding schools recorded in the source listing for the state.,Federal Indian Boarding School listing
+Oklahoma,Environmental_Burden_Index,9.4,Average PM2.5 exposure (ug/m^3),EPA/EJSCREEN-derived
+Oklahoma,Federal_BoardingSchool_Presence,1.0,State had documented federally supported Indian boarding schools (DOI dataset),DOI Federal Indian Boarding School Initiative (2022)
+Oklahoma,Max_BoardingSchool_Duration_Years,75.0,Maximum observed operating duration in years across listed boarding schools in the state.,Federal Indian Boarding School listing
+Oklahoma,Mean_BoardingSchool_Duration_Years,75.0,Mean operating duration in years across listed boarding schools in the state.,Federal Indian Boarding School listing
+Oklahoma,Schools_With_Burial_Site_Flag,1.0,Count of listed boarding schools in the state with a burial-site flag in the source file.,Federal Indian Boarding School listing
+Oregon,BoardingSchool_Count,1.0,Number of unique boarding schools recorded in the source listing for the state.,Federal Indian Boarding School listing
+Oregon,Environmental_Burden_Index,5.0,Average PM2.5 exposure (ug/m^3),EPA/EJSCREEN-derived
+Oregon,Federal_BoardingSchool_Presence,1.0,State had documented federally supported Indian boarding schools (DOI dataset),DOI Federal Indian Boarding School Initiative (2022)
+Oregon,Max_BoardingSchool_Duration_Years,56.0,Maximum observed operating duration in years across listed boarding schools in the state.,Federal Indian Boarding School listing
+Oregon,Mean_BoardingSchool_Duration_Years,56.0,Mean operating duration in years across listed boarding schools in the state.,Federal Indian Boarding School listing
+Oregon,Schools_With_Burial_Site_Flag,0.0,Count of listed boarding schools in the state with a burial-site flag in the source file.,Federal Indian Boarding School listing
+South Dakota,BoardingSchool_Count,1.0,Number of unique boarding schools recorded in the source listing for the state.,Federal Indian Boarding School listing
+South Dakota,Environmental_Burden_Index,7.7,Average PM2.5 exposure (ug/m^3),EPA/EJSCREEN-derived
+South Dakota,Federal_BoardingSchool_Presence,1.0,State had documented federally supported Indian boarding schools (DOI dataset),DOI Federal Indian Boarding School Initiative (2022)
+South Dakota,Max_BoardingSchool_Duration_Years,74.0,Maximum observed operating duration in years across listed boarding schools in the state.,Federal Indian Boarding School listing
+South Dakota,Mean_BoardingSchool_Duration_Years,74.0,Mean operating duration in years across listed boarding schools in the state.,Federal Indian Boarding School listing
+South Dakota,Schools_With_Burial_Site_Flag,1.0,Count of listed boarding schools in the state with a burial-site flag in the source file.,Federal Indian Boarding School listing
+Texas,BoardingSchool_Count,1.0,Number of unique boarding schools recorded in the source listing for the state.,Federal Indian Boarding School listing
+Texas,Environmental_Burden_Index,8.7,Average PM2.5 exposure (ug/m^3),EPA/EJSCREEN-derived
+Texas,Federal_BoardingSchool_Presence,1.0,State had documented federally supported Indian boarding schools (DOI dataset),DOI Federal Indian Boarding School Initiative (2022)
+Texas,Max_BoardingSchool_Duration_Years,54.0,Maximum observed operating duration in years across listed boarding schools in the state.,Federal Indian Boarding School listing
+Texas,Mean_BoardingSchool_Duration_Years,54.0,Mean operating duration in years across listed boarding schools in the state.,Federal Indian Boarding School listing
+Texas,Schools_With_Burial_Site_Flag,0.0,Count of listed boarding schools in the state with a burial-site flag in the source file.,Federal Indian Boarding School listing
+Utah,BoardingSchool_Count,1.0,Number of unique boarding schools recorded in the source listing for the state.,Federal Indian Boarding School listing
+Utah,Environmental_Burden_Index,6.9,Average PM2.5 exposure (ug/m^3),EPA/EJSCREEN-derived
+Utah,Federal_BoardingSchool_Presence,1.0,State had documented federally supported Indian boarding schools (DOI dataset),DOI Federal Indian Boarding School Initiative (2022)
+Utah,Max_BoardingSchool_Duration_Years,52.0,Maximum observed operating duration in years across listed boarding schools in the state.,Federal Indian Boarding School listing
+Utah,Mean_BoardingSchool_Duration_Years,52.0,Mean operating duration in years across listed boarding schools in the state.,Federal Indian Boarding School listing
+Utah,Schools_With_Burial_Site_Flag,0.0,Count of listed boarding schools in the state with a burial-site flag in the source file.,Federal Indian Boarding School listing
+Washington,BoardingSchool_Count,1.0,Number of unique boarding schools recorded in the source listing for the state.,Federal Indian Boarding School listing
+Washington,Environmental_Burden_Index,5.2,Average PM2.5 exposure (ug/m^3),EPA/EJSCREEN-derived
+Washington,Federal_BoardingSchool_Presence,1.0,State had documented federally supported Indian boarding schools (DOI dataset),DOI Federal Indian Boarding School Initiative (2022)
+Washington,Max_BoardingSchool_Duration_Years,61.0,Maximum observed operating duration in years across listed boarding schools in the state.,Federal Indian Boarding School listing
+Washington,Mean_BoardingSchool_Duration_Years,61.0,Mean operating duration in years across listed boarding schools in the state.,Federal Indian Boarding School listing
+Washington,Schools_With_Burial_Site_Flag,0.0,Count of listed boarding schools in the state with a burial-site flag in the source file.,Federal Indian Boarding School listing

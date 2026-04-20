@@ -1,62 +1,31 @@
-# Organized research pipeline
+# Historical Trauma Analysis Pipeline
 
-This version fixes the integration issues and adds a cleaner folder structure.
+This working copy rebuilds the exported research pipeline and adds reviewer-driven analysis safeguards:
 
-## Main fixes
-- `analysis.py` now merges mortality by `State` instead of cross-joining one latest-year national average.
-- `historical_trauma_index.csv` is the actual output used by the analysis layer.
-- added `merge_indicators.py` so historical policy + environmental + boarding-school indicators can be combined before index construction.
-- added `ingest_environmental.py`
-- standardized processed filenames:
-  - `population.csv`
-  - `mortality.csv`
-  - `missing_persons.csv`
-  - `historical_trauma_index.csv`
+- explicit normalization configuration through `config/analysis_config.json`
+- automatic detection and exclusion of non-varying indicators from within-sample scoring
+- richer sensitivity analysis across weighting schemes, normalization choices, PCA, and leave-one-indicator-out variants
+- permutation-based inference, Kendall's tau, partial rank correlations, and leave-one-state-out diagnostics
+- sample inclusion audits, outcome construction summaries, and reviewer-friendly figures
 
-## Folder structure
-```text
-plos_research_organized/
-  config/
-    indicator_weights.json
-  data/
-    raw/
-      population/
-      mortality/
-      missing_persons/
-      historical_policy/
-      environmental/
-      boarding_schools/
-    processed/
-    manifests/
-  logs/
-  reports/
-  visualizations/
-  src/
-    ingest/
-    features/
-    analysis/
-    reporting/
-    utils/
-    pipeline.py
+## Run
+
+```bash
+python3 -m src.pipeline
 ```
 
-## Recommended run order
-1. Put your real raw files into `data/raw/...`
-2. Run the dedicated ingestion scripts if you want standalone outputs
-3. Run `src/pipeline.py`
+Outputs are written to:
 
-## Raw files expected
-- `data/raw/population/population.csv`
-- `data/raw/mortality/mortality.csv`
-- `data/raw/missing_persons/missing_persons.csv`
-- `data/raw/historical_policy/historical_policy.csv`
-- `data/raw/environmental/environmental_hazards.csv`
+- `data/processed/`
+- `data/manifests/`
+- `reports/`
+- `visualizations/`
 
-Optional standalone ingestion inputs:
-- `data/raw/mortality/aian_mortality_export.csv`
-- `data/raw/mortality/reference_mortality_export.csv`
-- `data/raw/missing_persons/namus_missing_persons_export.csv`
-- `data/raw/boarding_schools/boarding_school_listing.csv`
+## Current default choices
 
-## Important note
-Update `config/indicator_weights.json` so the keys exactly match your real indicator names.
+- Primary normalization: `zscore`
+- Constant indicators: dropped from scored index, but still documented in diagnostics
+- Primary confounder for adjusted analyses: `AI_AN_Population_Percent`
+- Sensitivity variants: equal weights, alternate normalization, PCA-based score, and leave-one-indicator-out reruns
+
+These defaults are meant to address the current reviewer comments in code. They can be changed without editing Python by updating `config/analysis_config.json` or `config/indicator_weights.json`.

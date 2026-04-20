@@ -1,0 +1,161 @@
+State,Historical_Trauma_Index,Scheme,Scheme_Type,Normalization_Method,Scheme_Note,Rank,Primary_Score,Primary_Rank,Score_Delta_vs_Primary,Rank_Shift_vs_Primary
+Oklahoma,0.8984984984984986,configured_weights_minmax,alternate_normalization,minmax,Configured weights under alternate normalization.,1.0,1.4922966570037604,1.0,-0.5937981585052617,0.0
+South Dakota,0.8201201201201201,configured_weights_minmax,alternate_normalization,minmax,Configured weights under alternate normalization.,2.0,1.190220625579874,2.0,-0.3701005054597538,0.0
+Minnesota,0.7837837837837838,configured_weights_minmax,alternate_normalization,minmax,Configured weights under alternate normalization.,3.0,1.070058245453967,3.0,-0.28627446167018333,0.0
+New Mexico,0.6510510510510511,configured_weights_minmax,alternate_normalization,minmax,Configured weights under alternate normalization.,4.0,0.5489762827868161,5.0,0.102074768264235,-1.0
+Montana,0.645945945945946,configured_weights_minmax,alternate_normalization,minmax,Configured weights under alternate normalization.,5.0,0.5514214232884744,4.0,0.09452452265747158,1.0
+Arizona,0.5543543543543544,configured_weights_minmax,alternate_normalization,minmax,Configured weights under alternate normalization.,6.0,0.22558142235438083,8.0,0.3287729319999736,-2.0
+Alaska,0.43603603603603613,configured_weights_minmax,alternate_normalization,minmax,Configured weights under alternate normalization.,7.0,0.22605277137266785,7.0,0.20998326466336828,0.0
+California,0.43303303303303303,configured_weights_minmax,alternate_normalization,minmax,Configured weights under alternate normalization.,8.0,0.27048047282292725,6.0,0.16255256021010578,2.0
+Texas,0.3522522522522522,configured_weights_minmax,alternate_normalization,minmax,Configured weights under alternate normalization.,9.0,-0.06913534940453459,9.0,0.4213876016567868,0.0
+North Carolina,0.3249249249249249,configured_weights_minmax,alternate_normalization,minmax,Configured weights under alternate normalization.,10.0,-0.1764169299536538,10.0,0.5013418548785787,0.0
+Washington,0.29969969969969973,configured_weights_minmax,alternate_normalization,minmax,Configured weights under alternate normalization.,11.0,-0.3147979015179546,12.0,0.6144976012176544,-1.0
+Michigan,0.287987987987988,configured_weights_minmax,alternate_normalization,minmax,Configured weights under alternate normalization.,12.0,-0.28769376978950867,11.0,0.5756817577774966,1.0
+Idaho,0.28018018018018015,configured_weights_minmax,alternate_normalization,minmax,Configured weights under alternate normalization.,13.0,-0.3183456499464001,13.0,0.5985258301265802,0.0
+Utah,0.257957957957958,configured_weights_minmax,alternate_normalization,minmax,Configured weights under alternate normalization.,14.0,-0.4280723709971774,14.0,0.6860303289551354,0.0
+Oregon,0.23183183183183184,configured_weights_minmax,alternate_normalization,minmax,Configured weights under alternate normalization.,15.0,-0.5531250321264005,16.0,0.7849568639582324,-1.0
+Colorado,0.23063063063063063,configured_weights_minmax,alternate_normalization,minmax,Configured weights under alternate normalization.,16.0,-0.5353539515462967,15.0,0.7659845821769273,1.0
+Nevada,0.1837837837837838,configured_weights_minmax,alternate_normalization,minmax,Configured weights under alternate normalization.,17.0,-0.7192652324876442,18.0,0.903049016271428,-1.0
+New York,0.18018018018018017,configured_weights_minmax,alternate_normalization,minmax,Configured weights under alternate normalization.,18.0,-0.6659519907473329,17.0,0.8461321709275131,1.0
+New Jersey,0.16006006006006002,configured_weights_minmax,alternate_normalization,minmax,Configured weights under alternate normalization.,19.0,-0.7336961508495092,19.0,0.8937562109095692,0.0
+Florida,0.15285285285285288,configured_weights_minmax,alternate_normalization,minmax,Configured weights under alternate normalization.,20.0,-0.7732335712964521,20.0,0.926086424149305,0.0
+Oklahoma,1.5256656758651137,equal_weights,equal_weights,zscore,Equal weights across included indicators.,1.0,1.4922966570037604,1.0,0.03336901886135335,0.0
+South Dakota,1.2534705875902277,equal_weights,equal_weights,zscore,Equal weights across included indicators.,2.0,1.190220625579874,2.0,0.06324996201035371,0.0
+Minnesota,1.1063513604644082,equal_weights,equal_weights,zscore,Equal weights across included indicators.,3.0,1.070058245453967,3.0,0.03629311501044108,0.0
+New Mexico,0.6554150466178353,equal_weights,equal_weights,zscore,Equal weights across included indicators.,4.0,0.5489762827868161,5.0,0.10643876383101925,-1.0
+Montana,0.6143984815735628,equal_weights,equal_weights,zscore,Equal weights across included indicators.,5.0,0.5514214232884744,4.0,0.06297705828508837,1.0
+Arizona,0.2677227296629976,equal_weights,equal_weights,zscore,Equal weights across included indicators.,6.0,0.22558142235438083,8.0,0.04214130730861676,-2.0
+Alaska,0.22616564896036276,equal_weights,equal_weights,zscore,Equal weights across included indicators.,7.0,0.22605277137266785,7.0,0.00011287758769490397,0.0
+California,0.15678131825016464,equal_weights,equal_weights,zscore,Equal weights across included indicators.,8.0,0.27048047282292725,6.0,-0.11369915457276261,2.0
+Texas,-0.09398443742981594,equal_weights,equal_weights,zscore,Equal weights across included indicators.,9.0,-0.06913534940453459,9.0,-0.024849088025281352,0.0
+North Carolina,-0.1868242667511691,equal_weights,equal_weights,zscore,Equal weights across included indicators.,10.0,-0.1764169299536538,10.0,-0.010407336797515293,0.0
+Washington,-0.23109506457538362,equal_weights,equal_weights,zscore,Equal weights across included indicators.,11.0,-0.3147979015179546,12.0,0.083702836942571,-1.0
+Michigan,-0.34782036001902783,equal_weights,equal_weights,zscore,Equal weights across included indicators.,12.0,-0.28769376978950867,11.0,-0.06012659022951916,1.0
+Idaho,-0.3743460255394146,equal_weights,equal_weights,zscore,Equal weights across included indicators.,13.0,-0.3183456499464001,13.0,-0.05600037559301452,0.0
+Utah,-0.42616928981649516,equal_weights,equal_weights,zscore,Equal weights across included indicators.,14.0,-0.4280723709971774,14.0,0.00190308118068222,0.0
+Oregon,-0.49125538685376924,equal_weights,equal_weights,zscore,Equal weights across included indicators.,15.0,-0.5531250321264005,16.0,0.06186964527263128,-1.0
+Colorado,-0.5190091191378484,equal_weights,equal_weights,zscore,Equal weights across included indicators.,16.0,-0.5353539515462967,15.0,0.016344832408448307,1.0
+Nevada,-0.6781631122601683,equal_weights,equal_weights,zscore,Equal weights across included indicators.,17.0,-0.7192652324876442,18.0,0.041102120227475836,-1.0
+New York,-0.7614243091124061,equal_weights,equal_weights,zscore,Equal weights across included indicators.,18.0,-0.6659519907473329,17.0,-0.0954723183650732,1.0
+New Jersey,-0.8416153390554124,equal_weights,equal_weights,zscore,Equal weights across included indicators.,19.0,-0.7336961508495092,19.0,-0.10791918820590318,0.0
+Florida,-0.8542641384337593,equal_weights,equal_weights,zscore,Equal weights across included indicators.,20.0,-0.7732335712964521,20.0,-0.08103056713730716,0.0
+Oklahoma,1.6825865814699748,leave_out_Environmental_Burden_Index,leave_one_indicator_out,zscore,Configured weights after removing Environmental_Burden_Index.,1.0,1.4922966570037604,1.0,0.1902899244662144,0.0
+South Dakota,1.624177917280475,leave_out_Environmental_Burden_Index,leave_one_indicator_out,zscore,Configured weights after removing Environmental_Burden_Index.,2.0,1.190220625579874,2.0,0.43395729170060093,0.0
+Minnesota,1.390543260522476,leave_out_Environmental_Burden_Index,leave_one_indicator_out,zscore,Configured weights after removing Environmental_Burden_Index.,3.0,1.070058245453967,3.0,0.3204850150685088,0.0
+New Mexico,1.390543260522476,leave_out_Environmental_Burden_Index,leave_one_indicator_out,zscore,Configured weights after removing Environmental_Burden_Index.,3.0,0.5489762827868161,5.0,0.8415669777356598,-2.0
+Montana,1.1569086037644771,leave_out_Environmental_Burden_Index,leave_one_indicator_out,zscore,Configured weights after removing Environmental_Burden_Index.,4.0,0.5514214232884744,4.0,0.6054871804760027,0.0
+Arizona,0.8064566186274787,leave_out_Environmental_Burden_Index,leave_one_indicator_out,zscore,Configured weights after removing Environmental_Burden_Index.,5.0,0.22558142235438083,8.0,0.5808751962730979,-3.0
+Washington,0.04654819443200717,leave_out_Environmental_Burden_Index,leave_one_indicator_out,zscore,Configured weights after removing Environmental_Burden_Index.,6.0,-0.3147979015179546,12.0,0.3613460959499618,-6.0
+Alaska,-0.011860469757492553,leave_out_Environmental_Burden_Index,leave_one_indicator_out,zscore,Configured weights after removing Environmental_Burden_Index.,7.0,0.22605277137266785,7.0,-0.2379132411301604,0.0
+Oregon,-0.24549512651549144,leave_out_Environmental_Burden_Index,leave_one_indicator_out,zscore,Configured weights after removing Environmental_Burden_Index.,8.0,-0.5531250321264005,16.0,0.3076299056109091,-8.0
+North Carolina,-0.3623124548944909,leave_out_Environmental_Burden_Index,leave_one_indicator_out,zscore,Configured weights after removing Environmental_Burden_Index.,9.0,-0.1764169299536538,10.0,-0.18589552494083708,-1.0
+Texas,-0.3623124548944909,leave_out_Environmental_Burden_Index,leave_one_indicator_out,zscore,Configured weights after removing Environmental_Burden_Index.,9.0,-0.06913534940453459,9.0,-0.2931771054899563,0.0
+Colorado,-0.4791297832734903,leave_out_Environmental_Burden_Index,leave_one_indicator_out,zscore,Configured weights after removing Environmental_Burden_Index.,10.0,-0.5353539515462967,15.0,0.05622416827280641,-5.0
+Nevada,-0.4791297832734903,leave_out_Environmental_Burden_Index,leave_one_indicator_out,zscore,Configured weights after removing Environmental_Burden_Index.,10.0,-0.7192652324876442,18.0,0.24013544921415386,-8.0
+Utah,-0.4791297832734903,leave_out_Environmental_Burden_Index,leave_one_indicator_out,zscore,Configured weights after removing Environmental_Burden_Index.,10.0,-0.4280723709971774,14.0,-0.05105741227631294,-4.0
+California,-0.5959471116524897,leave_out_Environmental_Burden_Index,leave_one_indicator_out,zscore,Configured weights after removing Environmental_Burden_Index.,11.0,0.27048047282292725,6.0,-0.866427584475417,5.0
+Idaho,-0.7127644400314892,leave_out_Environmental_Burden_Index,leave_one_indicator_out,zscore,Configured weights after removing Environmental_Burden_Index.,12.0,-0.3183456499464001,13.0,-0.3944187900850891,-1.0
+Michigan,-0.7127644400314892,leave_out_Environmental_Burden_Index,leave_one_indicator_out,zscore,Configured weights after removing Environmental_Burden_Index.,12.0,-0.28769376978950867,11.0,-0.42507067024198053,1.0
+Florida,-1.180033753547487,leave_out_Environmental_Burden_Index,leave_one_indicator_out,zscore,Configured weights after removing Environmental_Burden_Index.,13.0,-0.7732335712964521,20.0,-0.40680018225103487,-7.0
+New York,-1.180033753547487,leave_out_Environmental_Burden_Index,leave_one_indicator_out,zscore,Configured weights after removing Environmental_Burden_Index.,13.0,-0.6659519907473329,17.0,-0.514081762800154,-4.0
+New Jersey,-1.2968510819264862,leave_out_Environmental_Burden_Index,leave_one_indicator_out,zscore,Configured weights after removing Environmental_Burden_Index.,14.0,-0.7336961508495092,19.0,-0.563154931076977,-5.0
+Oklahoma,1.41134616147318,leave_out_Max_BoardingSchool_Duration_Years,leave_one_indicator_out,zscore,Configured weights after removing Max_BoardingSchool_Duration_Years.,1.0,1.4922966570037604,1.0,-0.08095049553058042,0.0
+South Dakota,1.0496637961290973,leave_out_Max_BoardingSchool_Duration_Years,leave_one_indicator_out,zscore,Configured weights after removing Max_BoardingSchool_Duration_Years.,2.0,1.190220625579874,2.0,-0.14055682945077663,0.0
+Minnesota,1.0019737219137308,leave_out_Max_BoardingSchool_Duration_Years,leave_one_indicator_out,zscore,Configured weights after removing Max_BoardingSchool_Duration_Years.,3.0,1.070058245453967,3.0,-0.06808452354023631,0.0
+California,0.5079672296921057,leave_out_Max_BoardingSchool_Duration_Years,leave_one_indicator_out,zscore,Configured weights after removing Max_BoardingSchool_Duration_Years.,4.0,0.27048047282292725,6.0,0.23748675686917847,-2.0
+Montana,0.4419593650760397,leave_out_Max_BoardingSchool_Duration_Years,leave_one_indicator_out,zscore,Configured weights after removing Max_BoardingSchool_Duration_Years.,5.0,0.5514214232884744,4.0,-0.10946205821243471,1.0
+New Mexico,0.3320111984845368,leave_out_Max_BoardingSchool_Duration_Years,leave_one_indicator_out,zscore,Configured weights after removing Max_BoardingSchool_Duration_Years.,6.0,0.5489762827868161,5.0,-0.2169650843022793,1.0
+Alaska,0.18383486296120205,leave_out_Max_BoardingSchool_Duration_Years,leave_one_indicator_out,zscore,Configured weights after removing Max_BoardingSchool_Duration_Years.,7.0,0.22605277137266785,7.0,-0.042217908411465804,0.0
+Arizona,0.183228842794833,leave_out_Max_BoardingSchool_Duration_Years,leave_one_indicator_out,zscore,Configured weights after removing Max_BoardingSchool_Duration_Years.,8.0,0.22558142235438083,8.0,-0.042352579559547826,0.0
+Texas,-0.03548609911828758,leave_out_Max_BoardingSchool_Duration_Years,leave_one_indicator_out,zscore,Configured weights after removing Max_BoardingSchool_Duration_Years.,9.0,-0.06913534940453459,9.0,0.033649250286247004,0.0
+Michigan,-0.1562831606934836,leave_out_Max_BoardingSchool_Duration_Years,leave_one_indicator_out,zscore,Configured weights after removing Max_BoardingSchool_Duration_Years.,10.0,-0.28769376978950867,11.0,0.13141060909602506,-1.0
+North Carolina,-0.173419559824298,leave_out_Max_BoardingSchool_Duration_Years,leave_one_indicator_out,zscore,Configured weights after removing Max_BoardingSchool_Duration_Years.,11.0,-0.1764169299536538,10.0,0.002997370129355803,1.0
+Idaho,-0.1956927208952011,leave_out_Max_BoardingSchool_Duration_Years,leave_one_indicator_out,zscore,Configured weights after removing Max_BoardingSchool_Duration_Years.,12.0,-0.3183456499464001,13.0,0.12265292905119898,-1.0
+New York,-0.4290063300319443,leave_out_Max_BoardingSchool_Duration_Years,leave_one_indicator_out,zscore,Configured weights after removing Max_BoardingSchool_Duration_Years.,13.0,-0.6659519907473329,17.0,0.23694566071538858,-4.0
+Utah,-0.44357434819271424,leave_out_Max_BoardingSchool_Duration_Years,leave_one_indicator_out,zscore,Configured weights after removing Max_BoardingSchool_Duration_Years.,14.0,-0.4280723709971774,14.0,-0.015501977195536865,0.0
+New Jersey,-0.462703757190057,leave_out_Max_BoardingSchool_Duration_Years,leave_one_indicator_out,zscore,Configured weights after removing Max_BoardingSchool_Duration_Years.,15.0,-0.7336961508495092,19.0,0.2709923936594522,-4.0
+Washington,-0.538245677241941,leave_out_Max_BoardingSchool_Duration_Years,leave_one_indicator_out,zscore,Configured weights after removing Max_BoardingSchool_Duration_Years.,16.0,-0.3147979015179546,12.0,-0.22344777572398633,4.0
+Florida,-0.5669397907379548,leave_out_Max_BoardingSchool_Duration_Years,leave_one_indicator_out,zscore,Configured weights after removing Max_BoardingSchool_Duration_Years.,17.0,-0.7732335712964521,20.0,0.20629378055849734,-3.0
+Colorado,-0.5815078088987249,leave_out_Max_BoardingSchool_Duration_Years,leave_one_indicator_out,zscore,Configured weights after removing Max_BoardingSchool_Duration_Years.,18.0,-0.5353539515462967,15.0,-0.04615385735242816,3.0
+Oregon,-0.7111607555910864,leave_out_Max_BoardingSchool_Duration_Years,leave_one_indicator_out,zscore,Configured weights after removing Max_BoardingSchool_Duration_Years.,19.0,-0.5531250321264005,16.0,-0.15803572346468586,3.0
+Nevada,-0.8179651701090288,leave_out_Max_BoardingSchool_Duration_Years,leave_one_indicator_out,zscore,Configured weights after removing Max_BoardingSchool_Duration_Years.,20.0,-0.7192652324876442,18.0,-0.09869993762138463,2.0
+Oklahoma,1.41134616147318,leave_out_Mean_BoardingSchool_Duration_Years,leave_one_indicator_out,zscore,Configured weights after removing Mean_BoardingSchool_Duration_Years.,1.0,1.4922966570037604,1.0,-0.08095049553058042,0.0
+South Dakota,1.0496637961290973,leave_out_Mean_BoardingSchool_Duration_Years,leave_one_indicator_out,zscore,Configured weights after removing Mean_BoardingSchool_Duration_Years.,2.0,1.190220625579874,2.0,-0.14055682945077663,0.0
+Minnesota,1.0019737219137308,leave_out_Mean_BoardingSchool_Duration_Years,leave_one_indicator_out,zscore,Configured weights after removing Mean_BoardingSchool_Duration_Years.,3.0,1.070058245453967,3.0,-0.06808452354023631,0.0
+California,0.5079672296921057,leave_out_Mean_BoardingSchool_Duration_Years,leave_one_indicator_out,zscore,Configured weights after removing Mean_BoardingSchool_Duration_Years.,4.0,0.27048047282292725,6.0,0.23748675686917847,-2.0
+Montana,0.4419593650760397,leave_out_Mean_BoardingSchool_Duration_Years,leave_one_indicator_out,zscore,Configured weights after removing Mean_BoardingSchool_Duration_Years.,5.0,0.5514214232884744,4.0,-0.10946205821243471,1.0
+New Mexico,0.3320111984845368,leave_out_Mean_BoardingSchool_Duration_Years,leave_one_indicator_out,zscore,Configured weights after removing Mean_BoardingSchool_Duration_Years.,6.0,0.5489762827868161,5.0,-0.2169650843022793,1.0
+Alaska,0.18383486296120205,leave_out_Mean_BoardingSchool_Duration_Years,leave_one_indicator_out,zscore,Configured weights after removing Mean_BoardingSchool_Duration_Years.,7.0,0.22605277137266785,7.0,-0.042217908411465804,0.0
+Arizona,0.183228842794833,leave_out_Mean_BoardingSchool_Duration_Years,leave_one_indicator_out,zscore,Configured weights after removing Mean_BoardingSchool_Duration_Years.,8.0,0.22558142235438083,8.0,-0.042352579559547826,0.0
+Texas,-0.03548609911828758,leave_out_Mean_BoardingSchool_Duration_Years,leave_one_indicator_out,zscore,Configured weights after removing Mean_BoardingSchool_Duration_Years.,9.0,-0.06913534940453459,9.0,0.033649250286247004,0.0
+Michigan,-0.1562831606934836,leave_out_Mean_BoardingSchool_Duration_Years,leave_one_indicator_out,zscore,Configured weights after removing Mean_BoardingSchool_Duration_Years.,10.0,-0.28769376978950867,11.0,0.13141060909602506,-1.0
+North Carolina,-0.173419559824298,leave_out_Mean_BoardingSchool_Duration_Years,leave_one_indicator_out,zscore,Configured weights after removing Mean_BoardingSchool_Duration_Years.,11.0,-0.1764169299536538,10.0,0.002997370129355803,1.0
+Idaho,-0.1956927208952011,leave_out_Mean_BoardingSchool_Duration_Years,leave_one_indicator_out,zscore,Configured weights after removing Mean_BoardingSchool_Duration_Years.,12.0,-0.3183456499464001,13.0,0.12265292905119898,-1.0
+New York,-0.4290063300319443,leave_out_Mean_BoardingSchool_Duration_Years,leave_one_indicator_out,zscore,Configured weights after removing Mean_BoardingSchool_Duration_Years.,13.0,-0.6659519907473329,17.0,0.23694566071538858,-4.0
+Utah,-0.44357434819271424,leave_out_Mean_BoardingSchool_Duration_Years,leave_one_indicator_out,zscore,Configured weights after removing Mean_BoardingSchool_Duration_Years.,14.0,-0.4280723709971774,14.0,-0.015501977195536865,0.0
+New Jersey,-0.462703757190057,leave_out_Mean_BoardingSchool_Duration_Years,leave_one_indicator_out,zscore,Configured weights after removing Mean_BoardingSchool_Duration_Years.,15.0,-0.7336961508495092,19.0,0.2709923936594522,-4.0
+Washington,-0.538245677241941,leave_out_Mean_BoardingSchool_Duration_Years,leave_one_indicator_out,zscore,Configured weights after removing Mean_BoardingSchool_Duration_Years.,16.0,-0.3147979015179546,12.0,-0.22344777572398633,4.0
+Florida,-0.5669397907379548,leave_out_Mean_BoardingSchool_Duration_Years,leave_one_indicator_out,zscore,Configured weights after removing Mean_BoardingSchool_Duration_Years.,17.0,-0.7732335712964521,20.0,0.20629378055849734,-3.0
+Colorado,-0.5815078088987249,leave_out_Mean_BoardingSchool_Duration_Years,leave_one_indicator_out,zscore,Configured weights after removing Mean_BoardingSchool_Duration_Years.,18.0,-0.5353539515462967,15.0,-0.04615385735242816,3.0
+Oregon,-0.7111607555910864,leave_out_Mean_BoardingSchool_Duration_Years,leave_one_indicator_out,zscore,Configured weights after removing Mean_BoardingSchool_Duration_Years.,19.0,-0.5531250321264005,16.0,-0.15803572346468586,3.0
+Nevada,-0.8179651701090288,leave_out_Mean_BoardingSchool_Duration_Years,leave_one_indicator_out,zscore,Configured weights after removing Mean_BoardingSchool_Duration_Years.,20.0,-0.7192652324876442,18.0,-0.09869993762138463,2.0
+Oklahoma,1.4794862662226018,leave_out_Schools_With_Burial_Site_Flag,leave_one_indicator_out,zscore,Configured weights after removing Schools_With_Burial_Site_Flag.,1.0,1.4922966570037604,1.0,-0.012810390781158532,0.0
+South Dakota,1.0675644051900295,leave_out_Schools_With_Burial_Site_Flag,leave_one_indicator_out,zscore,Configured weights after removing Schools_With_Burial_Site_Flag.,2.0,1.190220625579874,2.0,-0.12265622038984447,0.0
+Minnesota,0.9037066141092474,leave_out_Schools_With_Burial_Site_Flag,leave_one_indicator_out,zscore,Configured weights after removing Schools_With_Burial_Site_Flag.,3.0,1.070058245453967,3.0,-0.16635163134471975,0.0
+California,0.606892888652347,leave_out_Schools_With_Burial_Site_Flag,leave_one_indicator_out,zscore,Configured weights after removing Schools_With_Burial_Site_Flag.,4.0,0.27048047282292725,6.0,0.3364124158294198,-2.0
+Alaska,0.5463096594019934,leave_out_Schools_With_Burial_Site_Flag,leave_one_indicator_out,zscore,Configured weights after removing Schools_With_Burial_Site_Flag.,5.0,0.22605277137266785,7.0,0.3202568880293255,-2.0
+Montana,0.19647458388357533,leave_out_Schools_With_Burial_Site_Flag,leave_one_indicator_out,zscore,Configured weights after removing Schools_With_Burial_Site_Flag.,6.0,0.5514214232884744,4.0,-0.35494683940489913,2.0
+New Mexico,0.1931403013813141,leave_out_Schools_With_Burial_Site_Flag,leave_one_indicator_out,zscore,Configured weights after removing Schools_With_Burial_Site_Flag.,7.0,0.5489762827868161,5.0,-0.355835981405502,2.0
+Texas,0.14378040379671728,leave_out_Schools_With_Burial_Site_Flag,leave_one_indicator_out,zscore,Configured weights after removing Schools_With_Burial_Site_Flag.,8.0,-0.06913534940453459,9.0,0.21291575320125186,-1.0
+North Carolina,-0.002512660588445294,leave_out_Schools_With_Burial_Site_Flag,leave_one_indicator_out,zscore,Configured weights after removing Schools_With_Burial_Site_Flag.,9.0,-0.1764169299536538,10.0,0.1739042693652085,-1.0
+Michigan,-0.15425380581915651,leave_out_Schools_With_Burial_Site_Flag,leave_one_indicator_out,zscore,Configured weights after removing Schools_With_Burial_Site_Flag.,10.0,-0.28769376978950867,11.0,0.13343996397035215,-1.0
+Washington,-0.1912139854488555,leave_out_Schools_With_Burial_Site_Flag,leave_one_indicator_out,zscore,Configured weights after removing Schools_With_Burial_Site_Flag.,11.0,-0.3147979015179546,12.0,0.1235839160690991,-1.0
+Idaho,-0.19605182421491749,leave_out_Schools_With_Burial_Site_Flag,leave_one_indicator_out,zscore,Configured weights after removing Schools_With_Burial_Site_Flag.,12.0,-0.3183456499464001,13.0,0.12229382573148259,-1.0
+Arizona,-0.2478526901174613,leave_out_Schools_With_Burial_Site_Flag,leave_one_indicator_out,zscore,Configured weights after removing Schools_With_Burial_Site_Flag.,13.0,0.22558142235438083,8.0,-0.47343411247184214,5.0
+Utah,-0.3456791711023411,leave_out_Schools_With_Burial_Site_Flag,leave_one_indicator_out,zscore,Configured weights after removing Schools_With_Burial_Site_Flag.,14.0,-0.4280723709971774,14.0,0.08239319989483629,0.0
+Colorado,-0.49197223548750385,leave_out_Schools_With_Burial_Site_Flag,leave_one_indicator_out,zscore,Configured weights after removing Schools_With_Burial_Site_Flag.,15.0,-0.5353539515462967,15.0,0.043381716058792874,0.0
+Oregon,-0.5162055271876453,leave_out_Schools_With_Burial_Site_Flag,leave_one_indicator_out,zscore,Configured weights after removing Schools_With_Burial_Site_Flag.,16.0,-0.5531250321264005,16.0,0.03691950493875518,0.0
+New York,-0.6700604707616441,leave_out_Schools_With_Burial_Site_Flag,leave_one_indicator_out,zscore,Configured weights after removing Schools_With_Burial_Site_Flag.,17.0,-0.6659519907473329,17.0,-0.004108480014311189,0.0
+Nevada,-0.7427603458620686,leave_out_Schools_With_Burial_Site_Flag,leave_one_indicator_out,zscore,Configured weights after removing Schools_With_Burial_Site_Flag.,18.0,-0.7192652324876442,18.0,-0.023495113374424448,0.0
+New Jersey,-0.7624388709009754,leave_out_Schools_With_Burial_Site_Flag,leave_one_indicator_out,zscore,Configured weights after removing Schools_With_Burial_Site_Flag.,19.0,-0.7336961508495092,19.0,-0.028742720051466164,0.0
+Florida,-0.8163535351468066,leave_out_Schools_With_Burial_Site_Flag,leave_one_indicator_out,zscore,Configured weights after removing Schools_With_Burial_Site_Flag.,20.0,-0.7732335712964521,20.0,-0.04311996385035455,0.0
+South Dakota,2.720531675351055,pca_pc1,pca,zscore,First principal component score oriented to align with the primary index.,1.0,1.190220625579874,2.0,1.530311049771181,-1.0
+New Mexico,2.6739539043327527,pca_pc1,pca,zscore,First principal component score oriented to align with the primary index.,2.0,0.5489762827868161,5.0,2.124977621545937,-3.0
+Oklahoma,2.6176659428505973,pca_pc1,pca,zscore,First principal component score oriented to align with the primary index.,3.0,1.4922966570037604,1.0,1.125369285846837,2.0
+Minnesota,2.25305163853047,pca_pc1,pca,zscore,First principal component score oriented to align with the primary index.,4.0,1.070058245453967,3.0,1.1829933930765029,1.0
+Montana,2.107438040264572,pca_pc1,pca,zscore,First principal component score oriented to align with the primary index.,5.0,0.5514214232884744,4.0,1.5560166169760974,1.0
+Arizona,1.523823029890215,pca_pc1,pca,zscore,First principal component score oriented to align with the primary index.,6.0,0.22558142235438083,8.0,1.298241607535834,-2.0
+Washington,0.47074090390171985,pca_pc1,pca,zscore,First principal component score oriented to align with the primary index.,7.0,-0.3147979015179546,12.0,0.7855388054196745,-5.0
+Oregon,-0.04242714128980146,pca_pc1,pca,zscore,First principal component score oriented to align with the primary index.,8.0,-0.5531250321264005,16.0,0.5106978908365991,-8.0
+Alaska,-0.10726467592504454,pca_pc1,pca,zscore,First principal component score oriented to align with the primary index.,9.0,0.22605277137266785,7.0,-0.3333174472977124,2.0
+Nevada,-0.47276874289253773,pca_pc1,pca,zscore,First principal component score oriented to align with the primary index.,10.0,-0.7192652324876442,18.0,0.24649648959510645,-8.0
+Colorado,-0.6213224837639316,pca_pc1,pca,zscore,First principal component score oriented to align with the primary index.,11.0,-0.5353539515462967,15.0,-0.0859685322176349,-4.0
+North Carolina,-0.6289822942696541,pca_pc1,pca,zscore,First principal component score oriented to align with the primary index.,12.0,-0.1764169299536538,10.0,-0.45256536431600036,2.0
+Utah,-0.707978832605578,pca_pc1,pca,zscore,First principal component score oriented to align with the primary index.,13.0,-0.4280723709971774,14.0,-0.27990646160840066,-1.0
+Texas,-0.7156386431113004,pca_pc1,pca,zscore,First principal component score oriented to align with the primary index.,14.0,-0.06913534940453459,9.0,-0.6465032937067658,5.0
+Idaho,-1.3611510455154048,pca_pc1,pca,zscore,First principal component score oriented to align with the primary index.,15.0,-0.3183456499464001,13.0,-1.0428053955690046,2.0
+Michigan,-1.3859100023273039,pca_pc1,pca,zscore,First principal component score oriented to align with the primary index.,16.0,-0.28769376978950867,11.0,-1.098216232537795,5.0
+California,-1.5545030321103697,pca_pc1,pca,zscore,First principal component score oriented to align with the primary index.,17.0,0.27048047282292725,6.0,-1.824983504933297,11.0
+Florida,-2.1227984214732816,pca_pc1,pca,zscore,First principal component score oriented to align with the primary index.,18.0,-0.7732335712964521,20.0,-1.3495648501768294,-2.0
+New York,-2.209454770314928,pca_pc1,pca,zscore,First principal component score oriented to align with the primary index.,19.0,-0.6659519907473329,17.0,-1.543502779567595,2.0
+New Jersey,-2.4370050495222455,pca_pc1,pca,zscore,First principal component score oriented to align with the primary index.,20.0,-0.7336961508495092,19.0,-1.7033088986727363,1.0
+Oklahoma,1.4922966570037604,primary,configured_weights,zscore,Configured weights after dropping constant indicators.,1.0,1.4922966570037604,1.0,0.0,0.0
+South Dakota,1.190220625579874,primary,configured_weights,zscore,Configured weights after dropping constant indicators.,2.0,1.190220625579874,2.0,0.0,0.0
+Minnesota,1.070058245453967,primary,configured_weights,zscore,Configured weights after dropping constant indicators.,3.0,1.070058245453967,3.0,0.0,0.0
+Montana,0.5514214232884744,primary,configured_weights,zscore,Configured weights after dropping constant indicators.,4.0,0.5514214232884744,4.0,0.0,0.0
+New Mexico,0.5489762827868161,primary,configured_weights,zscore,Configured weights after dropping constant indicators.,5.0,0.5489762827868161,5.0,0.0,0.0
+California,0.27048047282292725,primary,configured_weights,zscore,Configured weights after dropping constant indicators.,6.0,0.27048047282292725,6.0,0.0,0.0
+Alaska,0.22605277137266785,primary,configured_weights,zscore,Configured weights after dropping constant indicators.,7.0,0.22605277137266785,7.0,0.0,0.0
+Arizona,0.22558142235438083,primary,configured_weights,zscore,Configured weights after dropping constant indicators.,8.0,0.22558142235438083,8.0,0.0,0.0
+Texas,-0.06913534940453459,primary,configured_weights,zscore,Configured weights after dropping constant indicators.,9.0,-0.06913534940453459,9.0,0.0,0.0
+North Carolina,-0.1764169299536538,primary,configured_weights,zscore,Configured weights after dropping constant indicators.,10.0,-0.1764169299536538,10.0,0.0,0.0
+Michigan,-0.28769376978950867,primary,configured_weights,zscore,Configured weights after dropping constant indicators.,11.0,-0.28769376978950867,11.0,0.0,0.0
+Washington,-0.3147979015179546,primary,configured_weights,zscore,Configured weights after dropping constant indicators.,12.0,-0.3147979015179546,12.0,0.0,0.0
+Idaho,-0.3183456499464001,primary,configured_weights,zscore,Configured weights after dropping constant indicators.,13.0,-0.3183456499464001,13.0,0.0,0.0
+Utah,-0.4280723709971774,primary,configured_weights,zscore,Configured weights after dropping constant indicators.,14.0,-0.4280723709971774,14.0,0.0,0.0
+Colorado,-0.5353539515462967,primary,configured_weights,zscore,Configured weights after dropping constant indicators.,15.0,-0.5353539515462967,15.0,0.0,0.0
+Oregon,-0.5531250321264005,primary,configured_weights,zscore,Configured weights after dropping constant indicators.,16.0,-0.5531250321264005,16.0,0.0,0.0
+New York,-0.6659519907473329,primary,configured_weights,zscore,Configured weights after dropping constant indicators.,17.0,-0.6659519907473329,17.0,0.0,0.0
+Nevada,-0.7192652324876442,primary,configured_weights,zscore,Configured weights after dropping constant indicators.,18.0,-0.7192652324876442,18.0,0.0,0.0
+New Jersey,-0.7336961508495092,primary,configured_weights,zscore,Configured weights after dropping constant indicators.,19.0,-0.7336961508495092,19.0,0.0,0.0
+Florida,-0.7732335712964521,primary,configured_weights,zscore,Configured weights after dropping constant indicators.,20.0,-0.7732335712964521,20.0,0.0,0.0

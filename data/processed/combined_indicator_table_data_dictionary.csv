@@ -1,0 +1,6 @@
+dataset,column,dtype,non_null_count,missing_count,missing_pct,example_value,description
+combined_indicator_table,State,object,120,0,0.0,Alaska,
+combined_indicator_table,Indicator,object,120,0,0.0,BoardingSchool_Count,
+combined_indicator_table,Value,float64,120,0,0.0,1.0,
+combined_indicator_table,Definition,object,120,0,0.0,Number of unique boarding schools recorded in the source listing for the state.,
+combined_indicator_table,Source_Label,object,120,0,0.0,Federal Indian Boarding School listing,

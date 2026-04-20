@@ -1,0 +1,26 @@
+{
+  "name": "mortality",
+  "rows": 20,
+  "columns": [
+    "Year",
+    "State",
+    "Condition",
+    "AI_AN_Rate_per_100k",
+    "Comparator_Rate_per_100k",
+    "Disparity_Ratio"
+  ],
+  "schema_version": "1.0",
+  "source_meta": {
+    "dataset_name": "mortality",
+    "source_org": "User-supplied source",
+    "source_url": "",
+    "accessed_on": "2026-04-20T10:01:29.273971+00:00",
+    "file_path": "/Users/divytan/Documents/New project/dsm3674-historical-trauma-analysis/data/raw/mortality/mortality.csv",
+    "citation": "",
+    "notes": "Processed output preserves the condition list so manuscript aggregation can be spelled out.",
+    "geographic_unit": "state",
+    "temporal_coverage": "",
+    "restrictions": ""
+  },
+  "saved_at_utc": "2026-04-20T10:01:29.283123+00:00"
+}

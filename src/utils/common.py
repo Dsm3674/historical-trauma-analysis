@@ -1,4 +1,3 @@
-
 from __future__ import annotations
 
 import json
@@ -41,10 +40,12 @@ class DatasetBundle:
     def save(self, out_dir: Path, manifest_dir: Path) -> None:
         out_dir.mkdir(parents=True, exist_ok=True)
         manifest_dir.mkdir(parents=True, exist_ok=True)
+
         csv_path = out_dir / f"{self.name}.csv"
         manifest_path = manifest_dir / f"{self.name}.manifest.json"
+
         self.frame.to_csv(csv_path, index=False)
-        payload = {
+        manifest = {
             "name": self.name,
             "rows": int(len(self.frame)),
             "columns": list(self.frame.columns),
@@ -52,21 +53,21 @@ class DatasetBundle:
             "source_meta": asdict(self.source_meta),
             "saved_at_utc": utc_now(),
         }
-        manifest_path.write_text(json.dumps(payload, indent=2), encoding="utf-8")
+        manifest_path.write_text(json.dumps(manifest, indent=2), encoding="utf-8")
         process_dataset(self.frame, self.name, out_dir)
 
 
 def assert_columns(df: pd.DataFrame, required: Iterable[str], dataset_name: str) -> None:
-    missing = [col for col in required if col not in df.columns]
+    missing = [column for column in required if column not in df.columns]
     if missing:
         raise ValueError(f"{dataset_name} is missing required columns: {missing}")
 
 
-def to_numeric_columns(df: pd.DataFrame, cols: Iterable[str]) -> pd.DataFrame:
+def to_numeric_columns(df: pd.DataFrame, columns: Iterable[str]) -> pd.DataFrame:
     out = df.copy()
-    for col in cols:
-        if col in out.columns:
-            out[col] = pd.to_numeric(out[col], errors="coerce")
+    for column in columns:
+        if column in out.columns:
+            out[column] = pd.to_numeric(out[column], errors="coerce")
     return out
 
 
@@ -79,15 +80,19 @@ def normalize_state_names(df: pd.DataFrame, state_col: str = "State") -> pd.Data
 
 def get_logger(log_dir: Path) -> logging.Logger:
     log_dir.mkdir(parents=True, exist_ok=True)
-    logger = logging.getLogger("plos_research_pipeline")
+    logger = logging.getLogger("historical_trauma_pipeline")
     if logger.handlers:
         return logger
+
     logger.setLevel(logging.INFO)
     formatter = logging.Formatter("%(asctime)s | %(levelname)s | %(message)s")
+
     file_handler = logging.FileHandler(log_dir / "research_pipeline.log", encoding="utf-8")
     file_handler.setFormatter(formatter)
+    logger.addHandler(file_handler)
+
     stream_handler = logging.StreamHandler()
     stream_handler.setFormatter(formatter)
-    logger.addHandler(file_handler)
     logger.addHandler(stream_handler)
+
     return logger

@@ -5,7 +5,7 @@ import pandas as pd
 
 def load_boarding_school_listing(path: str) -> pd.DataFrame:
     df = pd.read_csv(path)
-    df.columns = [c.strip().replace(" ", "_") for c in df.columns]
+    df.columns = [column.strip().replace(" ", "_") for column in df.columns]
     return df
 
 
@@ -17,12 +17,13 @@ def build_state_boarding_school_features(
     close_year_col: str = "Close_Year",
     burial_site_col: str = "Burial_Site_Indicator",
 ) -> pd.DataFrame:
-    required = [state_col, school_col]
-    for col in required:
-        if col not in df.columns:
-            raise ValueError(f"Missing required column: {col}")
+    for required in [state_col, school_col]:
+        if required not in df.columns:
+            raise ValueError(f"Missing required column: {required}")
 
     work = df.copy()
+    work[state_col] = work[state_col].astype(str).str.strip()
+    work[school_col] = work[school_col].astype(str).str.strip()
 
     if open_year_col in work.columns:
         work[open_year_col] = pd.to_numeric(work[open_year_col], errors="coerce")
@@ -41,7 +42,6 @@ def build_state_boarding_school_features(
     if open_year_col in work.columns and close_year_col in work.columns:
         durations = work.copy()
         durations["School_Duration_Years"] = durations[close_year_col] - durations[open_year_col]
-
         duration_summary = (
             durations.groupby(state_col)["School_Duration_Years"]
             .agg(["mean", "max"])
@@ -59,13 +59,13 @@ def build_state_boarding_school_features(
     if burial_site_col in work.columns:
         burial = (
             work.groupby(state_col)[burial_site_col]
-            .apply(lambda s: int((s > 0).sum()))
+            .apply(lambda series: int((series > 0).sum()))
             .reset_index(name="Schools_With_Burial_Site_Flag")
             .rename(columns={state_col: "State"})
         )
         grouped = grouped.merge(burial, on="State", how="left")
 
-    return grouped
+    return grouped.sort_values("State").reset_index(drop=True)
 
 
 def to_indicator_table(df: pd.DataFrame) -> pd.DataFrame:
@@ -75,11 +75,10 @@ def to_indicator_table(df: pd.DataFrame) -> pd.DataFrame:
         "Max_BoardingSchool_Duration_Years": "Maximum observed operating duration in years across listed boarding schools in the state.",
         "Schools_With_Burial_Site_Flag": "Count of listed boarding schools in the state with a burial-site flag in the source file.",
     }
-
-    value_cols = [c for c in df.columns if c != "State"]
+    value_columns = [column for column in df.columns if column != "State"]
     long_df = df.melt(
         id_vars=["State"],
-        value_vars=value_cols,
+        value_vars=value_columns,
         var_name="Indicator",
         value_name="Value",
     )

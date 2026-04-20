@@ -1,0 +1,6 @@
+dataset,column,dtype,non_null_count,missing_count,missing_pct,example_value,description
+historical_policy,State,object,20,0,0.0,Arizona,
+historical_policy,Indicator,object,20,0,0.0,Federal_BoardingSchool_Presence,
+historical_policy,Value,int64,20,0,0.0,1,
+historical_policy,Definition,object,20,0,0.0,State had documented federally supported Indian boarding schools (DOI dataset),
+historical_policy,Source_Label,object,20,0,0.0,DOI Federal Indian Boarding School Initiative (2022),

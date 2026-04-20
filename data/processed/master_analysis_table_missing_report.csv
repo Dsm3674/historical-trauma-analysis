@@ -1,0 +1,17 @@
+column,missing_count,missing_pct
+State,0,0.0
+Historical_Trauma_Index,0,0.0
+Indicators_Used,0,0.0
+Normalization_Method,0,0.0
+Constant_Indicators_Dropped,0,0.0
+AI_AN_Population,0,0.0
+Total_Population,0,0.0
+AI_AN_Population_Percent,0,0.0
+Mean_Mortality_Disparity_Ratio,0,0.0
+Mortality_Cause_Count,0,0.0
+Mortality_Cause_List,0,0.0
+Total_Missing,0,0.0
+AI_AN_Missing,0,0.0
+AI_AN_Percent_Missing,0,0.0
+Overrepresentation_Ratio,0,0.0
+Included_In_Complete_Case,0,0.0

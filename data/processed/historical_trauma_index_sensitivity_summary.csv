@@ -1,0 +1,9 @@
+Scheme,Scheme_Type,Normalization_Method,Scheme_Note,Mean_Absolute_Rank_Shift,Max_Absolute_Rank_Shift,Mean_Absolute_Score_Delta
+configured_weights_minmax,alternate_normalization,minmax,Configured weights under alternate normalization.,0.6,2.0,0.533275570821778
+primary,configured_weights,zscore,Configured weights after dropping constant indicators.,0.0,0.0,0.0
+equal_weights,equal_weights,zscore,Equal weights across included indicators.,0.6,2.0,0.054950461892637616
+leave_out_Environmental_Burden_Index,leave_one_indicator_out,zscore,Configured weights after removing Environmental_Burden_Index.,3.0,8.0,0.39379972047679174
+leave_out_Max_BoardingSchool_Duration_Years,leave_one_indicator_out,zscore,Configured weights after removing Max_BoardingSchool_Duration_Years.,1.5,4.0,0.1242428750365343
+leave_out_Mean_BoardingSchool_Duration_Years,leave_one_indicator_out,zscore,Configured weights after removing Mean_BoardingSchool_Duration_Years.,1.5,4.0,0.1242428750365343
+leave_out_Schools_With_Burial_Site_Flag,leave_one_indicator_out,zscore,Configured weights after removing Schools_With_Burial_Site_Flag.,0.9,5.0,0.1585501453088523
+pca_pc1,pca,zscore,First principal component score oriented to align with the primary index.,3.4,11.0,1.0360642760603773

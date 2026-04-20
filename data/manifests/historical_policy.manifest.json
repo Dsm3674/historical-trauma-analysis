@@ -1,0 +1,25 @@
+{
+  "name": "historical_policy",
+  "rows": 20,
+  "columns": [
+    "State",
+    "Indicator",
+    "Value",
+    "Definition",
+    "Source_Label"
+  ],
+  "schema_version": "1.0",
+  "source_meta": {
+    "dataset_name": "historical_policy",
+    "source_org": "User-supplied source",
+    "source_url": "",
+    "accessed_on": "2026-04-20T10:01:29.277125+00:00",
+    "file_path": "/Users/divytan/Documents/New project/dsm3674-historical-trauma-analysis/data/raw/historical_policy/historical_policy.csv",
+    "citation": "",
+    "notes": "Definitions and source labels are preserved for methods reporting.",
+    "geographic_unit": "state",
+    "temporal_coverage": "",
+    "restrictions": ""
+  },
+  "saved_at_utc": "2026-04-20T10:01:29.293573+00:00"
+}

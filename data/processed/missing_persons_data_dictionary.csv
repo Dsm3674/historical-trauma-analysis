@@ -1,0 +1,8 @@
+dataset,column,dtype,non_null_count,missing_count,missing_pct,example_value,description
+missing_persons,Year,int64,20,0,0.0,2020,
+missing_persons,State,object,20,0,0.0,Arizona,
+missing_persons,Total_Missing,int64,20,0,0.0,1000,
+missing_persons,AI_AN_Missing,int64,20,0,0.0,90,
+missing_persons,AI_AN_Population_Percent,float64,20,0,0.0,4.1,
+missing_persons,AI_AN_Percent_Missing,float64,20,0,0.0,9.0,
+missing_persons,Overrepresentation_Ratio,float64,20,0,0.0,2.1951219512195124,

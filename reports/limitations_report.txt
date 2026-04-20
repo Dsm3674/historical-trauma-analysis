@@ -1,9 +1,10 @@
 Limitations:
 
 - This is an ecological analysis and must not be interpreted as individual-level evidence.
-- If the number of geographic units is below 20, associations should be interpreted as exploratory rather than confirmatory.
-- The historical trauma index is a proxy measure constructed from documented indicators; it is not a direct measure of lived experience.
-- No spatial clustering analysis is implemented in this codebase. The manuscript should not claim spatial clustering results unless a documented spatial module is added.
-- No policy recommendations should be framed as definitive unless stronger validation, richer data, and appropriate community-informed interpretation are added.
-- Any manuscript using this pipeline should clearly document source definitions, inclusion criteria, and indicator construction rules.
-- Data provenance for processed outputs should be checked in data/manifests/ before interpreting results.
+- The historical trauma index is a proxy measure constructed from observable structural indicators; it is not a direct measure of lived experience.
+- Constant indicators are documented and excluded from within-sample scoring, which improves numerical validity but also highlights construct-coverage limitations in the current sample.
+- With only 20 geographic units, bootstrap intervals and rank associations remain sensitive to influential states; permutation tests and leave-one-state-out diagnostics should be reported alongside point estimates.
+- Compositional confounding remains a serious concern for AI/AN missing-person percentage outcomes; adjusted analyses here control only for AI/AN population share, not the full set of potential confounders.
+- State-level analyses can mask within-state heterogeneity and are not substitutes for tribal, reservation, county, or community-governed analyses.
+- No causal interpretation, policy-effect attribution, or community-consensus weighting should be claimed from this pipeline alone.
+- Data provenance, source definitions, and processed-data manifests should be checked before manuscript claims are finalized.

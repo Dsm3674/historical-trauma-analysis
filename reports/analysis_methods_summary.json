@@ -1,0 +1,67 @@
+{
+  "index_name": "Historical_Trauma_Index",
+  "primary_normalization": "zscore",
+  "drop_constant_indicators": true,
+  "bootstrap_iterations": 4000,
+  "permutation_iterations": 10000,
+  "confounders": [
+    "AI_AN_Population_Percent"
+  ],
+  "outcomes": [
+    "Mean_Mortality_Disparity_Ratio",
+    "Overrepresentation_Ratio",
+    "AI_AN_Percent_Missing",
+    "AI_AN_Population_Percent"
+  ],
+  "indicator_construction": [
+    {
+      "Indicator": "BoardingSchool_Count",
+      "Definition": "Number of unique boarding schools recorded in the source listing for the state.",
+      "Source_Label": "Federal Indian Boarding School listing"
+    },
+    {
+      "Indicator": "Environmental_Burden_Index",
+      "Definition": "Average PM2.5 exposure (ug/m^3)",
+      "Source_Label": "EPA/EJSCREEN-derived"
+    },
+    {
+      "Indicator": "Federal_BoardingSchool_Presence",
+      "Definition": "State had documented federally supported Indian boarding schools (DOI dataset)",
+      "Source_Label": "DOI Federal Indian Boarding School Initiative (2022)"
+    },
+    {
+      "Indicator": "Max_BoardingSchool_Duration_Years",
+      "Definition": "Maximum observed operating duration in years across listed boarding schools in the state.",
+      "Source_Label": "Federal Indian Boarding School listing"
+    },
+    {
+      "Indicator": "Mean_BoardingSchool_Duration_Years",
+      "Definition": "Mean operating duration in years across listed boarding schools in the state.",
+      "Source_Label": "Federal Indian Boarding School listing"
+    },
+    {
+      "Indicator": "Schools_With_Burial_Site_Flag",
+      "Definition": "Count of listed boarding schools in the state with a burial-site flag in the source file.",
+      "Source_Label": "Federal Indian Boarding School listing"
+    }
+  ],
+  "constant_indicators_within_sample": [
+    {
+      "Indicator": "BoardingSchool_Count",
+      "Exclusion_Reason": "constant_within_sample"
+    },
+    {
+      "Indicator": "Federal_BoardingSchool_Presence",
+      "Exclusion_Reason": "constant_within_sample"
+    }
+  ],
+  "mortality_conditions": [
+    "Diabetes"
+  ],
+  "mortality_aggregation": "Mean_Mortality_Disparity_Ratio is the state-level mean of available Disparity_Ratio values across listed conditions.",
+  "missing_persons_metrics": {
+    "AI_AN_Percent_Missing": "100 * AI_AN_Missing / Total_Missing",
+    "Overrepresentation_Ratio": "AI_AN_Percent_Missing / AI_AN_Population_Percent"
+  },
+  "ejscreen_note": "Environmental variables are taken from the supplied state-level indicator table and preserved with definitions/source labels in combined_indicator_table.csv."
+}

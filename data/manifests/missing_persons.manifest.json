@@ -1,0 +1,27 @@
+{
+  "name": "missing_persons",
+  "rows": 20,
+  "columns": [
+    "Year",
+    "State",
+    "Total_Missing",
+    "AI_AN_Missing",
+    "AI_AN_Population_Percent",
+    "AI_AN_Percent_Missing",
+    "Overrepresentation_Ratio"
+  ],
+  "schema_version": "1.0",
+  "source_meta": {
+    "dataset_name": "missing_persons",
+    "source_org": "User-supplied source",
+    "source_url": "",
+    "accessed_on": "2026-04-20T10:01:29.276232+00:00",
+    "file_path": "/Users/divytan/Documents/New project/dsm3674-historical-trauma-analysis/data/raw/missing_persons/missing_persons.csv",
+    "citation": "",
+    "notes": "Processed output includes both compositional and disparity-oriented missing-person metrics.",
+    "geographic_unit": "state",
+    "temporal_coverage": "",
+    "restrictions": ""
+  },
+  "saved_at_utc": "2026-04-20T10:01:29.288003+00:00"
+}

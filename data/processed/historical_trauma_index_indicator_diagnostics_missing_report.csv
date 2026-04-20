@@ -1,0 +1,14 @@
+column,missing_count,missing_pct
+Indicator,0,0.0
+Configured_Weight,0,0.0
+Normalization_Method,0,0.0
+Observed_States,0,0.0
+Missing_States,0,0.0
+Unique_NonNull_Values,0,0.0
+Raw_Min,0,0.0
+Raw_Max,0,0.0
+Raw_Mean,0,0.0
+Raw_STD,0,0.0
+Is_Constant_Within_Sample,0,0.0
+Included_In_Primary_Index,0,0.0
+Exclusion_Reason,0,0.0

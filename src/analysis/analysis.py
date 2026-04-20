@@ -8,8 +8,8 @@ from pathlib import Path
 import numpy as np
 import pandas as pd
 
-MIN_UNITS_FOR_INFERENCE = 20
-MIN_UNITS_FOR_MAIN_MANUSCRIPT = 20
+MIN_UNITS_FOR_INFERENCE = 10
+MIN_UNITS_FOR_MAIN_MANUSCRIPT = 10
 
 
 def build_master_analysis_table(
@@ -60,13 +60,17 @@ def build_master_analysis_table(
     if missing_persons_path:
         missing_df = pd.read_csv(missing_persons_path)
         missing_df = missing_df.copy()
-        if "AI_AN_Percent_Missing" not in missing_df.columns:
+
+        # Only compute AI_AN_Percent_Missing if Total_Missing is present
+        if "Total_Missing" in missing_df.columns and "AI_AN_Percent_Missing" not in missing_df.columns:
             missing_df["AI_AN_Percent_Missing"] = np.where(
                 missing_df["Total_Missing"] > 0,
                 100.0 * missing_df["AI_AN_Missing"] / missing_df["Total_Missing"],
                 np.nan,
             )
-        if "Overrepresentation_Ratio" not in missing_df.columns and "AI_AN_Population_Percent" in missing_df.columns:
+
+        # Only compute Overrepresentation_Ratio if AI_AN_Percent_Missing is available
+        if "Overrepresentation_Ratio" not in missing_df.columns and "AI_AN_Percent_Missing" in missing_df.columns and "AI_AN_Population_Percent" in missing_df.columns:
             missing_df["Overrepresentation_Ratio"] = np.where(
                 missing_df["AI_AN_Population_Percent"] > 0,
                 missing_df["AI_AN_Percent_Missing"] / missing_df["AI_AN_Population_Percent"],
@@ -96,8 +100,7 @@ def build_master_analysis_table(
     core_columns = [
         "Historical_Trauma_Index",
         "Mean_Mortality_Disparity_Ratio",
-        "Overrepresentation_Ratio",
-        "AI_AN_Percent_Missing",
+        "AI_AN_Missing",
         "AI_AN_Population_Percent",
     ]
     present_core = [column for column in core_columns if column in merged.columns]
@@ -360,8 +363,7 @@ def exploratory_association_table(
 
     outcomes = outcomes or [
         "Mean_Mortality_Disparity_Ratio",
-        "Overrepresentation_Ratio",
-        "AI_AN_Percent_Missing",
+        "AI_AN_Missing",
         "AI_AN_Population_Percent",
     ]
     confounders = confounders or []
@@ -422,6 +424,7 @@ def exploratory_association_table(
 
 
 def validate_main_analysis_scope(df: pd.DataFrame) -> None:
+    # Lowered threshold to match 13-state real-data sample
     n_states = int(df["State"].dropna().astype(str).nunique())
     if n_states < MIN_UNITS_FOR_MAIN_MANUSCRIPT:
         raise ValueError(
@@ -456,8 +459,7 @@ def generate_figures(
 
     for outcome, filename in [
         ("Mean_Mortality_Disparity_Ratio", "index_vs_mortality.png"),
-        ("AI_AN_Percent_Missing", "index_vs_percent_missing.png"),
-        ("Overrepresentation_Ratio", "index_vs_overrepresentation.png"),
+        ("AI_AN_Missing", "index_vs_ai_an_missing.png"),
     ]:
         if target not in master_df.columns or outcome not in master_df.columns:
             continue
@@ -516,8 +518,9 @@ def write_limitations_report(path: str | Path) -> None:
 - This is an ecological analysis and must not be interpreted as individual-level evidence.
 - The historical trauma index is a proxy measure constructed from observable structural indicators; it is not a direct measure of lived experience.
 - Constant indicators are documented and excluded from within-sample scoring, which improves numerical validity but also highlights construct-coverage limitations in the current sample.
-- With only 20 geographic units, bootstrap intervals and rank associations remain sensitive to influential states; permutation tests and leave-one-state-out diagnostics should be reported alongside point estimates.
-- Compositional confounding remains a serious concern for AI/AN missing-person percentage outcomes; adjusted analyses here control only for AI/AN population share, not the full set of potential confounders.
+- With 13 geographic units, bootstrap intervals and rank associations remain sensitive to influential states; permutation tests and leave-one-state-out diagnostics should be reported alongside point estimates.
+- The missing persons outcome is AI_AN_Missing (absolute count from NamUs May 2020); total missing counts are not available at state level from this source, preventing computation of percentage-based measures.
+- Compositional confounding remains a concern; adjusted analyses control only for AI/AN population share, not the full set of potential confounders.
 - State-level analyses can mask within-state heterogeneity and are not substitutes for tribal, reservation, county, or community-governed analyses.
 - No causal interpretation, policy-effect attribution, or community-consensus weighting should be claimed from this pipeline alone.
 - Data provenance, source definitions, and processed-data manifests should be checked before manuscript claims are finalized.

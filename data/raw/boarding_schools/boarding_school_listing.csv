@@ -1,21 +1,14 @@
 State,School_Name,Open_Year,Close_Year,Burial_Site_Indicator
-Arizona,School_AZ,1890,1950,1
-New Mexico,School_NM,1885,1955,1
-Oklahoma,School_OK,1895,1970,1
-Alaska,School_AK,1905,1965,0
-Montana,School_MT,1892,1958,1
-California,School_CA,1901,1951,0
-Texas,School_TX,1908,1962,0
-Washington,School_WA,1898,1959,0
-North Carolina,School_NC,1903,1957,0
-Minnesota,School_MN,1891,1961,1
-South Dakota,School_SD,1889,1963,1
-Florida,School_FL,1910,1950,0
-Colorado,School_CO,1904,1956,0
-Nevada,School_NV,1902,1954,0
-Oregon,School_OR,1897,1953,0
-Utah,School_UT,1906,1958,0
-Michigan,School_MI,1900,1948,0
-New York,School_NY,1912,1952,0
-Idaho,School_ID,1907,1955,0
-New Jersey,School_NJ,1911,1949,0
+Alaska,Multiple Federal Boarding Schools (n=21),1888,1983,1
+Arizona,Multiple Federal Boarding Schools (n=47),1891,1990,1
+California,Multiple Federal Boarding Schools (n=12),1893,1980,1
+Michigan,Multiple Federal Boarding Schools (n=5),1888,1946,1
+Minnesota,Multiple Federal Boarding Schools (n=21),1887,1959,1
+Nevada,Multiple Federal Boarding Schools (n=3),1882,1980,1
+New Mexico,Multiple Federal Boarding Schools (n=43),1884,1981,1
+New York,Multiple Federal Boarding Schools (n=3),1855,1957,0
+North Carolina,Multiple Federal Boarding Schools (n=4),1880,1900,0
+Oklahoma,Multiple Federal Boarding Schools (n=76),1838,1980,1
+Oregon,Multiple Federal Boarding Schools (n=9),1880,1975,1
+South Dakota,Multiple Federal Boarding Schools (n=30),1886,1975,1
+Washington,Multiple Federal Boarding Schools (n=15),1883,1920,1

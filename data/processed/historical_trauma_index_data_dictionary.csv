@@ -1,6 +1,6 @@
 dataset,column,dtype,non_null_count,missing_count,missing_pct,example_value,description
-historical_trauma_index,State,str,20,0,0.0,Alaska,
-historical_trauma_index,Historical_Trauma_Index,float64,20,0,0.0,0.5124445070192751,
-historical_trauma_index,Indicators_Used,int64,20,0,0.0,4,
-historical_trauma_index,Normalization_Method,str,20,0,0.0,zscore,
-historical_trauma_index,Constant_Indicators_Dropped,int64,20,0,0.0,2,
+historical_trauma_index,State,object,20,0,0.0,Alaska,
+historical_trauma_index,Historical_Trauma_Index,float64,20,0,0.0,0.4085862544162295,
+historical_trauma_index,Indicators_Used,int64,20,0,0.0,5,
+historical_trauma_index,Normalization_Method,object,20,0,0.0,zscore,
+historical_trauma_index,Constant_Indicators_Dropped,int64,20,0,0.0,1,

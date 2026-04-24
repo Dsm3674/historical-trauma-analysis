@@ -10,7 +10,7 @@
   ],
   "outcomes": [
     "Mean_Mortality_Disparity_Ratio",
-    "AI_AN_Missing",
+    "AI_AN_Missing_Rate_per_100k_AI_AN",
     "AI_AN_Population_Percent"
   ],
   "sensitivity": {

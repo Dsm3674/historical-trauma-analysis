@@ -27,6 +27,7 @@ This note maps the current code outputs to the main reviewer concerns for manusc
 
 - Compositional confounding is addressed more directly in code.
   The adjusted columns `Partial_Spearman_Adjusted_Rho` and `Partial_Adjusted_P_Value` quantify how associations change after controlling for `AI_AN_Population_Percent`.
+  The main missing-persons outcome is now `AI_AN_Missing_Rate_per_100k_AI_AN` rather than the raw `AI_AN_Missing` count.
 
 - Sample-selection auditing is now explicit.
   The pipeline writes:
@@ -37,8 +38,11 @@ This note maps the current code outputs to the main reviewer concerns for manusc
 - Data-construction details are surfaced for methods reporting.
   `reports/analysis_methods_summary.json` records:
   - primary normalization
+  - complete-case state count and state list
+  - outcome-specific sample sizes
   - indicator definitions and source labels
   - constant indicators within sample
+  - the weighting caveat
   - mortality condition list
   - mortality aggregation rule
   - missing-person outcome formulas
@@ -53,7 +57,7 @@ This note maps the current code outputs to the main reviewer concerns for manusc
   Region, urbanization, income, or other state covariates are not available in the current local inputs.
 
 - Excluded-state comparisons are structurally supported but only informative if excluded states exist in the local raw inputs.
-  In the current local snapshot, the audit shows 20 included and 0 excluded states.
+  In the current local snapshot, the audit distinguishes 20 index states from the 13 complete-case states retained for association analyses.
 
 - Figure generation is implemented in code, but no images were rendered in this environment because `matplotlib` is not installed locally.
 
@@ -61,4 +65,4 @@ This note maps the current code outputs to the main reviewer concerns for manusc
 
 - If you use the new outputs, revise Methods and Results to mention permutation p-values, Kendall's tau-b, partial correlations, and leave-one-state-out diagnostics.
 - If your actual repository raw inputs differ from this local snapshot, regenerate outputs before copying exact values into the manuscript.
-- Check the constant-indicator section carefully: in this local reconstructed snapshot, `BoardingSchool_Count` is also constant. If your real repository data vary on that feature, regenerate before revising the paper text.
+- Check the constant-indicator section carefully after each rerun. The current code recovers DOI-style aggregate boarding-school counts from labels such as `(n=21)`, so `BoardingSchool_Count` should no longer be constant when those counts are present in the raw file.

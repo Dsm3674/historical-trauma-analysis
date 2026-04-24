@@ -173,13 +173,20 @@ class ResearchPipeline:
         sensitivity = pd.read_csv(self.processed_dir / "historical_trauma_index_sensitivity.csv")
         generate_figures(master, sensitivity, self.vis_dir, target=self.analysis_config["index_name"])
 
-        write_limitations_report(self.report_dir / "limitations_report.txt")
+        main_analysis_state_count = int(master.loc[master["Included_In_Complete_Case"], "State"].nunique())
+        index_state_count = int(master["State"].nunique())
+        write_limitations_report(
+            self.report_dir / "limitations_report.txt",
+            main_analysis_state_count=main_analysis_state_count,
+            index_state_count=index_state_count,
+        )
         self._write_methods_summary()
 
     def _write_methods_summary(self) -> None:
         combined = pd.read_csv(self.processed_dir / "combined_indicator_table.csv")
         indicator_diagnostics = pd.read_csv(self.processed_dir / "historical_trauma_index_indicator_diagnostics.csv")
         mortality = pd.read_csv(self.processed_dir / "mortality.csv")
+        master = pd.read_csv(self.processed_dir / "master_analysis_table.csv")
 
         indicator_summary = (
             combined.groupby("Indicator")
@@ -199,18 +206,27 @@ class ResearchPipeline:
             "permutation_iterations": int(self.analysis_config.get("permutation_iterations", 10000)),
             "confounders": self.analysis_config.get("confounders", []),
             "outcomes": self.analysis_config.get("outcomes", []),
+            "index_state_count": int(master["State"].nunique()),
+            "complete_case_state_count": int(master.loc[master["Included_In_Complete_Case"], "State"].nunique()),
+            "complete_case_states": master.loc[master["Included_In_Complete_Case"], "State"].sort_values().tolist(),
+            "outcome_sample_sizes": {
+                outcome: int(master[[self.analysis_config["index_name"], outcome]].dropna().shape[0])
+                for outcome in self.analysis_config.get("outcomes", [])
+                if outcome in master.columns
+            },
             "indicator_construction": indicator_summary.to_dict("records"),
             "constant_indicators_within_sample": indicator_diagnostics.loc[
                 indicator_diagnostics["Is_Constant_Within_Sample"] == True,
                 ["Indicator", "Exclusion_Reason"],
             ].to_dict("records"),
+            "weighting_note": "Configured indicator weights are heuristic and not community-informed; sensitivity analyses quantify robustness to weighting choices but do not validate the weighting scheme.",
             "mortality_conditions": sorted({str(value) for value in mortality.get("Condition", pd.Series(dtype=str)).dropna()}),
             "mortality_aggregation": "Mean_Mortality_Disparity_Ratio is the state-level mean of available Disparity_Ratio values across listed conditions.",
             "missing_persons_metrics": {
-                "AI_AN_Percent_Missing": "100 * AI_AN_Missing / Total_Missing",
-                "Overrepresentation_Ratio": "AI_AN_Percent_Missing / AI_AN_Population_Percent",
+                "AI_AN_Missing_Rate_per_100k_AI_AN": "100000 * AI_AN_Missing / AI_AN_Population",
             },
-            "ejscreen_note": "Environmental variables are taken from the supplied state-level indicator table and preserved with definitions/source labels in combined_indicator_table.csv.",
+            "boarding_school_note": "BoardingSchool_Count uses aggregated counts extracted from DOI-style source labels when available; other boarding indicators remain limited by the state-level aggregate source file.",
+            "ejscreen_note": "Environmental variables are taken from the supplied state-level indicator table, are not AI/AN-specific, and remain temporally misaligned with the 2020 outcomes.",
         }
         write_methods_summary(self.report_dir / "analysis_methods_summary.json", payload)
 

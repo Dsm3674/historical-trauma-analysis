@@ -1,6 +1,16 @@
 from __future__ import annotations
 
+import re
+
 import pandas as pd
+
+
+AGGREGATED_COUNT_PATTERN = re.compile(r"\(n\s*=\s*(\d+)\)", re.IGNORECASE)
+
+
+def _extract_aggregated_school_count(series: pd.Series) -> pd.Series:
+    extracted = series.astype(str).str.extract(AGGREGATED_COUNT_PATTERN, expand=False)
+    return pd.to_numeric(extracted, errors="coerce")
 
 
 def load_boarding_school_listing(path: str) -> pd.DataFrame:
@@ -24,6 +34,8 @@ def build_state_boarding_school_features(
     work = df.copy()
     work[state_col] = work[state_col].astype(str).str.strip()
     work[school_col] = work[school_col].astype(str).str.strip()
+    work["_Aggregated_School_Count"] = _extract_aggregated_school_count(work[school_col])
+    work["_Effective_School_Count"] = work["_Aggregated_School_Count"].fillna(1.0)
 
     if open_year_col in work.columns:
         work[open_year_col] = pd.to_numeric(work[open_year_col], errors="coerce")
@@ -33,11 +45,12 @@ def build_state_boarding_school_features(
         work[burial_site_col] = pd.to_numeric(work[burial_site_col], errors="coerce").fillna(0)
 
     grouped = (
-        work.groupby(state_col)[school_col]
-        .nunique()
+        work.groupby(state_col)["_Effective_School_Count"]
+        .sum()
         .reset_index(name="BoardingSchool_Count")
         .rename(columns={state_col: "State"})
     )
+    grouped["BoardingSchool_Count"] = grouped["BoardingSchool_Count"].astype(float)
 
     if open_year_col in work.columns and close_year_col in work.columns:
         durations = work.copy()
@@ -70,7 +83,7 @@ def build_state_boarding_school_features(
 
 def to_indicator_table(df: pd.DataFrame) -> pd.DataFrame:
     definition_map = {
-        "BoardingSchool_Count": "Number of unique boarding schools recorded in the source listing for the state.",
+        "BoardingSchool_Count": "Number of boarding schools recorded for the state, using aggregated DOI counts when encoded in the source label and unique rows otherwise.",
         "Mean_BoardingSchool_Duration_Years": "Mean operating duration in years across listed boarding schools in the state.",
         "Max_BoardingSchool_Duration_Years": "Maximum observed operating duration in years across listed boarding schools in the state.",
         "Schools_With_Burial_Site_Flag": "Count of listed boarding schools in the state with a burial-site flag in the source file.",

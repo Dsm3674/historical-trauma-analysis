@@ -2,10 +2,15 @@ Limitations:
 
 - This is an ecological analysis and must not be interpreted as individual-level evidence.
 - The historical trauma index is a proxy measure constructed from observable structural indicators; it is not a direct measure of lived experience.
+- Configured indicator weights are heuristic and not community-informed; sensitivity analyses should be treated as robustness checks rather than validation of the weighting scheme.
+- BoardingSchool_Count now recovers DOI-style aggregated counts when they are encoded in the source label, but the boarding-school file is still a state-level aggregate and does not fully resolve construct-measurement limitations for all boarding indicators.
 - Constant indicators are documented and excluded from within-sample scoring, which improves numerical validity but also highlights construct-coverage limitations in the current sample.
-- With 13 geographic units, bootstrap intervals and rank associations remain sensitive to influential states; permutation tests and leave-one-state-out diagnostics should be reported alongside point estimates.
-- The missing persons outcome is AI_AN_Missing (absolute count from NamUs May 2020); total missing counts are not available at state level from this source, preventing computation of percentage-based measures.
-- Compositional confounding remains a concern; adjusted analyses control only for AI/AN population share, not the full set of potential confounders.
+- With only 13 complete-case states (20 index states overall), bootstrap intervals and rank associations remain sensitive to influential states; permutation tests and leave-one-state-out diagnostics should be reported alongside point estimates.
+- The missing persons outcome is now an AI/AN population-adjusted rate per 100,000 AI/AN residents rather than an absolute count, which reduces but does not eliminate compositional confounding.
+- Adjusted analyses control only for AI/AN population share, not the full set of potential confounders.
+- Temporal alignment remains imperfect: the environmental indicator is from a later period than the 2020 mortality and missing-person outcomes.
+- The environmental indicator is state-level and not AI/AN-specific, so within-state heterogeneity and community-level exposure error likely remain substantial.
+- Only one mortality condition is analyzed in the current inputs, so disease-specific inference remains narrow and vulnerable to suppression-driven selection.
 - State-level analyses can mask within-state heterogeneity and are not substitutes for tribal, reservation, county, or community-governed analyses.
 - No causal interpretation, policy-effect attribution, or community-consensus weighting should be claimed from this pipeline alone.
 - Data provenance, source definitions, and processed-data manifests should be checked before manuscript claims are finalized.

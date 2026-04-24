@@ -1,12 +1,12 @@
 column,missing_count,missing_pct
 State,0,0.0
-Historical_Trauma_Index,7,4.375
+Historical_Trauma_Index,7,3.888888888888889
 Scheme,0,0.0
 Scheme_Type,0,0.0
 Normalization_Method,0,0.0
 Scheme_Note,0,0.0
-Rank,7,4.375
+Rank,7,3.888888888888889
 Primary_Score,0,0.0
 Primary_Rank,0,0.0
-Score_Delta_vs_Primary,7,4.375
-Rank_Shift_vs_Primary,7,4.375
+Score_Delta_vs_Primary,7,3.888888888888889
+Rank_Shift_vs_Primary,7,3.888888888888889

@@ -1,17 +1,17 @@
 State,Indicator,Value,Definition,Source_Label
-Alaska,BoardingSchool_Count,1.0,Number of unique boarding schools recorded in the source listing for the state.,Federal Indian Boarding School listing
-Arizona,BoardingSchool_Count,1.0,Number of unique boarding schools recorded in the source listing for the state.,Federal Indian Boarding School listing
-California,BoardingSchool_Count,1.0,Number of unique boarding schools recorded in the source listing for the state.,Federal Indian Boarding School listing
-Michigan,BoardingSchool_Count,1.0,Number of unique boarding schools recorded in the source listing for the state.,Federal Indian Boarding School listing
-Minnesota,BoardingSchool_Count,1.0,Number of unique boarding schools recorded in the source listing for the state.,Federal Indian Boarding School listing
-Nevada,BoardingSchool_Count,1.0,Number of unique boarding schools recorded in the source listing for the state.,Federal Indian Boarding School listing
-New Mexico,BoardingSchool_Count,1.0,Number of unique boarding schools recorded in the source listing for the state.,Federal Indian Boarding School listing
-New York,BoardingSchool_Count,1.0,Number of unique boarding schools recorded in the source listing for the state.,Federal Indian Boarding School listing
-North Carolina,BoardingSchool_Count,1.0,Number of unique boarding schools recorded in the source listing for the state.,Federal Indian Boarding School listing
-Oklahoma,BoardingSchool_Count,1.0,Number of unique boarding schools recorded in the source listing for the state.,Federal Indian Boarding School listing
-Oregon,BoardingSchool_Count,1.0,Number of unique boarding schools recorded in the source listing for the state.,Federal Indian Boarding School listing
-South Dakota,BoardingSchool_Count,1.0,Number of unique boarding schools recorded in the source listing for the state.,Federal Indian Boarding School listing
-Washington,BoardingSchool_Count,1.0,Number of unique boarding schools recorded in the source listing for the state.,Federal Indian Boarding School listing
+Alaska,BoardingSchool_Count,21.0,"Number of boarding schools recorded for the state, using aggregated DOI counts when encoded in the source label and unique rows otherwise.",Federal Indian Boarding School listing
+Arizona,BoardingSchool_Count,47.0,"Number of boarding schools recorded for the state, using aggregated DOI counts when encoded in the source label and unique rows otherwise.",Federal Indian Boarding School listing
+California,BoardingSchool_Count,12.0,"Number of boarding schools recorded for the state, using aggregated DOI counts when encoded in the source label and unique rows otherwise.",Federal Indian Boarding School listing
+Michigan,BoardingSchool_Count,5.0,"Number of boarding schools recorded for the state, using aggregated DOI counts when encoded in the source label and unique rows otherwise.",Federal Indian Boarding School listing
+Minnesota,BoardingSchool_Count,21.0,"Number of boarding schools recorded for the state, using aggregated DOI counts when encoded in the source label and unique rows otherwise.",Federal Indian Boarding School listing
+Nevada,BoardingSchool_Count,3.0,"Number of boarding schools recorded for the state, using aggregated DOI counts when encoded in the source label and unique rows otherwise.",Federal Indian Boarding School listing
+New Mexico,BoardingSchool_Count,43.0,"Number of boarding schools recorded for the state, using aggregated DOI counts when encoded in the source label and unique rows otherwise.",Federal Indian Boarding School listing
+New York,BoardingSchool_Count,3.0,"Number of boarding schools recorded for the state, using aggregated DOI counts when encoded in the source label and unique rows otherwise.",Federal Indian Boarding School listing
+North Carolina,BoardingSchool_Count,4.0,"Number of boarding schools recorded for the state, using aggregated DOI counts when encoded in the source label and unique rows otherwise.",Federal Indian Boarding School listing
+Oklahoma,BoardingSchool_Count,76.0,"Number of boarding schools recorded for the state, using aggregated DOI counts when encoded in the source label and unique rows otherwise.",Federal Indian Boarding School listing
+Oregon,BoardingSchool_Count,9.0,"Number of boarding schools recorded for the state, using aggregated DOI counts when encoded in the source label and unique rows otherwise.",Federal Indian Boarding School listing
+South Dakota,BoardingSchool_Count,30.0,"Number of boarding schools recorded for the state, using aggregated DOI counts when encoded in the source label and unique rows otherwise.",Federal Indian Boarding School listing
+Washington,BoardingSchool_Count,15.0,"Number of boarding schools recorded for the state, using aggregated DOI counts when encoded in the source label and unique rows otherwise.",Federal Indian Boarding School listing
 Alaska,Mean_BoardingSchool_Duration_Years,95.0,Mean operating duration in years across listed boarding schools in the state.,Federal Indian Boarding School listing
 Arizona,Mean_BoardingSchool_Duration_Years,99.0,Mean operating duration in years across listed boarding schools in the state.,Federal Indian Boarding School listing
 California,Mean_BoardingSchool_Duration_Years,87.0,Mean operating duration in years across listed boarding schools in the state.,Federal Indian Boarding School listing

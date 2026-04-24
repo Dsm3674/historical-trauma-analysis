@@ -1,5 +1,5 @@
 dataset,column,dtype,non_null_count,missing_count,missing_pct,example_value,description
 missing_persons,Year,int64,13,0,0.0,2020,
-missing_persons,State,str,13,0,0.0,Alaska,
+missing_persons,State,object,13,0,0.0,Alaska,
 missing_persons,AI_AN_Missing,int64,13,0,0.0,145,
 missing_persons,AI_AN_Population_Percent,float64,13,0,0.0,15.5,

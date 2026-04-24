@@ -9,13 +9,35 @@
   ],
   "outcomes": [
     "Mean_Mortality_Disparity_Ratio",
-    "AI_AN_Missing",
+    "AI_AN_Missing_Rate_per_100k_AI_AN",
     "AI_AN_Population_Percent"
   ],
+  "index_state_count": 20,
+  "complete_case_state_count": 13,
+  "complete_case_states": [
+    "Alaska",
+    "Arizona",
+    "California",
+    "Michigan",
+    "Minnesota",
+    "Nevada",
+    "New Mexico",
+    "New York",
+    "North Carolina",
+    "Oklahoma",
+    "Oregon",
+    "South Dakota",
+    "Washington"
+  ],
+  "outcome_sample_sizes": {
+    "Mean_Mortality_Disparity_Ratio": 13,
+    "AI_AN_Missing_Rate_per_100k_AI_AN": 13,
+    "AI_AN_Population_Percent": 20
+  },
   "indicator_construction": [
     {
       "Indicator": "BoardingSchool_Count",
-      "Definition": "Number of unique boarding schools recorded in the source listing for the state.",
+      "Definition": "Number of boarding schools recorded for the state, using aggregated DOI counts when encoded in the source label and unique rows otherwise.",
       "Source_Label": "Federal Indian Boarding School listing"
     },
     {
@@ -46,21 +68,18 @@
   ],
   "constant_indicators_within_sample": [
     {
-      "Indicator": "BoardingSchool_Count",
-      "Exclusion_Reason": "constant_within_sample"
-    },
-    {
       "Indicator": "Federal_BoardingSchool_Presence",
       "Exclusion_Reason": "constant_within_sample"
     }
   ],
+  "weighting_note": "Configured indicator weights are heuristic and not community-informed; sensitivity analyses quantify robustness to weighting choices but do not validate the weighting scheme.",
   "mortality_conditions": [
     "Diabetes"
   ],
   "mortality_aggregation": "Mean_Mortality_Disparity_Ratio is the state-level mean of available Disparity_Ratio values across listed conditions.",
   "missing_persons_metrics": {
-    "AI_AN_Percent_Missing": "100 * AI_AN_Missing / Total_Missing",
-    "Overrepresentation_Ratio": "AI_AN_Percent_Missing / AI_AN_Population_Percent"
+    "AI_AN_Missing_Rate_per_100k_AI_AN": "100000 * AI_AN_Missing / AI_AN_Population"
   },
-  "ejscreen_note": "Environmental variables are taken from the supplied state-level indicator table and preserved with definitions/source labels in combined_indicator_table.csv."
+  "boarding_school_note": "BoardingSchool_Count uses aggregated counts extracted from DOI-style source labels when available; other boarding indicators remain limited by the state-level aggregate source file.",
+  "ejscreen_note": "Environmental variables are taken from the supplied state-level indicator table, are not AI/AN-specific, and remain temporally misaligned with the 2020 outcomes."
 }

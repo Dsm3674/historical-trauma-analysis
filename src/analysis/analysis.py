@@ -8,7 +8,7 @@ from pathlib import Path
 import numpy as np
 import pandas as pd
 
-MIN_UNITS_FOR_INFERENCE = 10
+MIN_UNITS_FOR_INFERENCE = 20
 MIN_UNITS_FOR_MAIN_MANUSCRIPT = 10
 
 
@@ -97,10 +97,17 @@ def build_master_analysis_table(
             )
             merged = merged.drop(columns=["AI_AN_Population_Percent_missing"])
 
+    if {"AI_AN_Missing", "AI_AN_Population"}.issubset(merged.columns):
+        merged["AI_AN_Missing_Rate_per_100k_AI_AN"] = np.where(
+            merged["AI_AN_Population"] > 0,
+            100000.0 * merged["AI_AN_Missing"] / merged["AI_AN_Population"],
+            np.nan,
+        )
+
     core_columns = [
         "Historical_Trauma_Index",
         "Mean_Mortality_Disparity_Ratio",
-        "AI_AN_Missing",
+        "AI_AN_Missing_Rate_per_100k_AI_AN",
         "AI_AN_Population_Percent",
     ]
     present_core = [column for column in core_columns if column in merged.columns]
@@ -363,7 +370,7 @@ def exploratory_association_table(
 
     outcomes = outcomes or [
         "Mean_Mortality_Disparity_Ratio",
-        "AI_AN_Missing",
+        "AI_AN_Missing_Rate_per_100k_AI_AN",
         "AI_AN_Population_Percent",
     ]
     confounders = confounders or []
@@ -457,9 +464,17 @@ def generate_figures(
         plt.savefig(output_dir / "index_distribution.png", dpi=300)
         plt.close()
 
-    for outcome, filename in [
-        ("Mean_Mortality_Disparity_Ratio", "index_vs_mortality.png"),
-        ("AI_AN_Missing", "index_vs_ai_an_missing.png"),
+    display_labels = {
+        target: "Historical Trauma Index",
+        "Mean_Mortality_Disparity_Ratio": "Mean mortality disparity ratio",
+        "AI_AN_Missing_Rate_per_100k_AI_AN": "AI/AN missing persons rate per 100,000 AI/AN population",
+    }
+    for outcome, filenames in [
+        ("Mean_Mortality_Disparity_Ratio", ["index_vs_mortality.png"]),
+        (
+            "AI_AN_Missing_Rate_per_100k_AI_AN",
+            ["index_vs_ai_an_missing_rate.png", "index_vs_ai_an_missing.png"],
+        ),
     ]:
         if target not in master_df.columns or outcome not in master_df.columns:
             continue
@@ -478,11 +493,12 @@ def generate_figures(
                 xytext=(4, 4),
                 textcoords="offset points",
             )
-        plt.xlabel(target)
-        plt.ylabel(outcome)
-        plt.title(f"{target} vs {outcome}")
+        plt.xlabel(display_labels.get(target, target))
+        plt.ylabel(display_labels.get(outcome, outcome))
+        plt.title(f"{display_labels.get(target, target)} vs {display_labels.get(outcome, outcome)}")
         plt.tight_layout()
-        plt.savefig(output_dir / filename, dpi=300)
+        for filename in filenames:
+            plt.savefig(output_dir / filename, dpi=300)
         plt.close()
 
     primary = sensitivity_df.loc[sensitivity_df["Scheme"] == "primary"].copy()
@@ -512,15 +528,20 @@ def generate_figures(
         plt.close()
 
 
-def write_limitations_report(path: str | Path) -> None:
-    text = """Limitations:
+def write_limitations_report(path: str | Path, main_analysis_state_count: int, index_state_count: int) -> None:
+    text = f"""Limitations:
 
 - This is an ecological analysis and must not be interpreted as individual-level evidence.
 - The historical trauma index is a proxy measure constructed from observable structural indicators; it is not a direct measure of lived experience.
+- Configured indicator weights are heuristic and not community-informed; sensitivity analyses should be treated as robustness checks rather than validation of the weighting scheme.
+- BoardingSchool_Count now recovers DOI-style aggregated counts when they are encoded in the source label, but the boarding-school file is still a state-level aggregate and does not fully resolve construct-measurement limitations for all boarding indicators.
 - Constant indicators are documented and excluded from within-sample scoring, which improves numerical validity but also highlights construct-coverage limitations in the current sample.
-- With 13 geographic units, bootstrap intervals and rank associations remain sensitive to influential states; permutation tests and leave-one-state-out diagnostics should be reported alongside point estimates.
-- The missing persons outcome is AI_AN_Missing (absolute count from NamUs May 2020); total missing counts are not available at state level from this source, preventing computation of percentage-based measures.
-- Compositional confounding remains a concern; adjusted analyses control only for AI/AN population share, not the full set of potential confounders.
+- With only {main_analysis_state_count} complete-case states ({index_state_count} index states overall), bootstrap intervals and rank associations remain sensitive to influential states; permutation tests and leave-one-state-out diagnostics should be reported alongside point estimates.
+- The missing persons outcome is now an AI/AN population-adjusted rate per 100,000 AI/AN residents rather than an absolute count, which reduces but does not eliminate compositional confounding.
+- Adjusted analyses control only for AI/AN population share, not the full set of potential confounders.
+- Temporal alignment remains imperfect: the environmental indicator is from a later period than the 2020 mortality and missing-person outcomes.
+- The environmental indicator is state-level and not AI/AN-specific, so within-state heterogeneity and community-level exposure error likely remain substantial.
+- Only one mortality condition is analyzed in the current inputs, so disease-specific inference remains narrow and vulnerable to suppression-driven selection.
 - State-level analyses can mask within-state heterogeneity and are not substitutes for tribal, reservation, county, or community-governed analyses.
 - No causal interpretation, policy-effect attribution, or community-consensus weighting should be claimed from this pipeline alone.
 - Data provenance, source definitions, and processed-data manifests should be checked before manuscript claims are finalized.

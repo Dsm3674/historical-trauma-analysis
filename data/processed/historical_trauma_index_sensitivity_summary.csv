@@ -1,9 +1,10 @@
 Scheme,Scheme_Type,Normalization_Method,Scheme_Note,Mean_Absolute_Rank_Shift,Max_Absolute_Rank_Shift,Mean_Absolute_Score_Delta
-configured_weights_minmax,alternate_normalization,minmax,Configured weights under alternate normalization.,2.4,8.0,0.5715905962100654
+configured_weights_minmax,alternate_normalization,minmax,Configured weights under alternate normalization.,1.7,6.0,0.5511071406918273
 primary,configured_weights,zscore,Configured weights after dropping constant indicators.,0.0,0.0,0.0
-equal_weights,equal_weights,zscore,Equal weights across included indicators.,0.7,4.0,0.03830823799067685
-leave_out_Environmental_Burden_Index,leave_one_indicator_out,zscore,Configured weights after removing Environmental_Burden_Index.,3.6923076923076925,8.0,0.3484434714683434
-leave_out_Max_BoardingSchool_Duration_Years,leave_one_indicator_out,zscore,Configured weights after removing Max_BoardingSchool_Duration_Years.,0.4,2.0,0.09980718903464034
-leave_out_Mean_BoardingSchool_Duration_Years,leave_one_indicator_out,zscore,Configured weights after removing Mean_BoardingSchool_Duration_Years.,0.4,2.0,0.09980718903464034
-leave_out_Schools_With_Burial_Site_Flag,leave_one_indicator_out,zscore,Configured weights after removing Schools_With_Burial_Site_Flag.,1.2,9.0,0.1603936429644634
-pca_pc1,pca,zscore,First principal component score oriented to align with the primary index.,4.0,8.0,0.6848479674173251
+equal_weights,equal_weights,zscore,Equal weights across included indicators.,0.5,2.0,0.03335062445300756
+leave_out_BoardingSchool_Count,leave_one_indicator_out,zscore,Configured weights after removing BoardingSchool_Count.,0.9,4.0,0.08960822196583637
+leave_out_Environmental_Burden_Index,leave_one_indicator_out,zscore,Configured weights after removing Environmental_Burden_Index.,3.0,5.0,0.290706140609596
+leave_out_Max_BoardingSchool_Duration_Years,leave_one_indicator_out,zscore,Configured weights after removing Max_BoardingSchool_Duration_Years.,0.6,2.0,0.071777847145663
+leave_out_Mean_BoardingSchool_Duration_Years,leave_one_indicator_out,zscore,Configured weights after removing Mean_BoardingSchool_Duration_Years.,0.6,2.0,0.071777847145663
+leave_out_Schools_With_Burial_Site_Flag,leave_one_indicator_out,zscore,Configured weights after removing Schools_With_Burial_Site_Flag.,1.5,9.0,0.11969220276893469
+pca_pc1,pca,zscore,First principal component score oriented to align with the primary index.,3.6,7.0,0.7486929283175059

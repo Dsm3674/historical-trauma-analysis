@@ -1,6 +1,6 @@
 dataset,column,dtype,non_null_count,missing_count,missing_pct,example_value,description
-environmental_hazards,State,str,20,0,0.0,Arizona,
-environmental_hazards,Indicator,str,20,0,0.0,Environmental_Burden_Index,
+environmental_hazards,State,object,20,0,0.0,Arizona,
+environmental_hazards,Indicator,object,20,0,0.0,Environmental_Burden_Index,
 environmental_hazards,Value,float64,20,0,0.0,5.2,
-environmental_hazards,Definition,str,20,0,0.0,Average PM2.5 exposure (ug/m^3),
-environmental_hazards,Source_Label,str,20,0,0.0,EPA/EJSCREEN-derived,
+environmental_hazards,Definition,object,20,0,0.0,Average PM2.5 exposure (ug/m^3),
+environmental_hazards,Source_Label,object,20,0,0.0,EPA/EJSCREEN-derived,

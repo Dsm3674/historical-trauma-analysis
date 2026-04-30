@@ -1,0 +1,7 @@
+dataset,column,dtype,non_null_count,missing_count,missing_pct,example_value,description
+structural_composite_configured_weights,State,object,20,0,0.0,Alaska,
+structural_composite_configured_weights,Structural_Exposure_Composite,float64,20,0,0.0,0.4085862544162295,
+structural_composite_configured_weights,Indicators_Used,int64,20,0,0.0,5,
+structural_composite_configured_weights,Normalization_Method,object,20,0,0.0,zscore,
+structural_composite_configured_weights,Constant_Indicators_Dropped,int64,20,0,0.0,1,
+structural_composite_configured_weights,Historical_Trauma_Index,float64,20,0,0.0,0.4085862544162295,

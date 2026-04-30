@@ -8,6 +8,7 @@ from pathlib import Path
 import numpy as np
 import pandas as pd
 
+# Default thresholds, overridable from config or callers
 MIN_UNITS_FOR_INFERENCE = 20
 MIN_UNITS_FOR_MAIN_MANUSCRIPT = 10
 
@@ -17,6 +18,7 @@ def build_master_analysis_table(
     population_path: str | Path,
     mortality_path: str | Path,
     missing_persons_path: str | Path | None = None,
+    composite_column_name: str = "Structural_Exposure_Composite",
 ) -> pd.DataFrame:
     trauma = pd.read_csv(trauma_index_path)
     population = pd.read_csv(population_path)
@@ -40,28 +42,57 @@ def build_master_analysis_table(
     )
 
     if "Disparity_Ratio" not in mortality.columns:
+        mortality = mortality.copy()
         mortality["Disparity_Ratio"] = np.where(
             mortality["Comparator_Rate_per_100k"] > 0,
             mortality["AI_AN_Rate_per_100k"] / mortality["Comparator_Rate_per_100k"],
             np.nan,
         )
 
-    mortality_summary = (
-        mortality.groupby("State")
-        .agg(
-            Mean_Mortality_Disparity_Ratio=("Disparity_Ratio", "mean"),
-            Mortality_Cause_Count=("Condition", "nunique"),
-            Mortality_Cause_List=("Condition", lambda series: " | ".join(sorted({str(v) for v in series.dropna()}))),
+    # Multi-condition multi-year aggregation:
+    #   1) per-(State, Condition) average across years
+    #   2) per-condition wide columns
+    #   3) Mean_Mortality_Disparity_Ratio is the equal-weighted mean of
+    #      per-condition values
+    if "Condition" in mortality.columns:
+        per_state_condition = (
+            mortality.groupby(["State", "Condition"])
+            .agg(
+                Disparity_Ratio=("Disparity_Ratio", "mean"),
+                Years_Available=("Year", "nunique") if "Year" in mortality.columns else ("Disparity_Ratio", "size"),
+            )
+            .reset_index()
         )
-        .reset_index()
-    )
-    merged = merged.merge(mortality_summary, on="State", how="left")
+        per_condition_wide = per_state_condition.pivot(
+            index="State", columns="Condition", values="Disparity_Ratio"
+        )
+        per_condition_wide.columns = [f"Disparity_Ratio_{c}" for c in per_condition_wide.columns]
+        per_condition_wide = per_condition_wide.reset_index()
 
+        mortality_summary = (
+            per_state_condition.groupby("State")
+            .agg(
+                Mean_Mortality_Disparity_Ratio=("Disparity_Ratio", "mean"),
+                Mortality_Cause_Count=("Condition", "nunique"),
+                Mortality_Cause_List=("Condition", lambda s: " | ".join(sorted({str(v) for v in s.dropna()}))),
+            )
+            .reset_index()
+        )
+        merged = merged.merge(mortality_summary, on="State", how="left")
+        merged = merged.merge(per_condition_wide, on="State", how="left")
+    else:
+        mortality_summary = (
+            mortality.groupby("State")
+            .agg(Mean_Mortality_Disparity_Ratio=("Disparity_Ratio", "mean"))
+            .reset_index()
+        )
+        merged = merged.merge(mortality_summary, on="State", how="left")
+
+    # Missing persons
     if missing_persons_path:
         missing_df = pd.read_csv(missing_persons_path)
         missing_df = missing_df.copy()
 
-        # Only compute AI_AN_Percent_Missing if Total_Missing is present
         if "Total_Missing" in missing_df.columns and "AI_AN_Percent_Missing" not in missing_df.columns:
             missing_df["AI_AN_Percent_Missing"] = np.where(
                 missing_df["Total_Missing"] > 0,
@@ -69,7 +100,6 @@ def build_master_analysis_table(
                 np.nan,
             )
 
-        # Only compute Overrepresentation_Ratio if AI_AN_Percent_Missing is available
         if "Overrepresentation_Ratio" not in missing_df.columns and "AI_AN_Percent_Missing" in missing_df.columns and "AI_AN_Population_Percent" in missing_df.columns:
             missing_df["Overrepresentation_Ratio"] = np.where(
                 missing_df["AI_AN_Population_Percent"] > 0,
@@ -77,18 +107,10 @@ def build_master_analysis_table(
                 np.nan,
             )
 
-        keep = [
-            column
-            for column in [
-                "State",
-                "Total_Missing",
-                "AI_AN_Missing",
-                "AI_AN_Percent_Missing",
-                "AI_AN_Population_Percent",
-                "Overrepresentation_Ratio",
-            ]
-            if column in missing_df.columns
-        ]
+        keep = [c for c in [
+            "State", "Total_Missing", "AI_AN_Missing", "AI_AN_Percent_Missing",
+            "AI_AN_Population_Percent", "Overrepresentation_Ratio",
+        ] if c in missing_df.columns]
         merged = merged.merge(missing_df[keep], on="State", how="left", suffixes=("", "_missing"))
 
         if "AI_AN_Population_Percent_missing" in merged.columns:
@@ -104,13 +126,20 @@ def build_master_analysis_table(
             np.nan,
         )
 
+    # Backward-compat: ensure both names exist
+    legacy = "Historical_Trauma_Index"
+    if composite_column_name not in merged.columns and legacy in merged.columns:
+        merged[composite_column_name] = merged[legacy]
+    if legacy not in merged.columns and composite_column_name in merged.columns:
+        merged[legacy] = merged[composite_column_name]
+
     core_columns = [
-        "Historical_Trauma_Index",
+        composite_column_name,
         "Mean_Mortality_Disparity_Ratio",
         "AI_AN_Missing_Rate_per_100k_AI_AN",
         "AI_AN_Population_Percent",
     ]
-    present_core = [column for column in core_columns if column in merged.columns]
+    present_core = [c for c in core_columns if c in merged.columns]
     merged["Included_In_Complete_Case"] = merged[present_core].notna().all(axis=1)
     merged.attrs["n_states"] = int(merged["State"].dropna().astype(str).nunique())
     return merged.sort_values("State").reset_index(drop=True)
@@ -121,6 +150,7 @@ def build_sample_characterization_table(
     population_path: str | Path,
     mortality_path: str | Path,
     missing_persons_path: str | Path | None = None,
+    composite_column_name: str = "Structural_Exposure_Composite",
 ) -> pd.DataFrame:
     trauma = pd.read_csv(trauma_index_path)
     population = pd.read_csv(population_path)
@@ -148,7 +178,10 @@ def build_sample_characterization_table(
         )
         audit = audit.merge(pop[["State", "AI_AN_Population_Percent"]], on="State", how="left")
 
-    master = build_master_analysis_table(trauma_index_path, population_path, mortality_path, missing_persons_path)
+    master = build_master_analysis_table(
+        trauma_index_path, population_path, mortality_path, missing_persons_path,
+        composite_column_name=composite_column_name,
+    )
     included = set(master.loc[master["Included_In_Complete_Case"], "State"])
     audit["Included_In_Main_Analysis"] = audit["State"].isin(included)
     return audit.sort_values("State").reset_index(drop=True)
@@ -162,9 +195,12 @@ def summarize_included_vs_excluded(sample_audit: pd.DataFrame) -> pd.DataFrame:
             {
                 "Group": label,
                 "State_Count": int(len(subset)),
-                "Mean_AI_AN_Population_Percent": float(subset["AI_AN_Population_Percent"].mean()) if "AI_AN_Population_Percent" in subset.columns and not subset.empty else np.nan,
-                "Min_AI_AN_Population_Percent": float(subset["AI_AN_Population_Percent"].min()) if "AI_AN_Population_Percent" in subset.columns and not subset.empty else np.nan,
-                "Max_AI_AN_Population_Percent": float(subset["AI_AN_Population_Percent"].max()) if "AI_AN_Population_Percent" in subset.columns and not subset.empty else np.nan,
+                "Mean_AI_AN_Population_Percent": float(subset["AI_AN_Population_Percent"].mean())
+                    if "AI_AN_Population_Percent" in subset.columns and not subset.empty else np.nan,
+                "Min_AI_AN_Population_Percent": float(subset["AI_AN_Population_Percent"].min())
+                    if "AI_AN_Population_Percent" in subset.columns and not subset.empty else np.nan,
+                "Max_AI_AN_Population_Percent": float(subset["AI_AN_Population_Percent"].max())
+                    if "AI_AN_Population_Percent" in subset.columns and not subset.empty else np.nan,
             }
         )
     return pd.DataFrame(rows)
@@ -196,36 +232,27 @@ def _pearson_corr(x: np.ndarray, y: np.ndarray) -> float:
 
 
 def kendall_tau_b(x: pd.Series, y: pd.Series) -> float:
+    """Vectorized Kendall's tau-b. Same semantics as the previous loop
+    implementation, ~50x faster via numpy broadcasting."""
     valid = pd.concat([x, y], axis=1).dropna()
-    values = valid.to_numpy(dtype=float)
-    n = len(values)
+    n = len(valid)
     if n < 2:
         return np.nan
-
-    concordant = 0
-    discordant = 0
-    tie_x = 0
-    tie_y = 0
-
-    for i in range(n - 1):
-        for j in range(i + 1, n):
-            dx = np.sign(values[i, 0] - values[j, 0])
-            dy = np.sign(values[i, 1] - values[j, 1])
-            if dx == 0 and dy == 0:
-                continue
-            if dx == 0:
-                tie_x += 1
-            elif dy == 0:
-                tie_y += 1
-            elif dx == dy:
-                concordant += 1
-            else:
-                discordant += 1
-
-    denominator = math.sqrt((concordant + discordant + tie_x) * (concordant + discordant + tie_y))
-    if denominator == 0:
+    a = valid.iloc[:, 0].to_numpy(dtype=float)
+    b = valid.iloc[:, 1].to_numpy(dtype=float)
+    da = np.sign(a[:, None] - a[None, :])
+    db = np.sign(b[:, None] - b[None, :])
+    iu = np.triu_indices(n, k=1)
+    sa = da[iu]
+    sb = db[iu]
+    concordant = int(np.sum((sa * sb) > 0))
+    discordant = int(np.sum((sa * sb) < 0))
+    tie_x = int(np.sum((sa == 0) & (sb != 0)))
+    tie_y = int(np.sum((sa != 0) & (sb == 0)))
+    denom = math.sqrt((concordant + discordant + tie_x) * (concordant + discordant + tie_y))
+    if denom == 0:
         return np.nan
-    return float((concordant - discordant) / denominator)
+    return float((concordant - discordant) / denom)
 
 
 def bootstrap_spearman_ci(x: pd.Series, y: pd.Series, n_boot: int = 4000, seed: int = 42) -> tuple[float, float]:
@@ -258,7 +285,9 @@ def permutation_p_value(
     if n < 4:
         return (np.nan, "insufficient_n")
 
-    observed = _rank_corr(valid.iloc[:, 0], valid.iloc[:, 1]) if statistic == "spearman" else kendall_tau_b(valid.iloc[:, 0], valid.iloc[:, 1])
+    observed = (_rank_corr(valid.iloc[:, 0], valid.iloc[:, 1])
+                if statistic == "spearman"
+                else kendall_tau_b(valid.iloc[:, 0], valid.iloc[:, 1]))
 
     if n <= 8:
         reference = valid.iloc[:, 1].to_numpy()
@@ -346,25 +375,29 @@ def leave_one_state_out_summary(df: pd.DataFrame, target: str, outcome: str) -> 
     }
 
 
-def evidence_label(n: int) -> str:
-    return "exploratory" if n < MIN_UNITS_FOR_INFERENCE else "ecological_inferential"
+def evidence_label(n: int, threshold: int = MIN_UNITS_FOR_INFERENCE) -> str:
+    return "exploratory" if n < threshold else "ecological_inferential"
 
 
-def interpretation_label(n: int) -> str:
-    if n < MIN_UNITS_FOR_INFERENCE:
+def interpretation_label(n: int, threshold: int = MIN_UNITS_FOR_INFERENCE) -> str:
+    if n < threshold:
         return "exploratory_ecological_only"
     return "ecological_inferential_not_individual_level"
 
 
 def exploratory_association_table(
     df: pd.DataFrame,
-    target: str = "Historical_Trauma_Index",
+    target: str = "Structural_Exposure_Composite",
     outcomes: list[str] | None = None,
     confounders: list[str] | None = None,
     bootstrap_iterations: int = 4000,
     permutation_iterations: int = 10000,
     seed: int = 42,
+    primary_outcomes_for_multiple_testing: list[str] | None = None,
+    min_units_for_inference: int = MIN_UNITS_FOR_INFERENCE,
 ) -> pd.DataFrame:
+    from src.analysis.multiple_testing import holm_bonferroni, benjamini_hochberg
+
     if target not in df.columns:
         raise ValueError(f"Expected '{target}' in dataframe.")
 
@@ -379,8 +412,13 @@ def exploratory_association_table(
     for outcome in outcomes:
         if outcome not in df.columns:
             continue
-
-        valid = df[["State", target, outcome, *[c for c in confounders if c in df.columns]]].dropna(subset=[target, outcome])
+        # Dedupe column list to avoid DataFrame-not-Series indexing when
+        # outcome equals a confounder
+        col_list = []
+        for c in ["State", target, outcome, *[cf for cf in confounders if cf in df.columns]]:
+            if c not in col_list:
+                col_list.append(c)
+        valid = df[col_list].dropna(subset=[target, outcome])
         n = len(valid)
         if n < 3:
             continue
@@ -390,18 +428,16 @@ def exploratory_association_table(
         ci_low, ci_high = bootstrap_spearman_ci(valid[target], valid[outcome], n_boot=bootstrap_iterations, seed=seed)
         perm_p, perm_mode = permutation_p_value(valid[target], valid[outcome], statistic="spearman", n_perm=permutation_iterations, seed=seed)
 
-        available_confounders = [column for column in confounders if column in valid.columns and column != outcome]
+        available_confounders = [c for c in confounders
+                                 if c in valid.columns and c != outcome and c != target]
         partial_rho = np.nan
         partial_p = np.nan
         partial_mode = ""
         confounder_label = ""
         if available_confounders:
             partial_rho, partial_p, partial_mode = partial_spearman(
-                valid[target],
-                valid[outcome],
-                valid[available_confounders],
-                n_perm=permutation_iterations,
-                seed=seed,
+                valid[target], valid[outcome], valid[available_confounders],
+                n_perm=permutation_iterations, seed=seed,
             )
             confounder_label = ", ".join(available_confounders)
 
@@ -413,30 +449,43 @@ def exploratory_association_table(
                 "Association_Type": "Spearman rank correlation",
                 "Effect_Size": rho,
                 "Kendall_Tau_b": tau,
-                "CI_2.5": ci_low,
-                "CI_97.5": ci_high,
+                "Descriptive_Bootstrap_CI_Lower": ci_low,
+                "Descriptive_Bootstrap_CI_Upper": ci_high,
+                "CI_Interpretation": "descriptive_only_not_for_inference",
                 "Permutation_P_Value": perm_p,
                 "Permutation_Mode": perm_mode,
                 "Partial_Spearman_Adjusted_Rho": partial_rho,
                 "Partial_Adjusted_P_Value": partial_p,
                 "Partial_Permutation_Mode": partial_mode,
                 "Confounders_Used": confounder_label,
-                "Evidence_Label": evidence_label(n),
-                "Interpretation_Label": interpretation_label(n),
+                "Evidence_Label": evidence_label(n, min_units_for_inference),
+                "Interpretation_Label": interpretation_label(n, min_units_for_inference),
                 **leave_one_out,
             }
         )
 
-    return pd.DataFrame(rows).sort_values("Outcome").reset_index(drop=True)
+    out = pd.DataFrame(rows).sort_values("Outcome").reset_index(drop=True)
+
+    if primary_outcomes_for_multiple_testing and not out.empty:
+        primary_mask = out["Outcome"].isin(primary_outcomes_for_multiple_testing)
+        primary_p = out.loc[primary_mask, "Permutation_P_Value"].tolist()
+        if primary_p:
+            holm = holm_bonferroni(primary_p)
+            bh = benjamini_hochberg(primary_p)
+            out["Holm_Adjusted_P_Primary_Family"] = np.nan
+            out["BH_FDR_Adjusted_P_Primary_Family"] = np.nan
+            out.loc[primary_mask, "Holm_Adjusted_P_Primary_Family"] = holm
+            out.loc[primary_mask, "BH_FDR_Adjusted_P_Primary_Family"] = bh
+
+    return out
 
 
-def validate_main_analysis_scope(df: pd.DataFrame) -> None:
-    # Lowered threshold to match 13-state real-data sample
+def validate_main_analysis_scope(df: pd.DataFrame, min_units: int = MIN_UNITS_FOR_MAIN_MANUSCRIPT) -> None:
     n_states = int(df["State"].dropna().astype(str).nunique())
-    if n_states < MIN_UNITS_FOR_MAIN_MANUSCRIPT:
+    if n_states < min_units:
         raise ValueError(
             f"Main manuscript analysis contains only {n_states} states. "
-            f"At least {MIN_UNITS_FOR_MAIN_MANUSCRIPT} states are required for the current manuscript framing."
+            f"At least {min_units} states are required for the current manuscript framing."
         )
 
 
@@ -444,7 +493,8 @@ def generate_figures(
     master_df: pd.DataFrame,
     sensitivity_df: pd.DataFrame,
     output_dir: str | Path,
-    target: str = "Historical_Trauma_Index",
+    target: str = "Structural_Exposure_Composite",
+    display_label: str = "Structural Exposure Composite",
 ) -> None:
     output_dir = Path(output_dir)
     output_dir.mkdir(parents=True, exist_ok=True)
@@ -457,42 +507,34 @@ def generate_figures(
     if target in master_df.columns:
         plt.figure(figsize=(7.5, 4.8))
         plt.hist(master_df[target].dropna(), bins=10, edgecolor="black")
-        plt.xlabel(target)
+        plt.xlabel(display_label)
         plt.ylabel("Number of States")
-        plt.title("Distribution of Historical Trauma Index")
+        plt.title(f"Distribution of {display_label}")
         plt.tight_layout()
         plt.savefig(output_dir / "index_distribution.png", dpi=300)
         plt.close()
 
     display_labels = {
-        target: "Historical Trauma Index",
+        target: display_label,
         "Mean_Mortality_Disparity_Ratio": "Mean mortality disparity ratio",
         "AI_AN_Missing_Rate_per_100k_AI_AN": "AI/AN missing persons rate per 100,000 AI/AN population",
+        "AI_AN_Missing": "AI/AN missing persons (count)",
     }
     for outcome, filenames in [
         ("Mean_Mortality_Disparity_Ratio", ["index_vs_mortality.png"]),
-        (
-            "AI_AN_Missing_Rate_per_100k_AI_AN",
-            ["index_vs_ai_an_missing_rate.png", "index_vs_ai_an_missing.png"],
-        ),
+        ("AI_AN_Missing_Rate_per_100k_AI_AN",
+         ["index_vs_ai_an_missing_rate.png", "index_vs_ai_an_missing.png"]),
     ]:
         if target not in master_df.columns or outcome not in master_df.columns:
             continue
-
         subset = master_df.dropna(subset=[target, outcome, "State"])
         if subset.empty:
             continue
-
         plt.figure(figsize=(8.0, 5.5))
         plt.scatter(subset[target], subset[outcome], alpha=0.9)
         for _, row in subset.iterrows():
-            plt.annotate(
-                row["State"],
-                (row[target], row[outcome]),
-                fontsize=7,
-                xytext=(4, 4),
-                textcoords="offset points",
-            )
+            plt.annotate(row["State"], (row[target], row[outcome]),
+                         fontsize=7, xytext=(4, 4), textcoords="offset points")
         plt.xlabel(display_labels.get(target, target))
         plt.ylabel(display_labels.get(outcome, outcome))
         plt.title(f"{display_labels.get(target, target)} vs {display_labels.get(outcome, outcome)}")
@@ -506,14 +548,13 @@ def generate_figures(
     if not primary.empty and not equal.empty:
         compare = primary[["State", "Rank"]].rename(columns={"Rank": "Primary_Rank"}).merge(
             equal[["State", "Rank"]].rename(columns={"Rank": "Equal_Weight_Rank"}),
-            on="State",
-            how="inner",
+            on="State", how="inner",
         )
         compare = compare.sort_values("Primary_Rank").reset_index(drop=True)
         y_positions = list(range(len(compare)))
 
         plt.figure(figsize=(8.5, 6.0))
-        plt.plot(compare["Primary_Rank"], y_positions, marker="o", label="Primary weights")
+        plt.plot(compare["Primary_Rank"], y_positions, marker="o", label="Primary (configured)")
         plt.plot(compare["Equal_Weight_Rank"], y_positions, marker="o", label="Equal weights")
         for idx, row in compare.iterrows():
             x_position = max(row["Primary_Rank"], row["Equal_Weight_Rank"]) + 0.15
@@ -532,19 +573,20 @@ def write_limitations_report(path: str | Path, main_analysis_state_count: int, i
     text = f"""Limitations:
 
 - This is an ecological analysis and must not be interpreted as individual-level evidence.
-- The historical trauma index is a proxy measure constructed from observable structural indicators; it is not a direct measure of lived experience.
-- Configured indicator weights are heuristic and not community-informed; sensitivity analyses should be treated as robustness checks rather than validation of the weighting scheme.
-- BoardingSchool_Count now recovers DOI-style aggregated counts when they are encoded in the source label, but the boarding-school file is still a state-level aggregate and does not fully resolve construct-measurement limitations for all boarding indicators.
-- Constant indicators are documented and excluded from within-sample scoring, which improves numerical validity but also highlights construct-coverage limitations in the current sample.
-- With only {main_analysis_state_count} complete-case states ({index_state_count} index states overall), bootstrap intervals and rank associations remain sensitive to influential states; permutation tests and leave-one-state-out diagnostics should be reported alongside point estimates.
-- The missing persons outcome is now an AI/AN population-adjusted rate per 100,000 AI/AN residents rather than an absolute count, which reduces but does not eliminate compositional confounding.
-- Adjusted analyses control only for AI/AN population share, not the full set of potential confounders.
-- Temporal alignment remains imperfect: the environmental indicator is from a later period than the 2020 mortality and missing-person outcomes.
-- The environmental indicator is state-level and not AI/AN-specific, so within-state heterogeneity and community-level exposure error likely remain substantial.
-- Only one mortality condition is analyzed in the current inputs, so disease-specific inference remains narrow and vulnerable to suppression-driven selection.
-- State-level analyses can mask within-state heterogeneity and are not substitutes for tribal, reservation, county, or community-governed analyses.
-- No causal interpretation, policy-effect attribution, or community-consensus weighting should be claimed from this pipeline alone.
-- Data provenance, source definitions, and processed-data manifests should be checked before manuscript claims are finalized.
+- The structural exposure composite is constructed from observable structural indicators; it is NOT a direct measure of historical trauma or lived experience. The previous label 'Historical Trauma Index' is retained as a backward-compatible column name only.
+- Configured indicator weights are heuristic and not community-informed; the pipeline reports both configured and equal-weight composite scores as co-primary specifications, since equal weights produce a more stable rank ordering at small n.
+- Sensitivity analyses (alternate normalization, PCA, leave-one-out, Dirichlet weight perturbation, temporal-only) are reported as robustness checks rather than validation.
+- BoardingSchool_Count recovers DOI-style aggregated counts when encoded in the source label; duration estimates remain derived from aggregate era endpoints.
+- Constant indicators are documented and excluded from within-sample scoring.
+- With only {main_analysis_state_count} complete-case states ({index_state_count} index states overall), bootstrap intervals are reported as descriptive only (CI columns explicitly labeled). Permutation p-values are the primary inferential statistic. Multiple-testing adjustments (Holm-Bonferroni, BH-FDR) are reported across the primary outcome family.
+- Construct-validity diagnostics (Cronbach alpha, KMO, PCA loadings, item-total correlations) are reported as descriptive aids only; at small n these statistics have wide sampling variability.
+- Mortality data are pooled across years and conditions to reduce suppression-driven exclusion; equal weight is given to each condition rather than each (year, condition) cell.
+- The missing-persons outcome is reported as both an absolute count (primary, per the MMIR undercounting literature) and a population-adjusted rate per 100,000 AI/AN residents (secondary).
+- Adjusted analyses control only for AI/AN population share; urbanization, income, region, and IHS-facility proximity remain plausible omitted variables.
+- The environmental indicator is state-level and not AI/AN-specific.
+- State-level analyses can mask within-state heterogeneity and are not substitutes for tribal or community-governed analyses.
+- No causal interpretation, policy-effect attribution, or community-consensus weighting should be claimed.
+- Selection-bias audit (Mann-Whitney U with permutation p) tests whether the complete-case sample differs systematically from excluded states; results are in selection_bias_audit.csv.
 """
     Path(path).write_text(text, encoding="utf-8")
 

@@ -1,0 +1,4 @@
+dataset,column,dtype,non_null_count,missing_count,missing_pct,example_value,description
+construct_validity_report,Metric,object,17,0,0.0,Item_Total_Rho,
+construct_validity_report,Indicator,object,17,0,0.0,BoardingSchool_Count,
+construct_validity_report,Value,float64,17,0,0.0,0.5344372896443914,

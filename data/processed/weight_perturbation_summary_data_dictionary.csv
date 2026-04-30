@@ -1,0 +1,12 @@
+dataset,column,dtype,non_null_count,missing_count,missing_pct,example_value,description
+weight_perturbation_summary,Outcome,object,7,0,0.0,Mean_Mortality_Disparity_Ratio,
+weight_perturbation_summary,N_Iterations,int64,7,0,0.0,2000,
+weight_perturbation_summary,Median_Rho,float64,7,0,0.0,0.15971919045261473,
+weight_perturbation_summary,Mean_Rho,float64,7,0,0.0,0.13330321599209738,
+weight_perturbation_summary,P5_Rho,float64,7,0,0.0,-0.13514700730605864,
+weight_perturbation_summary,P95_Rho,float64,7,0,0.0,0.35454149968602394,
+weight_perturbation_summary,Pct_Rho_Positive,float64,7,0,0.0,0.784,
+weight_perturbation_summary,Pct_Rho_GE_0p3,float64,7,0,0.0,0.149,
+weight_perturbation_summary,Pct_Rho_GE_0p5,float64,7,0,0.0,0.0,
+weight_perturbation_summary,Sign_Stable,bool,7,0,0.0,False,
+weight_perturbation_summary,Note,object,7,0,0.0,descriptive_only_not_for_inference,

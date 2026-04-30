@@ -2,20 +2,29 @@ State,In_Trauma_Index,In_Population,In_Mortality,In_Missing_Persons,AI_AN_Popula
 Alaska,True,True,True,True,15.537823616597422,True
 Arizona,True,True,True,True,4.146387709882483,True
 California,True,True,True,True,1.6436297604978352,True
-Colorado,True,True,False,False,1.7920354212210718,False
-Florida,True,True,False,False,0.470304208984721,False
-Idaho,True,True,False,False,1.8349132676419957,False
+Colorado,True,True,True,False,1.7920354212210718,False
+Florida,True,True,True,False,0.470304208984721,False
+Idaho,True,True,True,False,1.8349132676419957,False
+Iowa,False,False,True,False,,False
+Kansas,False,False,True,False,,False
+Maine,False,False,True,False,,False
 Michigan,True,True,True,True,1.386627074172715,True
 Minnesota,True,True,True,True,2.098609058381556,True
-Montana,True,True,False,False,7.363785192187969,False
+Mississippi,False,False,True,False,,False
+Missouri,False,False,True,False,,False
+Montana,True,True,True,False,7.363785192187969,False
+Nebraska,False,False,True,False,,False
 Nevada,True,True,True,True,1.9995722495614592,True
 New Jersey,True,True,False,False,0.5309293988132623,False
 New Mexico,True,True,True,True,10.36650386631166,True
 New York,True,True,True,True,1.146434064547197,True
 North Carolina,True,True,True,True,1.2530044864698966,True
+North Dakota,False,False,True,False,,False
 Oklahoma,True,True,True,True,13.223094783415371,True
 Oregon,True,True,True,True,2.369977173906887,True
 South Dakota,True,True,True,True,8.204771351589718,True
-Texas,True,True,False,False,1.0840230766287975,False
-Utah,True,True,False,False,1.8437982941763336,False
+Texas,True,True,True,False,1.0840230766287975,False
+Utah,True,True,True,False,1.8437982941763336,False
 Washington,True,True,True,True,2.911989841772156,True
+Wisconsin,False,False,True,False,,False
+Wyoming,False,False,True,False,,False

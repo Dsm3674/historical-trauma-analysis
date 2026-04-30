@@ -1,14 +1,240 @@
 Year,State,Condition,AI_AN_Rate_per_100k,Comparator_Rate_per_100k
-2020,Alaska,Diabetes,30.2,23.0
-2020,Arizona,Diabetes,81.0,23.9
-2020,California,Diabetes,20.8,24.4
-2020,Michigan,Diabetes,37.1,23.4
-2020,Minnesota,Diabetes,95.3,18.9
-2020,Nevada,Diabetes,42.4,22.3
-2020,New Mexico,Diabetes,65.2,25.8
-2020,New York,Diabetes,14.0,18.7
-2020,North Carolina,Diabetes,29.9,22.2
-2020,Oklahoma,Diabetes,58.7,28.2
-2020,Oregon,Diabetes,44.9,23.9
-2020,South Dakota,Diabetes,156.6,22.0
-2020,Washington,Diabetes,39.1,21.5
+2019,Alaska,Diabetes,15.1,15.1
+2020,Alaska,Diabetes,26.8,22.6
+2021,Alaska,Diabetes,36.0,22.5
+2022,Alaska,Diabetes,23.3,23.9
+2019,Alaska,Liver_Disease,45.6,14.9
+2020,Alaska,Liver_Disease,83.5,19.0
+2021,Alaska,Liver_Disease,94.2,21.4
+2022,Alaska,Liver_Disease,86.0,20.8
+2019,Alaska,Suicide,71.8,22.2
+2020,Alaska,Suicide,57.4,22.4
+2021,Alaska,Suicide,65.4,25.3
+2022,Alaska,Suicide,56.1,23.4
+2019,Arizona,Diabetes,81.9,18.4
+2020,Arizona,Diabetes,96.3,20.1
+2021,Arizona,Diabetes,90.4,20.3
+2022,Arizona,Diabetes,78.1,19.7
+2019,Arizona,Liver_Disease,90.1,15.2
+2020,Arizona,Liver_Disease,107.4,17.5
+2021,Arizona,Liver_Disease,162.3,20.9
+2022,Arizona,Liver_Disease,113.5,17.1
+2019,Arizona,Suicide,26.6,22.6
+2020,Arizona,Suicide,25.9,21.4
+2021,Arizona,Suicide,38.2,22.6
+2022,Arizona,Suicide,33.6,24.6
+2019,California,Diabetes,34.5,16.7
+2020,California,Diabetes,41.9,18.5
+2021,California,Diabetes,42.9,19.3
+2022,California,Diabetes,38.9,18.9
+2019,California,Liver_Disease,49.9,14.9
+2020,California,Liver_Disease,42.2,16.5
+2021,California,Liver_Disease,65.9,18.8
+2022,California,Liver_Disease,42.3,17.2
+2019,California,Suicide,13.0,16.5
+2020,California,Suicide,9.5,14.8
+2021,California,Suicide,19.0,14.9
+2022,California,Suicide,10.8,15.4
+2019,Colorado,Diabetes,38.6,13.8
+2021,Colorado,Diabetes,48.4,15.9
+2022,Colorado,Diabetes,46.2,15.4
+2019,Colorado,Liver_Disease,96.1,15.7
+2020,Colorado,Liver_Disease,86.2,18.2
+2021,Colorado,Liver_Disease,109.9,19.3
+2022,Colorado,Liver_Disease,75.7,18.9
+2019,Colorado,Suicide,40.2,24.4
+2020,Colorado,Suicide,39.2,22.9
+2020,Florida,Diabetes,18.7,19.6
+2021,Florida,Diabetes,19.8,21.8
+2020,Florida,Liver_Disease,18.1,20.3
+2021,Florida,Liver_Disease,18.8,21.9
+2019,Idaho,Diabetes,51.3,19.8
+2020,Idaho,Diabetes,66.6,22.2
+2021,Idaho,Diabetes,55.8,24.1
+2022,Idaho,Diabetes,61.0,19.8
+2020,Idaho,Liver_Disease,94.9,18.2
+2021,Idaho,Liver_Disease,127.0,19.5
+2022,Idaho,Liver_Disease,65.6,17.5
+2022,Idaho,Suicide,50.3,24.2
+2020,Iowa,Liver_Disease,100.1,14.9
+2021,Kansas,Liver_Disease,50.5,19.8
+2022,Kansas,Liver_Disease,65.7,19.1
+2022,Maine,Liver_Disease,94.2,20.4
+2019,Michigan,Diabetes,39.1,20.6
+2020,Michigan,Diabetes,37.9,22.9
+2021,Michigan,Diabetes,42.8,24.9
+2022,Michigan,Diabetes,31.1,23.5
+2019,Michigan,Liver_Disease,35.4,15.1
+2020,Michigan,Liver_Disease,49.5,17.7
+2021,Michigan,Liver_Disease,49.0,19.3
+2022,Michigan,Liver_Disease,43.8,17.6
+2020,Michigan,Suicide,23.7,15.2
+2021,Michigan,Suicide,23.7,15.3
+2019,Minnesota,Diabetes,88.2,18.5
+2020,Minnesota,Diabetes,109.6,18.8
+2021,Minnesota,Diabetes,100.5,20.8
+2022,Minnesota,Diabetes,105.7,18.1
+2019,Minnesota,Liver_Disease,84.4,12.9
+2020,Minnesota,Liver_Disease,110.3,16.1
+2021,Minnesota,Liver_Disease,117.7,16.1
+2022,Minnesota,Liver_Disease,97.4,15.5
+2019,Minnesota,Suicide,50.3,14.9
+2020,Minnesota,Suicide,39.6,13.7
+2021,Minnesota,Suicide,46.9,14.1
+2022,Minnesota,Suicide,31.1,15.6
+2020,Mississippi,Diabetes,179.1,27.0
+2021,Mississippi,Diabetes,70.6,29.1
+2022,Mississippi,Diabetes,122.9,25.7
+2020,Mississippi,Liver_Disease,66.1,24.2
+2021,Mississippi,Liver_Disease,139.1,26.8
+2022,Mississippi,Liver_Disease,68.2,25.8
+2021,Missouri,Liver_Disease,36.4,18.8
+2019,Montana,Diabetes,63.0,18.0
+2020,Montana,Diabetes,90.2,20.2
+2021,Montana,Diabetes,95.4,17.4
+2022,Montana,Diabetes,79.7,19.2
+2019,Montana,Liver_Disease,125.2,14.4
+2020,Montana,Liver_Disease,164.2,16.1
+2021,Montana,Liver_Disease,221.2,19.1
+2022,Montana,Liver_Disease,164.9,16.8
+2019,Montana,Suicide,37.5,25.1
+2020,Montana,Suicide,53.5,24.3
+2021,Montana,Suicide,57.4,31.2
+2022,Montana,Suicide,55.6,27.1
+2019,Nebraska,Diabetes,110.3,21.7
+2020,Nebraska,Diabetes,117.0,24.4
+2019,Nebraska,Liver_Disease,125.6,13.8
+2020,Nebraska,Liver_Disease,113.6,15.0
+2021,Nebraska,Liver_Disease,143.5,17.2
+2022,Nebraska,Liver_Disease,214.6,16.2
+2019,Nevada,Diabetes,47.1,20.4
+2020,Nevada,Diabetes,63.4,22.7
+2021,Nevada,Diabetes,34.5,23.0
+2022,Nevada,Diabetes,55.2,23.2
+2019,Nevada,Liver_Disease,36.9,20.2
+2020,Nevada,Liver_Disease,70.6,21.9
+2021,Nevada,Liver_Disease,102.4,24.2
+2022,Nevada,Liver_Disease,52.3,23.6
+2019,New Mexico,Diabetes,69.2,17.9
+2020,New Mexico,Diabetes,76.3,17.4
+2021,New Mexico,Diabetes,62.0,21.8
+2022,New Mexico,Diabetes,78.9,20.7
+2019,New Mexico,Liver_Disease,113.9,18.4
+2020,New Mexico,Liver_Disease,155.4,19.5
+2021,New Mexico,Liver_Disease,211.9,26.0
+2022,New Mexico,Liver_Disease,173.2,27.0
+2019,New Mexico,Suicide,29.1,29.3
+2020,New Mexico,Suicide,35.1,29.3
+2021,New Mexico,Suicide,36.4,30.8
+2022,New Mexico,Suicide,39.2,30.1
+2019,New York,Diabetes,20.7,14.8
+2020,New York,Diabetes,36.0,17.2
+2021,New York,Diabetes,26.7,16.8
+2022,New York,Diabetes,28.0,16.2
+2019,New York,Liver_Disease,33.2,9.7
+2020,New York,Liver_Disease,17.0,10.9
+2021,New York,Liver_Disease,31.6,12.3
+2022,New York,Liver_Disease,25.1,11.7
+2019,North Carolina,Diabetes,30.1,20.5
+2020,North Carolina,Diabetes,35.9,22.3
+2021,North Carolina,Diabetes,49.4,25.6
+2022,North Carolina,Diabetes,44.2,24.3
+2019,North Carolina,Liver_Disease,17.9,17.6
+2020,North Carolina,Liver_Disease,24.0,19.8
+2021,North Carolina,Liver_Disease,31.4,22.5
+2022,North Carolina,Liver_Disease,26.2,21.3
+2019,North Carolina,Suicide,8.4,16.0
+2021,North Carolina,Suicide,11.0,16.2
+2022,North Carolina,Suicide,22.6,17.3
+2019,North Dakota,Diabetes,63.9,17.7
+2020,North Dakota,Diabetes,129.1,20.8
+2021,North Dakota,Diabetes,95.8,22.5
+2022,North Dakota,Diabetes,92.0,22.4
+2019,North Dakota,Liver_Disease,122.0,14.8
+2020,North Dakota,Liver_Disease,148.5,14.7
+2021,North Dakota,Liver_Disease,131.6,15.0
+2022,North Dakota,Liver_Disease,129.9,15.6
+2020,North Dakota,Suicide,38.8,17.5
+2021,North Dakota,Suicide,39.6,19.6
+2022,North Dakota,Suicide,40.2,23.0
+2019,Oklahoma,Diabetes,54.2,24.6
+2020,Oklahoma,Diabetes,61.9,27.9
+2021,Oklahoma,Diabetes,70.4,29.7
+2022,Oklahoma,Diabetes,64.4,29.2
+2019,Oklahoma,Liver_Disease,46.4,18.4
+2020,Oklahoma,Liver_Disease,53.7,20.2
+2021,Oklahoma,Liver_Disease,59.4,21.3
+2022,Oklahoma,Liver_Disease,62.6,21.3
+2019,Oklahoma,Suicide,18.9,22.9
+2020,Oklahoma,Suicide,25.0,24.3
+2021,Oklahoma,Suicide,29.4,24.4
+2022,Oklahoma,Suicide,25.3,23.5
+2019,Oregon,Diabetes,40.5,22.2
+2020,Oregon,Diabetes,55.1,23.9
+2021,Oregon,Diabetes,45.3,25.5
+2022,Oregon,Diabetes,46.5,25.1
+2019,Oregon,Liver_Disease,42.9,16.9
+2020,Oregon,Liver_Disease,57.6,19.2
+2021,Oregon,Liver_Disease,48.1,22.6
+2022,Oregon,Liver_Disease,60.9,21.9
+2019,Oregon,Suicide,24.4,22.9
+2021,Oregon,Suicide,24.5,22.2
+2022,Oregon,Suicide,33.2,21.5
+2019,South Dakota,Diabetes,121.1,21.3
+2020,South Dakota,Diabetes,166.2,21.7
+2021,South Dakota,Diabetes,171.5,21.6
+2022,South Dakota,Diabetes,149.2,23.0
+2019,South Dakota,Liver_Disease,132.4,12.9
+2020,South Dakota,Liver_Disease,203.7,16.3
+2021,South Dakota,Liver_Disease,328.0,19.1
+2022,South Dakota,Liver_Disease,277.8,18.0
+2019,South Dakota,Suicide,35.1,19.1
+2020,South Dakota,Suicide,55.2,17.1
+2021,South Dakota,Suicide,62.1,18.5
+2022,South Dakota,Suicide,54.8,17.9
+2019,Texas,Diabetes,12.5,18.8
+2020,Texas,Diabetes,11.0,20.2
+2021,Texas,Diabetes,13.8,22.0
+2022,Texas,Diabetes,11.7,20.7
+2019,Texas,Liver_Disease,18.8,17.7
+2020,Texas,Liver_Disease,17.8,19.8
+2021,Texas,Liver_Disease,27.2,21.3
+2022,Texas,Liver_Disease,17.9,20.2
+2019,Utah,Diabetes,95.7,24.0
+2020,Utah,Diabetes,63.1,26.3
+2021,Utah,Diabetes,75.7,27.5
+2022,Utah,Diabetes,66.3,24.3
+2019,Utah,Liver_Disease,61.8,12.0
+2020,Utah,Liver_Disease,98.5,12.4
+2021,Utah,Liver_Disease,106.4,15.0
+2022,Utah,Liver_Disease,92.7,13.1
+2019,Utah,Suicide,52.7,23.2
+2022,Utah,Suicide,41.7,23.7
+2019,Washington,Diabetes,37.8,18.9
+2020,Washington,Diabetes,39.2,21.3
+2021,Washington,Diabetes,54.9,23.3
+2022,Washington,Diabetes,44.2,22.0
+2019,Washington,Liver_Disease,49.4,15.2
+2020,Washington,Liver_Disease,67.8,17.6
+2021,Washington,Liver_Disease,74.3,19.5
+2022,Washington,Liver_Disease,73.0,18.8
+2019,Washington,Suicide,19.7,18.4
+2020,Washington,Suicide,19.5,17.0
+2021,Washington,Suicide,29.1,16.9
+2022,Washington,Suicide,22.9,16.5
+2019,Wisconsin,Diabetes,44.8,19.2
+2020,Wisconsin,Diabetes,69.5,19.9
+2021,Wisconsin,Diabetes,85.3,20.6
+2022,Wisconsin,Diabetes,59.5,17.5
+2019,Wisconsin,Liver_Disease,55.1,12.5
+2020,Wisconsin,Liver_Disease,79.1,14.5
+2021,Wisconsin,Liver_Disease,78.4,15.4
+2022,Wisconsin,Liver_Disease,62.9,15.2
+2019,Wisconsin,Suicide,24.1,15.0
+2021,Wisconsin,Suicide,28.5,15.5
+2022,Wisconsin,Suicide,26.9,15.8
+2022,Wyoming,Diabetes,118.3,22.7
+2019,Wyoming,Liver_Disease,120.8,24.2
+2020,Wyoming,Liver_Disease,334.4,23.9
+2021,Wyoming,Liver_Disease,256.0,24.6
+2022,Wyoming,Liver_Disease,246.6,24.2

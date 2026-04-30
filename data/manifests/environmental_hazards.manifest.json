@@ -13,13 +13,13 @@
     "dataset_name": "environmental_hazards",
     "source_org": "User-supplied source",
     "source_url": "",
-    "accessed_on": "2026-04-24T03:37:41.331907+00:00",
-    "file_path": "/Users/divytan/Documents/New project/dsm3674-historical-trauma-analysis/data/raw/environmental/environmental_hazards.csv",
+    "accessed_on": "2026-04-30T07:16:51.001139+00:00",
+    "file_path": "/Users/divytan/Documents/New project/historical-trauma-analysis/data/raw/environmental/environmental_hazards.csv",
     "citation": "",
     "notes": "Environmental indicator construction is surfaced in methods outputs for manuscript specificity.",
     "geographic_unit": "state",
     "temporal_coverage": "",
     "restrictions": ""
   },
-  "saved_at_utc": "2026-04-24T03:37:41.349516+00:00"
+  "saved_at_utc": "2026-04-30T07:16:51.018160+00:00"
 }

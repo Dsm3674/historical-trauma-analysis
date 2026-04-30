@@ -4,12 +4,13 @@ N,0,0.0
 Association_Type,0,0.0
 Effect_Size,0,0.0
 Kendall_Tau_b,0,0.0
-CI_2.5,0,0.0
-CI_97.5,0,0.0
+Descriptive_Bootstrap_CI_Lower,0,0.0
+Descriptive_Bootstrap_CI_Upper,0,0.0
+CI_Interpretation,0,0.0
 Permutation_P_Value,0,0.0
 Permutation_Mode,0,0.0
-Partial_Spearman_Adjusted_Rho,1,33.33333333333333
-Partial_Adjusted_P_Value,1,33.33333333333333
+Partial_Spearman_Adjusted_Rho,1,14.285714285714285
+Partial_Adjusted_P_Value,1,14.285714285714285
 Partial_Permutation_Mode,0,0.0
 Confounders_Used,0,0.0
 Evidence_Label,0,0.0
@@ -18,3 +19,5 @@ LeaveOneOut_Min_Rho,0,0.0
 LeaveOneOut_Max_Rho,0,0.0
 Most_Influential_State,0,0.0
 Max_Absolute_Rho_Shift,0,0.0
+Holm_Adjusted_P_Primary_Family,5,71.42857142857143
+BH_FDR_Adjusted_P_Primary_Family,5,71.42857142857143

@@ -116,9 +116,20 @@ def compute_index(
     indicator_df: pd.DataFrame,
     weights: dict[str, float],
     normalization: NormalizationMethod = "zscore",
-    index_name: str = "Historical_Trauma_Index",
+    index_name: str = "Structural_Exposure_Composite",
     drop_constant_indicators: bool = True,
+    legacy_alias_column: str | None = None,
 ) -> IndexArtifacts:
+    """Compute the composite index.
+
+    Parameters
+    ----------
+    legacy_alias_column
+        If given, the scores DataFrame will also include a column with
+        this name carrying identical values. Used for backward
+        compatibility with downstream scripts that reference the old
+        'Historical_Trauma_Index' column.
+    """
     pivot = _pivot_indicator_table(indicator_df)
     diagnostics = _build_indicator_diagnostics(pivot, weights, normalization, drop_constant_indicators)
 
@@ -151,6 +162,8 @@ def compute_index(
             "Constant_Indicators_Dropped": int((~diagnostics["Included_In_Primary_Index"]).sum()),
         }
     )
+    if legacy_alias_column and legacy_alias_column != index_name:
+        output[legacy_alias_column] = output[index_name]
 
     normalized = normalized.reset_index().rename(columns={"index": "State"})
     return IndexArtifacts(scores=output, normalized_matrix=normalized, indicator_diagnostics=diagnostics)
@@ -186,7 +199,9 @@ def sensitivity_analysis(
     include_equal_weights: bool = True,
     include_pca: bool = True,
     leave_one_indicator_out: bool = True,
-    index_name: str = "Historical_Trauma_Index",
+    index_name: str = "Structural_Exposure_Composite",
+    include_temporal_only_2020: bool = False,
+    temporal_only_indicators: list[str] | None = None,
 ) -> tuple[pd.DataFrame, pd.DataFrame]:
     alternate_normalizations = alternate_normalizations or []
 
@@ -211,7 +226,8 @@ def sensitivity_analysis(
         working["Scheme_Note"] = note
         scheme_frames.append(working)
 
-    add_scheme(primary.scores[["State", index_name]], "primary", "configured_weights", primary_normalization, "Configured weights after dropping constant indicators.")
+    add_scheme(primary.scores[["State", index_name]], "primary", "configured_weights",
+               primary_normalization, "Configured weights after dropping constant indicators.")
 
     if include_equal_weights:
         equal = compute_index(
@@ -221,7 +237,8 @@ def sensitivity_analysis(
             index_name=index_name,
             drop_constant_indicators=True,
         )
-        add_scheme(equal.scores[["State", index_name]], "equal_weights", "equal_weights", primary_normalization, "Equal weights across included indicators.")
+        add_scheme(equal.scores[["State", index_name]], "equal_weights", "equal_weights",
+                   primary_normalization, "Equal weights across included indicators.")
 
     for alt_normalization in alternate_normalizations:
         alternate = compute_index(
@@ -231,25 +248,17 @@ def sensitivity_analysis(
             index_name=index_name,
             drop_constant_indicators=True,
         )
-        add_scheme(
-            alternate.scores[["State", index_name]],
-            f"configured_weights_{alt_normalization}",
-            "alternate_normalization",
-            alt_normalization,
-            "Configured weights under alternate normalization.",
-        )
+        add_scheme(alternate.scores[["State", index_name]],
+                   f"configured_weights_{alt_normalization}",
+                   "alternate_normalization", alt_normalization,
+                   "Configured weights under alternate normalization.")
 
     if include_pca:
         normalized_primary = primary.normalized_matrix.set_index("State")[active_indicators]
         pca_scores = _pca_score_from_normalized(normalized_primary, primary_scores)
         pca_frame = pd.DataFrame({"State": pca_scores.index, index_name: pca_scores.values})
-        add_scheme(
-            pca_frame,
-            "pca_pc1",
-            "pca",
-            primary_normalization,
-            "First principal component score oriented to align with the primary index.",
-        )
+        add_scheme(pca_frame, "pca_pc1", "pca", primary_normalization,
+                   "First principal component score oriented to align with the primary index.")
 
     if leave_one_indicator_out and len(active_indicators) > 1:
         for dropped_indicator in active_indicators:
@@ -264,13 +273,32 @@ def sensitivity_analysis(
                 index_name=index_name,
                 drop_constant_indicators=True,
             )
-            add_scheme(
-                rerun.scores[["State", index_name]],
-                f"leave_out_{dropped_indicator}",
-                "leave_one_indicator_out",
-                primary_normalization,
-                f"Configured weights after removing {dropped_indicator}.",
-            )
+            add_scheme(rerun.scores[["State", index_name]],
+                       f"leave_out_{dropped_indicator}",
+                       "leave_one_indicator_out", primary_normalization,
+                       f"Configured weights after removing {dropped_indicator}.")
+
+    if include_temporal_only_2020 and temporal_only_indicators:
+        retained = [i for i in temporal_only_indicators if i in active_indicators]
+        if retained:
+            adjusted_weights = {k: v for k, v in primary_weights.items() if k in retained}
+            filtered_indicator_df = indicator_df.loc[
+                indicator_df["Indicator"].astype(str).str.strip().isin(retained)
+            ].copy()
+            try:
+                temporal = compute_index(
+                    filtered_indicator_df,
+                    adjusted_weights,
+                    normalization=primary_normalization,
+                    index_name=index_name,
+                    drop_constant_indicators=True,
+                )
+                add_scheme(temporal.scores[["State", index_name]],
+                           "temporal_only_2020", "temporal_only",
+                           primary_normalization,
+                           "Re-run using only 2020-era indicators.")
+            except ValueError:
+                pass
 
     long_df = pd.concat(scheme_frames, ignore_index=True)
     long_df["Rank"] = long_df.groupby("Scheme")[index_name].rank(ascending=False, method="dense")

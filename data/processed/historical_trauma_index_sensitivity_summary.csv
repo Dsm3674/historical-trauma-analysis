@@ -8,3 +8,4 @@ leave_out_Max_BoardingSchool_Duration_Years,leave_one_indicator_out,zscore,Confi
 leave_out_Mean_BoardingSchool_Duration_Years,leave_one_indicator_out,zscore,Configured weights after removing Mean_BoardingSchool_Duration_Years.,0.6,2.0,0.071777847145663
 leave_out_Schools_With_Burial_Site_Flag,leave_one_indicator_out,zscore,Configured weights after removing Schools_With_Burial_Site_Flag.,1.5,9.0,0.11969220276893469
 pca_pc1,pca,zscore,First principal component score oriented to align with the primary index.,3.6,7.0,0.7486929283175059
+temporal_only_2020,temporal_only,zscore,Re-run using only 2020-era indicators.,3.6153846153846154,9.0,0.2878046387715528

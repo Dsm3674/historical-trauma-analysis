@@ -1,0 +1,39 @@
+{
+  "n_units": 13,
+  "n_indicators": 5,
+  "indicators": [
+    "BoardingSchool_Count",
+    "Environmental_Burden_Index",
+    "Max_BoardingSchool_Duration_Years",
+    "Mean_BoardingSchool_Duration_Years",
+    "Schools_With_Burial_Site_Flag"
+  ],
+  "cronbach_alpha": {
+    "Cronbach_Alpha": 0.6803556401188187,
+    "N_Items": 5,
+    "N_Units": 13,
+    "Note": "diagnostic_only_at_small_n"
+  },
+  "kmo": {
+    "KMO": 0.5444155998764881,
+    "Note": "diagnostic_only_at_small_n"
+  },
+  "pca": {
+    "Variance_Explained": [
+      0.5070175907816852,
+      0.2657405814070073,
+      0.13799490509729173,
+      0.08924692271401577,
+      1.1936759698273329e-33
+    ],
+    "PC1_Loadings": {
+      "BoardingSchool_Count": 0.4838506092117258,
+      "Environmental_Burden_Index": 0.008500561876990886,
+      "Max_BoardingSchool_Duration_Years": 0.5737889922516521,
+      "Mean_BoardingSchool_Duration_Years": 0.5737889922516521,
+      "Schools_With_Burial_Site_Flag": 0.3276411347112636
+    },
+    "Note": "diagnostic_only_at_small_n"
+  },
+  "interpretation_caveat": "All construct-validity statistics here are reported as diagnostic aids. At small ecological sample sizes (n<30) Cronbach's alpha, KMO, and PCA loadings have wide sampling variability and should not be used to either validate or invalidate the composite on their own."
+}

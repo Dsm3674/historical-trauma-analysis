@@ -1,0 +1,11 @@
+dataset,column,dtype,non_null_count,missing_count,missing_pct,example_value,description
+selection_bias_audit,Covariate,object,3,0,0.0,AI_AN_Population_Percent,
+selection_bias_audit,N_Included,int64,3,0,0.0,13,
+selection_bias_audit,N_Excluded,int64,3,0,0.0,7,
+selection_bias_audit,Mean_Included,float64,3,0,0.0,5.099109618238951,
+selection_bias_audit,Mean_Excluded,float64,3,0,0.0,2.1313984085220214,
+selection_bias_audit,Median_Included,float64,3,0,0.0,2.369977173906887,
+selection_bias_audit,Median_Excluded,float64,3,0,0.0,1.7920354212210718,
+selection_bias_audit,MannWhitney_U,float64,3,0,0.0,70.0,
+selection_bias_audit,Permutation_P_Value,float64,3,0,0.0,0.0603939606039396,
+selection_bias_audit,Selection_Pressure_At_p_lt_0.1,bool,3,0,0.0,True,

@@ -1,0 +1,17 @@
+Construct validity report
+=========================
+Indicators in composite (n=5): BoardingSchool_Count, Environmental_Burden_Index, Max_BoardingSchool_Duration_Years, Mean_BoardingSchool_Duration_Years, Schools_With_Burial_Site_Flag
+Units (states) with complete indicator data: 13
+
+Cronbach's alpha = 0.680 (diagnostic only at small n).
+KMO sampling adequacy = 0.544.
+PC1 explains 50.7% of total variance across the included indicators.
+
+Item-total correlations (each indicator vs. mean of the others):
+  BoardingSchool_Count: 0.534
+  Environmental_Burden_Index: -0.119
+  Max_BoardingSchool_Duration_Years: 0.385
+  Mean_BoardingSchool_Duration_Years: 0.385
+  Schools_With_Burial_Site_Flag: 0.228
+
+Caveat: at the present sample size these statistics have high variance and are reported as descriptive aids only.

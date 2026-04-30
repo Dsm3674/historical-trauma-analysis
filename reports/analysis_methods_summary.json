@@ -1,16 +1,32 @@
 {
-  "index_name": "Historical_Trauma_Index",
+  "pipeline_version": "2.0.0",
+  "composite_display_name": "Structural Exposure Composite",
+  "composite_column_name": "Structural_Exposure_Composite",
+  "legacy_alias_column": "Historical_Trauma_Index",
+  "primary_weighting_scheme": "both",
   "primary_normalization": "zscore",
   "drop_constant_indicators": true,
   "bootstrap_iterations": 4000,
   "permutation_iterations": 10000,
+  "weight_perturbation_iterations": 2000,
+  "min_units_for_inference": 20,
+  "min_units_for_main_manuscript": 10,
+  "seed": 42,
   "confounders": [
     "AI_AN_Population_Percent"
   ],
   "outcomes": [
     "Mean_Mortality_Disparity_Ratio",
+    "Disparity_Ratio_Diabetes",
+    "Disparity_Ratio_Liver_Disease",
+    "Disparity_Ratio_Suicide",
     "AI_AN_Missing_Rate_per_100k_AI_AN",
+    "AI_AN_Missing",
     "AI_AN_Population_Percent"
+  ],
+  "primary_outcomes_for_multiple_testing": [
+    "Mean_Mortality_Disparity_Ratio",
+    "AI_AN_Missing_Rate_per_100k_AI_AN"
   ],
   "index_state_count": 20,
   "complete_case_state_count": 13,
@@ -30,8 +46,12 @@
     "Washington"
   ],
   "outcome_sample_sizes": {
-    "Mean_Mortality_Disparity_Ratio": 13,
+    "Mean_Mortality_Disparity_Ratio": 19,
+    "Disparity_Ratio_Diabetes": 19,
+    "Disparity_Ratio_Liver_Disease": 19,
+    "Disparity_Ratio_Suicide": 15,
     "AI_AN_Missing_Rate_per_100k_AI_AN": 13,
+    "AI_AN_Missing": 13,
     "AI_AN_Population_Percent": 20
   },
   "indicator_construction": [
@@ -72,14 +92,19 @@
       "Exclusion_Reason": "constant_within_sample"
     }
   ],
-  "weighting_note": "Configured indicator weights are heuristic and not community-informed; sensitivity analyses quantify robustness to weighting choices but do not validate the weighting scheme.",
+  "weighting_note": "Configured weights are heuristic and not community-informed. When primary_weighting_scheme is 'both', the equal-weight composite is reported as a co-primary specification because at small n it produces a more stable rank ordering.",
+  "construct_validity_note": "Construct-validity diagnostics in construct_validity_report.csv are descriptive aids only; at small ecological n the underlying statistics have wide sampling variability.",
   "mortality_conditions": [
-    "Diabetes"
+    "Diabetes",
+    "Liver_Disease",
+    "Suicide"
   ],
-  "mortality_aggregation": "Mean_Mortality_Disparity_Ratio is the state-level mean of available Disparity_Ratio values across listed conditions.",
+  "mortality_aggregation": "Per (State, Condition), Disparity_Ratio is averaged across years. Mean_Mortality_Disparity_Ratio is then the equal-weighted mean of per-condition values, giving each condition equal weight regardless of year-availability. Per-condition columns are also written (Disparity_Ratio_<Condition>).",
   "missing_persons_metrics": {
-    "AI_AN_Missing_Rate_per_100k_AI_AN": "100000 * AI_AN_Missing / AI_AN_Population"
+    "AI_AN_Missing": "Primary outcome (absolute count); see MMIR undercounting literature.",
+    "AI_AN_Missing_Rate_per_100k_AI_AN": "Secondary, population-adjusted: 100000 * AI_AN_Missing / AI_AN_Population"
   },
-  "boarding_school_note": "BoardingSchool_Count uses aggregated counts extracted from DOI-style source labels when available; other boarding indicators remain limited by the state-level aggregate source file.",
-  "ejscreen_note": "Environmental variables are taken from the supplied state-level indicator table, are not AI/AN-specific, and remain temporally misaligned with the 2020 outcomes."
+  "boarding_school_note": "BoardingSchool_Count uses aggregated counts extracted from DOI-style source labels when available.",
+  "ejscreen_note": "Environmental variables are state-level and not AI/AN-specific; temporally misaligned with 2020 outcomes.",
+  "naming_change_note": "The composite was previously named 'Historical Trauma Index'. It has been renamed to 'Structural Exposure Composite' to better reflect what it measures: a summary of observable structural indicators, not lived historical trauma. The legacy column 'Historical_Trauma_Index' is retained as a backward-compatible alias."
 }

@@ -1,0 +1,11 @@
+column,missing_count,missing_pct
+Covariate,0,0.0
+N_Included,0,0.0
+N_Excluded,0,0.0
+Mean_Included,0,0.0
+Mean_Excluded,0,0.0
+Median_Included,0,0.0
+Median_Excluded,0,0.0
+MannWhitney_U,0,0.0
+Permutation_P_Value,0,0.0
+Selection_Pressure_At_p_lt_0.1,0,0.0

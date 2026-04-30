@@ -1,17 +1,36 @@
 {
-  "index_name": "Historical_Trauma_Index",
+  "_comment_naming": "composite_display_name appears in tables; composite_column_name is written as the primary column. legacy_alias_column writes a duplicate column under the old name for backward compatibility with downstream scripts.",
+  "composite_display_name": "Structural Exposure Composite",
+  "composite_column_name": "Structural_Exposure_Composite",
+  "legacy_alias_column": "Historical_Trauma_Index",
+  "_comment_legacy": "index_name is retained for older code paths that still reference it. Set equal to composite_column_name.",
+  "index_name": "Structural_Exposure_Composite",
   "primary_normalization": "zscore",
   "drop_constant_indicators": true,
+  "_comment_weighting": "primary_weighting_scheme: 'configured' (manuscript original), 'equal' (recommended by review as more stable), or 'both' (write both as co-primary).",
+  "primary_weighting_scheme": "both",
   "bootstrap_iterations": 4000,
   "permutation_iterations": 10000,
+  "weight_perturbation_iterations": 2000,
   "seed": 42,
+  "_comment_thresholds": "Inference thresholds are now configurable (previously hardcoded to 20/10).",
+  "min_units_for_inference": 20,
+  "min_units_for_main_manuscript": 10,
   "confounders": [
     "AI_AN_Population_Percent"
   ],
   "outcomes": [
     "Mean_Mortality_Disparity_Ratio",
+    "Disparity_Ratio_Diabetes",
+    "Disparity_Ratio_Liver_Disease",
+    "Disparity_Ratio_Suicide",
     "AI_AN_Missing_Rate_per_100k_AI_AN",
+    "AI_AN_Missing",
     "AI_AN_Population_Percent"
+  ],
+  "primary_outcomes_for_multiple_testing": [
+    "Mean_Mortality_Disparity_Ratio",
+    "AI_AN_Missing_Rate_per_100k_AI_AN"
   ],
   "sensitivity": {
     "alternate_normalizations": [
@@ -19,6 +38,13 @@
     ],
     "include_equal_weights": true,
     "include_pca": true,
-    "leave_one_indicator_out": true
-  }
+    "leave_one_indicator_out": true,
+    "include_dirichlet_weight_perturbation": true,
+    "include_temporal_only_2020": true
+  },
+  "construct_validity": {
+    "compute": true,
+    "min_indicators_for_alpha": 3
+  },
+  "pipeline_version": "2.0.0"
 }

@@ -1,16 +1,17 @@
 Limitations:
 
 - This is an ecological analysis and must not be interpreted as individual-level evidence.
-- The historical trauma index is a proxy measure constructed from observable structural indicators; it is not a direct measure of lived experience.
-- Configured indicator weights are heuristic and not community-informed; sensitivity analyses should be treated as robustness checks rather than validation of the weighting scheme.
-- BoardingSchool_Count now recovers DOI-style aggregated counts when they are encoded in the source label, but the boarding-school file is still a state-level aggregate and does not fully resolve construct-measurement limitations for all boarding indicators.
-- Constant indicators are documented and excluded from within-sample scoring, which improves numerical validity but also highlights construct-coverage limitations in the current sample.
-- With only 13 complete-case states (20 index states overall), bootstrap intervals and rank associations remain sensitive to influential states; permutation tests and leave-one-state-out diagnostics should be reported alongside point estimates.
-- The missing persons outcome is now an AI/AN population-adjusted rate per 100,000 AI/AN residents rather than an absolute count, which reduces but does not eliminate compositional confounding.
-- Adjusted analyses control only for AI/AN population share, not the full set of potential confounders.
-- Temporal alignment remains imperfect: the environmental indicator is from a later period than the 2020 mortality and missing-person outcomes.
-- The environmental indicator is state-level and not AI/AN-specific, so within-state heterogeneity and community-level exposure error likely remain substantial.
-- Only one mortality condition is analyzed in the current inputs, so disease-specific inference remains narrow and vulnerable to suppression-driven selection.
-- State-level analyses can mask within-state heterogeneity and are not substitutes for tribal, reservation, county, or community-governed analyses.
-- No causal interpretation, policy-effect attribution, or community-consensus weighting should be claimed from this pipeline alone.
-- Data provenance, source definitions, and processed-data manifests should be checked before manuscript claims are finalized.
+- The structural exposure composite is constructed from observable structural indicators; it is NOT a direct measure of historical trauma or lived experience. The previous label 'Historical Trauma Index' is retained as a backward-compatible column name only.
+- Configured indicator weights are heuristic and not community-informed; the pipeline reports both configured and equal-weight composite scores as co-primary specifications, since equal weights produce a more stable rank ordering at small n.
+- Sensitivity analyses (alternate normalization, PCA, leave-one-out, Dirichlet weight perturbation, temporal-only) are reported as robustness checks rather than validation.
+- BoardingSchool_Count recovers DOI-style aggregated counts when encoded in the source label; duration estimates remain derived from aggregate era endpoints.
+- Constant indicators are documented and excluded from within-sample scoring.
+- With only 13 complete-case states (20 index states overall), bootstrap intervals are reported as descriptive only (CI columns explicitly labeled). Permutation p-values are the primary inferential statistic. Multiple-testing adjustments (Holm-Bonferroni, BH-FDR) are reported across the primary outcome family.
+- Construct-validity diagnostics (Cronbach alpha, KMO, PCA loadings, item-total correlations) are reported as descriptive aids only; at small n these statistics have wide sampling variability.
+- Mortality data are pooled across years and conditions to reduce suppression-driven exclusion; equal weight is given to each condition rather than each (year, condition) cell.
+- The missing-persons outcome is reported as both an absolute count (primary, per the MMIR undercounting literature) and a population-adjusted rate per 100,000 AI/AN residents (secondary).
+- Adjusted analyses control only for AI/AN population share; urbanization, income, region, and IHS-facility proximity remain plausible omitted variables.
+- The environmental indicator is state-level and not AI/AN-specific.
+- State-level analyses can mask within-state heterogeneity and are not substitutes for tribal or community-governed analyses.
+- No causal interpretation, policy-effect attribution, or community-consensus weighting should be claimed.
+- Selection-bias audit (Mann-Whitney U with permutation p) tests whether the complete-case sample differs systematically from excluded states; results are in selection_bias_audit.csv.

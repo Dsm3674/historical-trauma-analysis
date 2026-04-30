@@ -1,4 +1,4 @@
-State,Historical_Trauma_Index,Scheme,Scheme_Type,Normalization_Method,Scheme_Note,Rank,Primary_Score,Primary_Rank,Score_Delta_vs_Primary,Rank_Shift_vs_Primary
+State,Structural_Exposure_Composite,Scheme,Scheme_Type,Normalization_Method,Scheme_Note,Rank,Primary_Score,Primary_Rank,Score_Delta_vs_Primary,Rank_Shift_vs_Primary
 Oklahoma,0.916953316953317,configured_weights_minmax,alternate_normalization,minmax,Configured weights under alternate normalization.,1.0,1.5065087234745833,1.0,-0.5895554065212663,0.0
 California,0.6766633321764695,configured_weights_minmax,alternate_normalization,minmax,Configured weights under alternate normalization.,2.0,0.6095660548212583,3.0,0.0670972773552112,-1.0
 Alaska,0.6271011840290978,configured_weights_minmax,alternate_normalization,minmax,Configured weights under alternate normalization.,3.0,0.4085862544162295,4.0,0.21851492961286828,-1.0
@@ -179,3 +179,16 @@ Colorado,-0.67375190421782,primary,configured_weights,zscore,Configured weights 
 Washington,-0.8236723556411192,primary,configured_weights,zscore,Configured weights after dropping constant indicators.,16.0,-0.8236723556411192,16.0,0.0,0.0
 Montana,-0.9390085594216865,primary,configured_weights,zscore,Configured weights after dropping constant indicators.,17.0,-0.9390085594216865,17.0,0.0,0.0
 North Carolina,-1.3790410297418936,primary,configured_weights,zscore,Configured weights after dropping constant indicators.,18.0,-1.3790410297418936,18.0,0.0,0.0
+Oklahoma,1.3709277266957003,temporal_only_2020,temporal_only,zscore,Re-run using only 2020-era indicators.,1.0,1.5065087234745833,1.0,-0.13558099677888302,0.0
+Arizona,0.4742864036615192,temporal_only_2020,temporal_only,zscore,Re-run using only 2020-era indicators.,2.0,0.20637024435278886,7.0,0.26791615930873036,-5.0
+Nevada,0.45343427987002666,temporal_only_2020,temporal_only,zscore,Re-run using only 2020-era indicators.,3.0,-0.21288394636967276,12.0,0.6663182262396994,-9.0
+New Mexico,0.432582156078534,temporal_only_2020,temporal_only,zscore,Re-run using only 2020-era indicators.,4.0,0.0721383185618106,8.0,0.3604438375167234,-4.0
+Alaska,0.3908779084955488,temporal_only_2020,temporal_only,zscore,Re-run using only 2020-era indicators.,5.0,0.4085862544162295,4.0,-0.017708345920680657,1.0
+Oregon,0.3908779084955488,temporal_only_2020,temporal_only,zscore,Re-run using only 2020-era indicators.,5.0,-0.19718357586024285,11.0,0.5880614843557916,-6.0
+South Dakota,0.2657651657465933,temporal_only_2020,temporal_only,zscore,Re-run using only 2020-era indicators.,6.0,0.2509263213097866,5.0,0.01483884443680672,1.0
+California,0.22406091816360815,temporal_only_2020,temporal_only,zscore,Re-run using only 2020-era indicators.,7.0,0.6095660548212583,3.0,-0.38550513665765007,4.0
+Minnesota,-0.08872093870878062,temporal_only_2020,temporal_only,zscore,Re-run using only 2020-era indicators.,8.0,0.004152869946428222,9.0,-0.09287380865520883,-1.0
+Michigan,-0.3806506717896768,temporal_only_2020,temporal_only,zscore,Re-run using only 2020-era indicators.,9.0,-0.1917673196079359,10.0,-0.18888335218174093,-1.0
+New York,-0.502510717197604,temporal_only_2020,temporal_only,zscore,Re-run using only 2020-era indicators.,10.0,-0.3176515278075324,14.0,-0.18485918939007157,-4.0
+Washington,-0.8185452714110211,temporal_only_2020,temporal_only,zscore,Re-run using only 2020-era indicators.,11.0,-0.8236723556411192,16.0,0.005127084230098111,-5.0
+North Carolina,-2.212384868099996,temporal_only_2020,temporal_only,zscore,Re-run using only 2020-era indicators.,12.0,-1.3790410297418936,18.0,-0.8333438383581024,-6.0

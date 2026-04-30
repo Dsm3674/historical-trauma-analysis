@@ -59,7 +59,7 @@ This note maps the current code outputs to the main reviewer concerns for manusc
 - Excluded-state comparisons are structurally supported but only informative if excluded states exist in the local raw inputs.
   In the current local snapshot, the audit distinguishes 20 index states from the 13 complete-case states retained for association analyses.
 
-- Figure generation is implemented in code, but no images were rendered in this environment because `matplotlib` is not installed locally.
+- Figure generation is implemented in code. The v2 figure set has been rendered in both `visualizations/` and `figures/`.
 
 ## Manuscript text that should be updated manually
 

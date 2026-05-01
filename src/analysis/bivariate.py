@@ -81,6 +81,11 @@ def bivariate_indicator_associations(
             n = len(valid)
             if n < 4:
                 continue
+            # Skip if either the indicator or the outcome is constant in
+            # this subsample — correlation/permutation tests are
+            # undefined and would otherwise yield meaningless p-values.
+            if valid[indicator].nunique() <= 1 or valid[outcome].nunique() <= 1:
+                continue
             rho = _rank_corr(valid[indicator], valid[outcome])
             tau = kendall_tau_b(valid[indicator], valid[outcome])
             ci_lo, ci_hi = bootstrap_spearman_ci(

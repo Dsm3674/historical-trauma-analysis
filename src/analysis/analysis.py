@@ -289,6 +289,12 @@ def permutation_p_value(
                 if statistic == "spearman"
                 else kendall_tau_b(valid.iloc[:, 0], valid.iloc[:, 1]))
 
+    # If the observed statistic is undefined (e.g. a constant indicator
+    # in the subsample), the permutation p-value is meaningless. Returning
+    # the raw count would falsely produce a "significant" p of 1/(N+1).
+    if not np.isfinite(observed):
+        return (np.nan, "undefined_observed_statistic")
+
     if n <= 8:
         reference = valid.iloc[:, 1].to_numpy()
         permuted = []
@@ -337,6 +343,12 @@ def partial_spearman(
     residual_x = _residualize(ranked["x"].to_numpy(dtype=float), ranked[covariate_df.columns].to_numpy(dtype=float))
     residual_y = _residualize(ranked["y"].to_numpy(dtype=float), ranked[covariate_df.columns].to_numpy(dtype=float))
     observed = _pearson_corr(residual_x, residual_y)
+
+    # If observed is undefined (a residual has zero variance, typically
+    # because x or y is constant in the subsample), the permutation
+    # p-value is meaningless.
+    if not np.isfinite(observed):
+        return (np.nan, np.nan, "undefined_observed_statistic")
 
     rng = np.random.default_rng(seed)
     permuted = []

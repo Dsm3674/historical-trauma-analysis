@@ -217,7 +217,15 @@ def _rank_corr(x: pd.Series, y: pd.Series) -> float:
     valid = pd.concat([x, y], axis=1).dropna()
     if len(valid) < 2:
         return np.nan
-    return float(valid.iloc[:, 0].rank(method="average").corr(valid.iloc[:, 1].rank(method="average")))
+    rx = valid.iloc[:, 0].rank(method="average")
+    ry = valid.iloc[:, 1].rank(method="average")
+    # Bootstrap resamples and small permutation subsets can produce a
+    # rank vector with zero variance (all values tied). pandas .corr()
+    # would then divide by zero inside np.corrcoef and emit a
+    # RuntimeWarning before returning NaN. Return NaN directly instead.
+    if rx.nunique(dropna=True) < 2 or ry.nunique(dropna=True) < 2:
+        return np.nan
+    return float(rx.corr(ry))
 
 
 def _pearson_corr(x: np.ndarray, y: np.ndarray) -> float:

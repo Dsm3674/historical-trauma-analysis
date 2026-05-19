@@ -107,8 +107,11 @@ def kmo_measure(normalized: pd.DataFrame) -> dict:
     matrix = normalized.dropna(axis=0, how="any").to_numpy(dtype=float)
     if matrix.shape[0] < 3 or matrix.shape[1] < 2:
         return {"KMO": float("nan"), "Note": "insufficient_data"}
-    # Pearson correlation matrix
-    corr = np.corrcoef(matrix, rowvar=False)
+    # Pearson correlation matrix. A constant column would make np.corrcoef
+    # divide by zero and emit a RuntimeWarning before producing NaNs; the
+    # NaN branch below already handles that, so suppress the noisy warning.
+    with np.errstate(invalid="ignore", divide="ignore"):
+        corr = np.corrcoef(matrix, rowvar=False)
     if np.any(np.isnan(corr)):
         return {"KMO": float("nan"), "Note": "correlation_matrix_has_nan"}
     try:

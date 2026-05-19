@@ -19,8 +19,18 @@
   "confounders": [
     "AI_AN_Population_Percent"
   ],
+  "_comment_per_outcome_covariates": "Reviewer fix #3: count outcomes (AI_AN_Missing) get additional partial correlations adjusting for absolute AI_AN_Population, reported side-by-side. share controls for Indigenous concentration; absolute controls for size; both controls for both jointly.",
+  "per_outcome_covariate_sets": {
+    "AI_AN_Missing": {
+      "share": ["AI_AN_Population_Percent"],
+      "absolute": ["AI_AN_Population"],
+      "both": ["AI_AN_Population_Percent", "AI_AN_Population"]
+    }
+  },
   "outcomes": [
     "Mean_Mortality_Disparity_Ratio",
+    "Geometric_Mean_Mortality_Disparity_Ratio",
+    "Pooled_Rate_Ratio_Mortality",
     "Disparity_Ratio_Diabetes",
     "Disparity_Ratio_Liver_Disease",
     "Disparity_Ratio_Suicide",

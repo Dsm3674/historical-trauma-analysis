@@ -214,6 +214,36 @@ def build_construct_validity_report(
     lines = []
     lines.append("Construct validity report")
     lines.append("=========================")
+    lines.append("")
+    lines.append("Framing: formative composite, not reflective scale")
+    lines.append("--------------------------------------------------")
+    lines.append(
+        "This index is a FORMATIVE composite of policy, environmental, and "
+        "boarding-school indicators selected because they are distinct "
+        "channels of structural exposure - not a REFLECTIVE scale where "
+        "items are presumed to share a common latent cause (OECD/JRC "
+        "Handbook on Composite Indicators, Nardo et al. 2008). In a "
+        "formative composite, low inter-indicator correlation, low Cronbach "
+        "alpha, and a single low item-total correlation (e.g. EJSCREEN "
+        "PM2.5, rho approx -0.12) reflect the domain heterogeneity that the "
+        "composite is designed to capture, not a measurement defect. "
+        "Cronbach alpha, KMO, and PC1-loading statistics below are reported "
+        "for completeness but are NOT the right yardstick for a formative "
+        "composite at small n."
+    )
+    lines.append("")
+    lines.append("Robustness to any single indicator")
+    lines.append("----------------------------------")
+    lines.append(
+        "The construction is supported by the leave-one-indicator-out "
+        "sensitivity in historical_trauma_index_sensitivity.csv. The "
+        "specific leave-out-Environmental_Burden_Index variant is "
+        "highlighted because the environmental indicator is area-level "
+        "(not AI/AN-specific) and has the lowest item-total correlation; "
+        "see headline_findings.json for the rank-correlation between the "
+        "primary composite and that leave-out variant."
+    )
+    lines.append("")
     lines.append(f"Indicators in composite (n={payload['n_indicators']}): "
                  f"{', '.join(included)}")
     lines.append(f"Units (states) with complete indicator data: "
@@ -221,7 +251,7 @@ def build_construct_validity_report(
     lines.append("")
     if not np.isnan(alpha["Cronbach_Alpha"]):
         lines.append(f"Cronbach's alpha = {alpha['Cronbach_Alpha']:.3f} "
-                     f"(diagnostic only at small n).")
+                     f"(reflective-scale statistic; see framing above).")
     if not np.isnan(kmo["KMO"]):
         lines.append(f"KMO sampling adequacy = {kmo['KMO']:.3f}.")
     if pca["Variance_Explained"]:
@@ -237,7 +267,10 @@ def build_construct_validity_report(
                      if not np.isnan(v) else f"  {r['Indicator']}: NA")
     lines.append("")
     lines.append("Caveat: at the present sample size these statistics have "
-                 "high variance and are reported as descriptive aids only.")
+                 "high variance and are reported as descriptive aids only. "
+                 "Inter-indicator structure should be interpreted under "
+                 "the formative-composite framing stated above, not as "
+                 "reflective-scale validation.")
     Path(output_summary).write_text("\n".join(lines) + "\n", encoding="utf-8")
 
     return {"computed": True, **payload}

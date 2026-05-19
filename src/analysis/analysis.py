@@ -52,8 +52,14 @@ def build_master_analysis_table(
     # Multi-condition multi-year aggregation:
     #   1) per-(State, Condition) average across years
     #   2) per-condition wide columns
-    #   3) Mean_Mortality_Disparity_Ratio is the equal-weighted mean of
-    #      per-condition values
+    #   3) Three pooled metrics across conditions per state:
+    #      - Mean_Mortality_Disparity_Ratio: arithmetic mean of per-condition
+    #        disparity ratios (original primary; sensitive to extreme ratios
+    #        like SD liver disease ~13.84).
+    #      - Geometric_Mean_Mortality_Disparity_Ratio: exp(mean(log(R)));
+    #        symmetric in R and 1/R, robust to multiplicative outliers.
+    #      - Pooled_Rate_Ratio_Mortality: mean(AI/AN rates) / mean(comparator
+    #        rates) across the (year, condition) cells; equal weight per cell.
     if "Condition" in mortality.columns:
         per_state_condition = (
             mortality.groupby(["State", "Condition"])
@@ -69,15 +75,44 @@ def build_master_analysis_table(
         per_condition_wide.columns = [f"Disparity_Ratio_{c}" for c in per_condition_wide.columns]
         per_condition_wide = per_condition_wide.reset_index()
 
+        def _geomean(values: pd.Series) -> float:
+            v = pd.to_numeric(values, errors="coerce").dropna()
+            v = v[v > 0]
+            if v.empty:
+                return np.nan
+            return float(np.exp(np.log(v).mean()))
+
         mortality_summary = (
             per_state_condition.groupby("State")
             .agg(
                 Mean_Mortality_Disparity_Ratio=("Disparity_Ratio", "mean"),
+                Geometric_Mean_Mortality_Disparity_Ratio=("Disparity_Ratio", _geomean),
                 Mortality_Cause_Count=("Condition", "nunique"),
                 Mortality_Cause_List=("Condition", lambda s: " | ".join(sorted({str(v) for v in s.dropna()}))),
             )
             .reset_index()
         )
+
+        if {"AI_AN_Rate_per_100k", "Comparator_Rate_per_100k"}.issubset(mortality.columns):
+            rate_pool = (
+                mortality.dropna(subset=["AI_AN_Rate_per_100k", "Comparator_Rate_per_100k"])
+                .groupby("State")
+                .agg(
+                    _AIAN_Rate_Mean=("AI_AN_Rate_per_100k", "mean"),
+                    _Comparator_Rate_Mean=("Comparator_Rate_per_100k", "mean"),
+                )
+                .reset_index()
+            )
+            rate_pool["Pooled_Rate_Ratio_Mortality"] = np.where(
+                rate_pool["_Comparator_Rate_Mean"] > 0,
+                rate_pool["_AIAN_Rate_Mean"] / rate_pool["_Comparator_Rate_Mean"],
+                np.nan,
+            )
+            mortality_summary = mortality_summary.merge(
+                rate_pool[["State", "Pooled_Rate_Ratio_Mortality"]],
+                on="State", how="left",
+            )
+
         merged = merged.merge(mortality_summary, on="State", how="left")
         merged = merged.merge(per_condition_wide, on="State", how="left")
     else:
@@ -415,7 +450,23 @@ def exploratory_association_table(
     seed: int = 42,
     primary_outcomes_for_multiple_testing: list[str] | None = None,
     min_units_for_inference: int = MIN_UNITS_FOR_INFERENCE,
+    per_outcome_covariate_sets: dict[str, dict[str, list[str]]] | None = None,
 ) -> pd.DataFrame:
+    """Compute Spearman associations with the composite per outcome.
+
+    Parameters
+    ----------
+    per_outcome_covariate_sets
+        Optional override for partial-correlation covariates. Maps each
+        outcome name to a dict of ``{set_name: [covariate_columns]}``.
+        For each named set, the table gains two columns,
+        ``Partial_Spearman_Rho_<set_name>`` and ``Partial_P_<set_name>``,
+        in addition to the default ``Partial_Spearman_Adjusted_Rho`` (which
+        controls for ``confounders``). This addresses the reviewer concern
+        that count-type outcomes (e.g. ``AI_AN_Missing``) should be
+        adjusted for the absolute AI/AN population in addition to (or
+        instead of) AI/AN population share.
+    """
     from src.analysis.multiple_testing import holm_bonferroni, benjamini_hochberg
 
     if target not in df.columns:
@@ -427,6 +478,14 @@ def exploratory_association_table(
         "AI_AN_Population_Percent",
     ]
     confounders = confounders or []
+    per_outcome_covariate_sets = per_outcome_covariate_sets or {}
+
+    # Collect every covariate referenced anywhere so we can preserve them
+    # in the per-outcome subset for the alternative partial correlations.
+    alt_covariate_cols: set[str] = set()
+    for sets in per_outcome_covariate_sets.values():
+        for cols in sets.values():
+            alt_covariate_cols.update(cols)
 
     rows = []
     for outcome in outcomes:
@@ -435,7 +494,8 @@ def exploratory_association_table(
         # Dedupe column list to avoid DataFrame-not-Series indexing when
         # outcome equals a confounder
         col_list = []
-        for c in ["State", target, outcome, *[cf for cf in confounders if cf in df.columns]]:
+        extra_cols = list(confounders) + sorted(alt_covariate_cols)
+        for c in ["State", target, outcome, *[cf for cf in extra_cols if cf in df.columns]]:
             if c not in col_list:
                 col_list.append(c)
         valid = df[col_list].dropna(subset=[target, outcome])
@@ -461,6 +521,26 @@ def exploratory_association_table(
             )
             confounder_label = ", ".join(available_confounders)
 
+        # Reviewer fix #3: per-outcome alternative partial correlations.
+        # For count outcomes (AI_AN_Missing) we report partials adjusting
+        # for absolute AI_AN_Population alongside the standard share-adjusted
+        # value, since share controls for concentration but not size.
+        alt_partials: dict[str, float] = {}
+        for set_name, cov_cols in per_outcome_covariate_sets.get(outcome, {}).items():
+            avail = [c for c in cov_cols if c in valid.columns and c != outcome and c != target]
+            if not avail:
+                alt_partials[f"Partial_Spearman_Rho_{set_name}"] = np.nan
+                alt_partials[f"Partial_P_{set_name}"] = np.nan
+                alt_partials[f"Partial_Covariates_{set_name}"] = ""
+                continue
+            ar, ap, _ = partial_spearman(
+                valid[target], valid[outcome], valid[avail],
+                n_perm=permutation_iterations, seed=seed,
+            )
+            alt_partials[f"Partial_Spearman_Rho_{set_name}"] = ar
+            alt_partials[f"Partial_P_{set_name}"] = ap
+            alt_partials[f"Partial_Covariates_{set_name}"] = ", ".join(avail)
+
         leave_one_out = leave_one_state_out_summary(valid, target, outcome)
         rows.append(
             {
@@ -478,6 +558,7 @@ def exploratory_association_table(
                 "Partial_Adjusted_P_Value": partial_p,
                 "Partial_Permutation_Mode": partial_mode,
                 "Confounders_Used": confounder_label,
+                **alt_partials,
                 "Evidence_Label": evidence_label(n, min_units_for_inference),
                 "Interpretation_Label": interpretation_label(n, min_units_for_inference),
                 **leave_one_out,
@@ -600,13 +681,15 @@ def write_limitations_report(path: str | Path, main_analysis_state_count: int, i
 - Constant indicators are documented and excluded from within-sample scoring.
 - With only {main_analysis_state_count} complete-case states ({index_state_count} index states overall), bootstrap intervals are reported as descriptive only (CI columns explicitly labeled). Permutation p-values are the primary inferential statistic. Multiple-testing adjustments (Holm-Bonferroni, BH-FDR) are reported across the primary outcome family.
 - Construct-validity diagnostics (Cronbach alpha, KMO, PCA loadings, item-total correlations) are reported as descriptive aids only; at small n these statistics have wide sampling variability.
-- Mortality data are pooled across years and conditions to reduce suppression-driven exclusion; equal weight is given to each condition rather than each (year, condition) cell.
-- The missing-persons outcome is reported as both an absolute count (primary, per the MMIR undercounting literature) and a population-adjusted rate per 100,000 AI/AN residents (secondary).
-- Adjusted analyses control only for AI/AN population share; urbanization, income, region, and IHS-facility proximity remain plausible omitted variables.
-- The environmental indicator is state-level and not AI/AN-specific.
-- State-level analyses can mask within-state heterogeneity and are not substitutes for tribal or community-governed analyses.
+- Mortality data are pooled across years and conditions; three pooled metrics are reported as co-primary / sensitivity outcomes: arithmetic mean, geometric mean (symmetric in R and 1/R), and a pooled rate ratio (mean AI/AN rate / mean comparator rate across cells). The geometric and pooled variants address the reviewer concern that arithmetic averaging of multiplicative ratios is dominated by extreme values (e.g. SD liver disease ~13.84).
+- The missing-persons outcome is reported as both an absolute count (primary, per the MMIR undercounting literature) and a population-adjusted rate per 100,000 AI/AN residents (secondary). For the absolute-count outcome the pipeline also reports partial correlations adjusting for absolute AI/AN population, in addition to AI/AN population share, side-by-side - because share controls for Indigenous concentration but not population size.
+- Adjusted analyses control for AI/AN population share by default and, for count outcomes, also for absolute AI/AN population (see per_outcome_covariate_sets in analysis_config.json). Urbanization, income, region, and IHS-facility proximity remain plausible omitted variables.
+- BoardingSchool_Count is reported alongside BoardingSchool_Rate_per_10k_AI_AN; the rate variant feeds a third co-primary 'rate-normalized' composite (structural_composite_rate_normalized.csv, exploratory_associations_rate_normalized.csv). This addresses the reviewer concern that mixing an extensive count with intensive indicators makes the composite mechanically correlated with state size even after z-score normalization.
+- The environmental indicator is state-level and not AI/AN-specific. The composite is FORMATIVE, not reflective: domain heterogeneity is intentional (see construct_validity_summary.txt for the formative-vs-reflective framing per OECD/JRC and Nardo et al. 2008).
+- State-level analyses can mask within-state heterogeneity and are not substitutes for tribal or community-governed analyses. Concrete sub-state alternatives that would address ecological-fallacy concerns using existing public data, proposed for future work: (a) IHS Service Area aggregation, which more closely tracks AI/AN-relevant geography than state borders; (b) county-level analysis restricted to high-AI/AN-population counties (e.g. counties with AI/AN share above a 5%-10% threshold or those overlapping federally recognized reservations), which would also raise per-cell sample sizes for the missing-persons and mortality outcomes. Both can be assembled from BIA, IHS, US Census ACS 5-year, and CDC WONDER county-level releases without new primary data collection.
 - No causal interpretation, policy-effect attribution, or community-consensus weighting should be claimed.
 - Selection-bias audit (Mann-Whitney U with permutation p) tests whether the complete-case sample differs systematically from excluded states; results are in selection_bias_audit.csv.
+- This analysis was not developed under tribal data governance with the AI/AN communities whose outcomes it summarizes; this is a substantive limitation that no statistical correction addresses.
 """
     Path(path).write_text(text, encoding="utf-8")
 

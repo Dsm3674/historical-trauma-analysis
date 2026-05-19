@@ -32,6 +32,7 @@ def bivariate_indicator_associations(
     bootstrap_iterations: int = 4000,
     permutation_iterations: int = 10000,
     seed: int = 42,
+    per_outcome_covariate_sets: dict[str, dict[str, list[str]]] | None = None,
 ) -> pd.DataFrame:
     """Compute Spearman rho, perm p, partial rho, and Holm-adjusted p for
     every (indicator, outcome) pair.
@@ -47,6 +48,12 @@ def bivariate_indicator_associations(
         Outcomes to test against each indicator.
     """
     confounders = confounders or []
+    per_outcome_covariate_sets = per_outcome_covariate_sets or {}
+
+    alt_covariate_cols: set[str] = set()
+    for sets in per_outcome_covariate_sets.values():
+        for cols in sets.values():
+            alt_covariate_cols.update(cols)
 
     # Merge indicators into master by state
     if "State" not in indicator_pivot.columns:
@@ -65,6 +72,7 @@ def bivariate_indicator_associations(
             continue
         # Holm adjustment is applied within outcome across indicators
         per_outcome: list[dict] = []
+        extra_cols = list(confounders) + sorted(alt_covariate_cols)
         for indicator in indicator_cols:
             if indicator not in merged.columns:
                 continue
@@ -73,7 +81,7 @@ def bivariate_indicator_associations(
             # valid[outcome] return a DataFrame instead of a Series).
             valid_cols = []
             for c in ["State", indicator, outcome] + [
-                cf for cf in confounders if cf in merged.columns
+                cf for cf in extra_cols if cf in merged.columns
             ]:
                 if c not in valid_cols:
                     valid_cols.append(c)
@@ -108,7 +116,7 @@ def bivariate_indicator_associations(
                     n_perm=permutation_iterations, seed=seed,
                 )
                 partial_rho, partial_p = p_rho, p_p
-            per_outcome.append({
+            row = {
                 "Outcome": outcome,
                 "Indicator": indicator,
                 "N": n,
@@ -122,7 +130,24 @@ def bivariate_indicator_associations(
                 "Partial_Spearman_Rho": partial_rho,
                 "Partial_Permutation_P_Value": partial_p,
                 "Confounders_Used": ", ".join(available_conf),
-            })
+            }
+            # Per-outcome alternative partial correlations (reviewer fix #3)
+            for set_name, cov_cols in per_outcome_covariate_sets.get(outcome, {}).items():
+                avail = [c for c in cov_cols
+                         if c in valid.columns and c != outcome and c != indicator]
+                if avail:
+                    ar, ap, _ = partial_spearman(
+                        valid[indicator], valid[outcome], valid[avail],
+                        n_perm=permutation_iterations, seed=seed,
+                    )
+                    row[f"Partial_Spearman_Rho_{set_name}"] = ar
+                    row[f"Partial_P_{set_name}"] = ap
+                    row[f"Partial_Covariates_{set_name}"] = ", ".join(avail)
+                else:
+                    row[f"Partial_Spearman_Rho_{set_name}"] = float("nan")
+                    row[f"Partial_P_{set_name}"] = float("nan")
+                    row[f"Partial_Covariates_{set_name}"] = ""
+            per_outcome.append(row)
 
         # Within-outcome multiple-testing correction
         if per_outcome:
@@ -146,6 +171,7 @@ def write_bivariate_associations(
     bootstrap_iterations: int = 4000,
     permutation_iterations: int = 10000,
     seed: int = 42,
+    per_outcome_covariate_sets: dict[str, dict[str, list[str]]] | None = None,
 ) -> pd.DataFrame:
     indicators_long = pd.read_csv(indicator_table_path)
     master = pd.read_csv(master_path)
@@ -157,6 +183,7 @@ def write_bivariate_associations(
     df = bivariate_indicator_associations(
         master, pivot, outcomes, confounders,
         bootstrap_iterations, permutation_iterations, seed,
+        per_outcome_covariate_sets=per_outcome_covariate_sets,
     )
     df.to_csv(output_path, index=False)
     return df

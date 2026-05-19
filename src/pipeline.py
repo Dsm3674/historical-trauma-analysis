@@ -26,6 +26,7 @@ from src.analysis.weight_perturbation import dirichlet_weight_perturbation
 from src.features.build_index import compute_index, load_weights, sensitivity_analysis
 from src.features.merge_indicators import merge_indicator_tables
 from src.ingest.ingest_boarding_schools import (
+    add_population_normalized_features,
     build_state_boarding_school_features,
     load_boarding_school_listing,
     to_indicator_table,
@@ -98,6 +99,14 @@ class ResearchPipeline:
 
         raw_listing = load_boarding_school_listing(str(boarding_raw))
         features = build_state_boarding_school_features(raw_listing)
+
+        # Reviewer fix #1: enrich with population-rate indicator so a
+        # rate-normalized co-primary composite can be built.
+        population_path = self.processed_dir / "population.csv"
+        if population_path.exists():
+            population_df = pd.read_csv(population_path)
+            features = add_population_normalized_features(features, population_df)
+
         indicators = to_indicator_table(features)
 
         features.to_csv(self.processed_dir / "boarding_school_features.csv", index=False)
@@ -137,6 +146,31 @@ class ResearchPipeline:
             legacy_alias_column=self.legacy_alias,
         )
 
+        # Reviewer fix #1: rate-normalized composite. Uses the configured
+        # weights but swaps BoardingSchool_Count -> BoardingSchool_Rate_per_10k_AI_AN
+        # so the composite is no longer mechanically driven by state size.
+        rate_normalized = None
+        rate_col = "BoardingSchool_Rate_per_10k_AI_AN"
+        count_col = "BoardingSchool_Count"
+        if rate_col in all_indicators:
+            rate_weights = dict(weights)
+            if count_col in rate_weights:
+                rate_weights[rate_col] = rate_weights[count_col]
+                rate_weights[count_col] = 0.0
+            else:
+                rate_weights[rate_col] = 1.0
+            try:
+                rate_normalized = compute_index(
+                    combined, rate_weights,
+                    normalization=self.analysis_config["primary_normalization"],
+                    index_name=self.composite_column,
+                    drop_constant_indicators=bool(self.analysis_config.get("drop_constant_indicators", True)),
+                    legacy_alias_column=self.legacy_alias,
+                )
+            except Exception as exc:
+                self.logger.warning("Rate-normalized composite failed: %s", exc)
+                rate_normalized = None
+
         # Write the chosen primary as historical_trauma_index.csv (preserves
         # downstream filenames). When 'both', configured is the canonical
         # primary file and equal-weight is written alongside as a co-primary
@@ -163,6 +197,16 @@ class ResearchPipeline:
             process_dataset(equal.scores, "structural_composite_equal_weights", self.processed_dir)
             configured.scores.to_csv(self.processed_dir / "structural_composite_configured_weights.csv", index=False)
             process_dataset(configured.scores, "structural_composite_configured_weights", self.processed_dir)
+
+        # Reviewer fix #1: always write the rate-normalized composite when
+        # available, as a third co-primary specification.
+        if rate_normalized is not None:
+            rate_normalized.scores.to_csv(
+                self.processed_dir / "structural_composite_rate_normalized.csv", index=False,
+            )
+            process_dataset(
+                rate_normalized.scores, "structural_composite_rate_normalized", self.processed_dir,
+            )
 
         # Sensitivity analysis (uses configured weights as the named primary)
         sensitivity_df, sensitivity_summary = sensitivity_analysis(
@@ -238,6 +282,7 @@ class ResearchPipeline:
             seed=int(self.analysis_config.get("seed", 42)),
             primary_outcomes_for_multiple_testing=self.analysis_config.get("primary_outcomes_for_multiple_testing"),
             min_units_for_inference=int(self.analysis_config.get("min_units_for_inference", 20)),
+            per_outcome_covariate_sets=self.analysis_config.get("per_outcome_covariate_sets"),
         )
         associations.to_csv(self.processed_dir / "exploratory_associations.csv", index=False)
         process_dataset(associations, "exploratory_associations", self.processed_dir)
@@ -270,6 +315,32 @@ class ResearchPipeline:
                 eq_associations.to_csv(self.processed_dir / "exploratory_associations_equal_weights.csv", index=False)
                 process_dataset(eq_associations, "exploratory_associations_equal_weights", self.processed_dir)
 
+        # Reviewer fix #1: third co-primary - rate-normalized composite
+        rate_path = self.processed_dir / "structural_composite_rate_normalized.csv"
+        if rate_path.exists():
+            rate_scores = pd.read_csv(rate_path)[["State", self.composite_column]]
+            rate_master = master.drop(columns=[self.composite_column], errors="ignore").merge(
+                rate_scores, on="State", how="left",
+            )
+            rate_associations = exploratory_association_table(
+                rate_master,
+                target=self.composite_column,
+                outcomes=self.analysis_config.get("outcomes"),
+                confounders=self.analysis_config.get("confounders", []),
+                bootstrap_iterations=int(self.analysis_config.get("bootstrap_iterations", 4000)),
+                permutation_iterations=int(self.analysis_config.get("permutation_iterations", 10000)),
+                seed=int(self.analysis_config.get("seed", 42)),
+                primary_outcomes_for_multiple_testing=self.analysis_config.get("primary_outcomes_for_multiple_testing"),
+                min_units_for_inference=int(self.analysis_config.get("min_units_for_inference", 20)),
+            )
+            rate_associations["Weighting_Scheme"] = "rate_normalized"
+            rate_associations.to_csv(
+                self.processed_dir / "exploratory_associations_rate_normalized.csv", index=False,
+            )
+            process_dataset(
+                rate_associations, "exploratory_associations_rate_normalized", self.processed_dir,
+            )
+
         # Phase 4: bivariate per-indicator associations
         try:
             write_bivariate_associations(
@@ -281,6 +352,7 @@ class ResearchPipeline:
                 bootstrap_iterations=int(self.analysis_config.get("bootstrap_iterations", 4000)),
                 permutation_iterations=int(self.analysis_config.get("permutation_iterations", 10000)),
                 seed=int(self.analysis_config.get("seed", 42)),
+                per_outcome_covariate_sets=self.analysis_config.get("per_outcome_covariate_sets"),
             )
             biv = pd.read_csv(self.processed_dir / "bivariate_indicator_associations.csv")
             process_dataset(biv, "bivariate_indicator_associations", self.processed_dir)
@@ -413,10 +485,16 @@ class ResearchPipeline:
             "mortality_conditions": sorted({str(value) for value in mortality.get("Condition", pd.Series(dtype=str)).dropna()}),
             "mortality_aggregation": (
                 "Per (State, Condition), Disparity_Ratio is averaged across years. "
-                "Mean_Mortality_Disparity_Ratio is then the equal-weighted mean of "
-                "per-condition values, giving each condition equal weight regardless "
-                "of year-availability. Per-condition columns are also written "
-                "(Disparity_Ratio_<Condition>)."
+                "Three pooled metrics are then computed per state: "
+                "(a) Mean_Mortality_Disparity_Ratio = arithmetic mean of per-condition ratios "
+                "(original primary, sensitive to multiplicative outliers); "
+                "(b) Geometric_Mean_Mortality_Disparity_Ratio = exp(mean(log(R))), symmetric "
+                "in R and 1/R and robust to extreme values such as the SD liver-disease ratio; "
+                "(c) Pooled_Rate_Ratio_Mortality = mean(AI/AN rates across (year, condition) "
+                "cells) / mean(comparator rates across the same cells). (b) and (c) are "
+                "reported as co-primary / sensitivity outcomes per reviewer feedback that "
+                "arithmetic averaging of ratios distorts state rankings. Per-condition columns "
+                "are also written (Disparity_Ratio_<Condition>)."
             ),
             "missing_persons_metrics": {
                 "AI_AN_Missing": "Primary outcome (absolute count); see MMIR undercounting literature.",
@@ -466,9 +544,62 @@ class ResearchPipeline:
             findings["by_outcome"].append(entry)
 
         findings["narrative_summary"] = self._build_narrative_summary(findings)
+        findings["named_sensitivities"] = self._compute_named_sensitivities(master)
 
         out_path = self.report_dir / "headline_findings.json"
         out_path.write_text(json.dumps(findings, indent=2), encoding="utf-8")
+
+    def _compute_named_sensitivities(self, master: pd.DataFrame) -> dict:
+        """Reviewer fix #4: surface specific sensitivity results in the
+        headline JSON, in particular the leave-out-Environmental_Burden_Index
+        variant - the indicator with the weakest item-total correlation."""
+        sens_path = self.processed_dir / "historical_trauma_index_sensitivity.csv"
+        out: dict = {}
+        if not sens_path.exists():
+            return out
+        sens = pd.read_csv(sens_path)
+        primary = master[["State", self.composite_column]].rename(
+            columns={self.composite_column: "_primary"}
+        )
+        named_targets = [
+            ("leave_out_Environmental_Burden_Index",
+             "leave_out_environmental_burden_index"),
+            ("leave_out_BoardingSchool_Count",
+             "leave_out_boarding_school_count"),
+            ("leave_out_BoardingSchool_Rate_per_10k_AI_AN",
+             "leave_out_boarding_school_rate_per_10k_ai_an"),
+            ("equal_weights", "equal_weights"),
+            ("temporal_only_2020", "temporal_only_2020"),
+        ]
+        for scheme, key in named_targets:
+            subset = sens[sens["Scheme"] == scheme]
+            if subset.empty:
+                continue
+            merged = primary.merge(
+                subset[["State", self.composite_column]].rename(
+                    columns={self.composite_column: "_variant"}
+                ),
+                on="State", how="inner",
+            ).dropna(subset=["_primary", "_variant"])
+            if len(merged) < 3:
+                continue
+            rho = float(
+                merged["_primary"].rank(method="average").corr(
+                    merged["_variant"].rank(method="average")
+                )
+            )
+            out[key] = {
+                "rank_correlation_with_primary": rho,
+                "n_states": int(len(merged)),
+                "interpretation": (
+                    "High rank correlation indicates the composite ranking "
+                    "is not driven by the leave-out indicator."
+                ) if scheme.startswith("leave_out_") else (
+                    "High rank correlation indicates the composite ranking "
+                    "is robust to this alternative specification."
+                ),
+            }
+        return out
 
     @staticmethod
     def _build_narrative_summary(findings: dict) -> str:

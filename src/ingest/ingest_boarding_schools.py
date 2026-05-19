@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import re
 
+import numpy as np
 import pandas as pd
 
 
@@ -81,9 +82,39 @@ def build_state_boarding_school_features(
     return grouped.sort_values("State").reset_index(drop=True)
 
 
+def add_population_normalized_features(
+    features: pd.DataFrame,
+    population: pd.DataFrame,
+    count_col: str = "BoardingSchool_Count",
+    population_col: str = "AI_AN_Population",
+    per_n: int = 10_000,
+) -> pd.DataFrame:
+    """Add a population-rate feature next to the raw count.
+
+    Reviewer concern: BoardingSchool_Count is extensive (scales with state
+    size) while other indicators in the composite are intensive (durations,
+    binary flags). z-score normalization preserves the scaling property and
+    leaves the composite correlated with population. Convert to a rate so
+    a rate-normalized co-primary composite can be built.
+    """
+    if count_col not in features.columns or population_col not in population.columns:
+        return features
+    pop = population[["State", population_col]].copy()
+    pop["State"] = pop["State"].astype(str).str.strip()
+    out = features.merge(pop, on="State", how="left")
+    rate_col = f"BoardingSchool_Rate_per_{per_n // 1000}k_AI_AN"
+    out[rate_col] = np.where(
+        out[population_col] > 0,
+        float(per_n) * out[count_col] / out[population_col],
+        np.nan,
+    )
+    return out.drop(columns=[population_col])
+
+
 def to_indicator_table(df: pd.DataFrame) -> pd.DataFrame:
     definition_map = {
         "BoardingSchool_Count": "Number of boarding schools recorded for the state, using aggregated DOI counts when encoded in the source label and unique rows otherwise.",
+        "BoardingSchool_Rate_per_10k_AI_AN": "BoardingSchool_Count divided by the state AI/AN population (x 10,000). Population-rate alternative used to address the reviewer concern that the raw count is an extensive variable mixed with intensive ones.",
         "Mean_BoardingSchool_Duration_Years": "Mean operating duration in years across listed boarding schools in the state.",
         "Max_BoardingSchool_Duration_Years": "Maximum observed operating duration in years across listed boarding schools in the state.",
         "Schools_With_Burial_Site_Flag": "Count of listed boarding schools in the state with a burial-site flag in the source file.",
